@@ -1,0 +1,26 @@
+{
+  "name": "phuongsoccer.com",
+  "version": "1.0.0",
+  "description": "Website that sells football items",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "int3306",
+    "316+",
+    "phuongsoccer"
+  ],
+  "author": "316+",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.7",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

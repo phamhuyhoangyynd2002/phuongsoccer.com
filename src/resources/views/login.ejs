@@ -1,0 +1,15 @@
+<%- include('partials/header') -%>
+<form  method="POST" action="/account/login">
+
+	<div class="row g-3">
+
+	  <div class="col-12">
+		<label for="name" class="form-label">Name</label>
+		<input type="text" name="name" id="name" class="form-control" required>
+	  </div>
+	  <div class="col-12">
+		<button type="submit" class="btn btn-primary">Sign In</button>
+	  </div>
+	</div>
+</form>
+<%- include('partials/footer') -%>

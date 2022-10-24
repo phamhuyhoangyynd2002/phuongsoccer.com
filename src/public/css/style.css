@@ -1,0 +1,33 @@
+.header {
+    height: 60px;
+    background-color: #211e3d;
+}
+.block-menu .big-nav .nav-link {
+    color: var(--white);
+}
+
+.block-menu .big-nav .active,
+.block-menu .big-nav .nav-item:hover .nav-link {
+    color: var(--orange);
+}
+
+.header-icon-links .iconlink-group > li {
+    width: 24px;
+    height: 24px;
+    color: var(--white);
+    opacity: 0.8;
+}
+
+.slideshow .carousel.slide{
+    height: 386px;
+    overflow: hidden;
+}
+
+.shop-service {
+    background-color: var(--swiper-theme-color);
+}
+
+/* 
+
+icon-favourite
+icon-cart */
