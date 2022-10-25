@@ -1,4 +1,6 @@
 # phuongsoccer.com
-nodejs
-npm i
+nodejs,
+
+npm i,
+
 npm start
