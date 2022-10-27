@@ -3,17 +3,17 @@ const connection = require('../connection_database/connector.js');
 class accountController {
     // [GET]
     account(req, res, next) {
-        res.render('account');
+        res.render('pages/account');
     }
 
     // [GET]
     login(req, res, next) {
-        res.render('login');
+        res.render('pages/login');
     }
 
     // [GET]
     register(req, res, next) {
-        res.render('register');
+        res.render('pages/register');
     }
 
     // [POST]
@@ -25,7 +25,7 @@ class accountController {
 
     // [POST]
     PostRegister(req, res, next) {
-        res.render('login');
+        res.render('pages/login');
     }
 }
 

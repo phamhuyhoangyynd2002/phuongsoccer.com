@@ -8,7 +8,7 @@ class homeController {
             const limitNumber = 5;
             //const products = await productsDB.find({});
             //console.log(products);
-            res.render('home');
+            res.render('pages/home');
         } 
         catch (error){
             console.log(error);
