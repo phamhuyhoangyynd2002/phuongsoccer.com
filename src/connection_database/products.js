@@ -12,24 +12,28 @@ const productsSchema = new Schema({
         default: 'This field is required.'
     },
     producer: {
-        type: ObjectId,
+        type: String,
         default: null
     },
     product_Image: {
         type: String,
         default: 'This field is required.'
     },
+    users_Updater: {
+        type: String,
+        default: ''
+    },
     updated_At: {
         type: Date,
         default: Date.now
     },
-    users_Updater: {
-        type: ObjectId,
-        default: null
-    },
     image: {
         type: Array,
         default:null
+    },
+    sold: {
+        Type: Number,
+        default:0
     }
 });
 

@@ -1,14 +1,30 @@
 const productsDB = require('../connection_database/products');
-const producerDB = require('../connection_database/producer');
+const newsDB = require('../connection_database/news');
 
 class homeController {
     // [GET] /food
     async index(req, res, next) {
         try {
-            const limitNumber = 5;
-            //const products = await productsDB.find({});
+            const limitNumberProductsNew = 8;
+            const productsNew = await productsDB.find({}).sort({ _id: -1 }).limit(limitNumberProductsNew);
+
+            const limitNumberProductsSold = 8;
+            const productsSold = await productsDB.find({}).sort({'sold' : -1 }).limit(limitNumberProductsSold);
+
+            const limitNumberNews = 3;
+            const news = await newsDB.find({}).sort({ _id: -1 }).limit(limitNumberNews);
+            //console.log("productsNew");
+            console.log(productsNew);
+            //console.log("products");
             //console.log(products);
-            res.render('pages/home');
+            //console.log("New");
+            //console.log(news);
+            res.render('pages/home',{
+                title: 'Home',
+                productsNew,
+                productsSold,
+                news,
+            });
         } 
         catch (error){
             console.log(error);

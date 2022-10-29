@@ -2,40 +2,36 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
-const usersSchema = new Schema({
-    name: {
+const newsSchema = new Schema({
+    img: {
         type: String,
         required: 'This field is required.'
     },
-    email: {
+    title: {
         type: String,
         required: 'a@gmail.com'
     },
-    password: {
+    author: {
         type: String,
         required: "This field is required."
+    },
+    description: {
+        type: String,
+        default: "description."
     },
     updated_At: {
         type: Date,
         default: Date.now
     },
-    phone_Number: {
-        type: String,
-        default: "00000000000"
+    users_Updater: {
+        type: ObjectId,
+        default: null
     },
-    role: {
-        type: Number,
-        default: 1
-    },
-    avatar: {
-        type: String,
-        required: 'avatar.png'
-    },
-    sub: {
-        type: String,
-        required: ''
+    image: {
+        type: Array,
+        default:null
     }
 });
 
 
-module.exports = mongoose.model('users', usersSchema);
+module.exports = mongoose.model('news', newsSchema);
