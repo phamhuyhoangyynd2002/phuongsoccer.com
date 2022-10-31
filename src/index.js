@@ -10,7 +10,12 @@ db.connect();
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.use(express.static(path.join(__dirname,'public')));
+//static file
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/css', express.static(path.join(__dirname, 'public/css')));
+app.use('/js', express.static(path.join(__dirname, 'public/js')));
+app.use('/img', express.static(path.join(__dirname, 'public/img')));
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'resources','views'));
