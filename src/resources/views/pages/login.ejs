@@ -1,4 +1,4 @@
-<%- include('partials/header') -%>
+<%- include('../partials/header') -%>
 <form method="POST" action="/account/login">
 	<div class="mb-3">
 	  <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -13,6 +13,9 @@
 	  <input type="checkbox" class="form-check-input" id="exampleCheck1">
 	  <label class="form-check-label" for="exampleCheck1">Check me out</label>
 	</div>
+	<% if (permit == false) { %>
+		<p>Sai tài khoản mật khẩu</p>
+	<% } %>
 	<button type="submit" class="btn btn-primary">Submit</button>
   </form>
-<%- include('partials/footer') -%>
+<%- include('../partials/footer') -%>
