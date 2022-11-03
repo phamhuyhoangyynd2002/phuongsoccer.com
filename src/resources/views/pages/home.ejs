@@ -1,2 +1,218 @@
-<%- include('../partials/header') -%>
-<%- include('../partials/footer') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="font/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+    <main>
+        <!-- start slideshow -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/img/slideshow1.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/img/slideshow2.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/img/slideshow3.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        <!-- end slideshow -->
+
+        <!-- start service -->
+        <div class="service">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 item-service">
+                        </i><i class="fa-solid fa-truck-fast"></i>
+                        <div class="service-detail">
+                            <h4>Giao hàng toàn quốc</h4>
+                            <p>Miễn phí vận chuyển với các đơn hàng trị giá trên 2.000.000Đ</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 item-service">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <div class="service-detail">
+                            <h4>Hỗ trợ online 24/24</h4>
+                            <p>Luôn hỗ trợ khách hàng 24/24 tất cả các ngày trong tuần</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 item-service">
+                        <i class="fa-solid fa-rotate"></i>
+                        <div class="service-detail">
+                            <h4>Đối hàng dễ dàng</h4>
+                            <p>Miễn phí đổi trả trong vòng 30 ngày đầu tiên cho tất cả các mặt hàng</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 item-service">
+                        <i class="fa-solid fa-gift"></i>
+                        <div class="service-detail">
+                            <h4> Quà tặng hấp dẫn</h4>
+                            <p>Chương trình khuyễn mãi cực lớn và hấp dẫn hàng tháng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end service -->
+
+        <!-- section new products -->
+        <div class="container-fluid section-body">
+            <div class="section-title">
+                <a href=""><h2>Sản phẩm mới</h2></a>
+                <p>Các sản phẩm có tại cửa hàng</p>
+                <a href="#"><img src="/img/img-best-sellers.png" alt=""></a>
+            </div>
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    <img src="<% productsSold.product_Image %>" alt="">
+                    <p><% productsSold.name %></p>
+                    <p><% productsSold.producer %></p>
+                    <!-- <p><% productsSold.name %></p> -->
+                </div>
+            </div>
+            <div class="view-more">
+				<a href="#" title="Xem tất cả">Xem tất cả</a>
+			</div>
+        </div>
+
+        <!-- section best seller products -->
+        <div class="container-fluid section-body">
+            <div class="section-title">
+                <a href=""><h2>Sản phẩm bán chạy</h2></a>
+                <p>Các sản phẩm bán chạy tại cửa hàng</p>
+                <a href="#"><img src="/img/img-best-sellers.png" alt=""></a>
+            </div>
+            <div class="owl-carousel owl-theme">
+                <div class="item"><h4>1</h4></div>
+                <div class="item"><h4>2</h4></div>
+                <div class="item"><h4>3</h4></div>
+                <div class="item"><h4>4</h4></div>
+            </div>
+            <div class="view-more">
+				<a href="#" title="Xem tất cả">Xem tất cả</a>
+			</div>
+        </div>
+
+        <!-- section accessories -->
+        <div class="container section-body">
+            <div class="section-title">
+                <a href=""><h2>Phụ kiện</h2></a>
+                <p>Tất cả các phụ kiện có tại cửa hàng</p>
+            </div>
+            <div class="row row-cols-2 accessories">
+                <div class="col-lg-6 item-accessory">
+                    <img src="/img/accessories_2.webp" alt="Tất giày">
+                    <div class="info-accessory">
+                        <h3>Tất giày</h3>
+                        <a href="/phukien">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 item-accessory">
+                    <img src="/img/accessories_2.webp" alt="Găng tay">
+                    <div class="info-accessory">
+                        <h3>Găng tay</h3>
+                        <a href="/phukien">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 item-accessory">
+                    <img src="/img/accessories_3.webp" alt="Túi đựng giày">
+                    <div class="info-accessory">
+                        <h3>Túi đựng giày</h3>
+                        <a href="/phukien">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 item-accessory">
+                    <img src="/img/accessories_3.webp" alt="Băng cuốn">
+                    <div class="info-accessory">
+                        <h3>Băng cuốn</h3>
+                        <a href="/phukien">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- section news-->
+        <div class="container-fluid section-body">
+            <div class="section-title">
+                <a href=""><h2>Tin tức</h2></a>
+                <p>Tổng hợp tin tức, mẹo vặt cho bạn</p>
+                <a href="#"><img src="/img/img-best-sellers.png" alt=""></a>
+            </div>
+            <div class="owl-carousel owl-theme">
+                <div class="item"><h4>1</h4></div>
+                <div class="item"><h4>2</h4></div>
+                <div class="item"><h4>3</h4></div>
+                <div class="item"><h4>4</h4></div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <%- include('../partials/footer') -%>
+    </footer>
+
+    <!-- javascript -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel();
+        });
+    </script>
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:3,
+                    nav:false
+                },
+                1000:{
+                    items:4,
+                    nav:true,
+                    loop:false
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
+
+
