@@ -10,7 +10,8 @@ class accountController {
 
     // [GET]
     login(req, res, next) {
-        res.render('pages/login');
+        const user = JSON.stringify(next, null, 2);
+        res.render('pages/login',{user});
     }
 
     // [GET]
@@ -26,10 +27,16 @@ class accountController {
         let user = new usersDB({});
         user = await usersDB.find({'email': email, 'password': password});
         console.log(user);
+        req.session.user = user;
         if (user == ''){
-            res.render('login');
+            res.render('login',{
+                title: 'Đăng Nhập',
+                user,
+            });
         }
-        else res.redirect('/');
+        else {
+            res.redirect('/');
+        }
     }
 
     // [POST]

@@ -13,8 +13,11 @@ class homeController {
 
             const limitNumberNews = 3;
             const news = await newsDB.find({}).sort({ _id: -1 }).limit(limitNumberNews);
+            const user = JSON.stringify(req.oidc.user, null, 2);
+            res.locals.user = req.oidc.user;
+            console.log(user);
             //console.log("productsNew");
-            console.log(productsNew);
+            //console.log(productsNew);
             //console.log("products");
             //console.log(products);
             //console.log("New");
@@ -24,6 +27,7 @@ class homeController {
                 productsNew,
                 productsSold,
                 news,
+                user,
             });
         } 
         catch (error){

@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg navbar-211e3d bg-211e3d">
+<nav class="navbar navbar-expand-lg navbar-211e3d bg-211e3d">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"> 
         <img src="/img/logo.png" alt="logo-shop"  height="55px">
@@ -6,6 +6,8 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
+      <% if ( user == undefined || user.role == 1 ) { %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -50,9 +52,24 @@
         </form>
 
         <div class="btn btn-outline-success">
-          <a href="/account" title="Tài khoản của bạn" rel="nofollow">
+          <div title="Tài khoản của bạn" rel="nofollow">
             <i class="fa-regular fa-user"></i>
-          </a>
+            <div class="nav-item dropdown">
+                <div class="dropdown-menu">
+                  <% if ( user == undefined ) { %>
+                    <ul>
+                      <li><a class="dropdown-item" href="/account/login">Đăng Nhập</a></li>
+                      <li><a class="dropdown-item" href="/account/register">Đăng Ký</a></li>
+                    </ul>
+                  <%} else { %>
+                    <ul>
+                      <li><a class="dropdown-item" href="/account/profile">Hồ sơ cá nhân</a></li>
+                      <li><a class="dropdown-item" href="/account/logout">Đăng Xuất</a></li>
+                    </ul>
+                  <% } %>  
+                </div>
+            </div>
+          </div>
         </div>
 
         <div class="btn btn-outline-success">
@@ -62,5 +79,10 @@
         </div>
 
       </div>
+      <%} else { %>
+          <% if ( user == '' || user.role == 1 ) { %>
+          <% } %>  
+      <% } %>  
+      
     </div>
   </nav>

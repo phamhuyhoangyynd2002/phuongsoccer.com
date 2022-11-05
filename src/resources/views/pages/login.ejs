@@ -1,18 +1,49 @@
-<%- include('partials/header') -%>
-<form method="POST" action="/account/login">
-	<div class="mb-3">
-	  <label for="exampleInputEmail1" class="form-label">Email address</label>
-	  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email">
-	  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-	</div>
-	<div class="mb-3">
-	  <label for="exampleInputPassword1" class="form-label">Password</label>
-	  <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-	</div>
-	<div class="mb-3 form-check">
-	  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-	  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-<%- include('partials/footer') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="font/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+    <main>
+		<form method="POST" action="/account/login">
+			<div class="mb-3">
+			  <label for="exampleInputEmail1" class="form-label">Email address</label>
+			  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email">
+			  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+			</div>
+			<div class="mb-3">
+			  <label for="exampleInputPassword1" class="form-label">Password</label>
+			  <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+			</div>
+			<div class="mb-3 form-check">
+			  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+			  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		  </form>
+    </main>
+    <footer>
+        <%- include('../partials/footer') -%>
+    </footer>
+
+    <!-- javascript -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+</body>
+</html>
+
+
+
