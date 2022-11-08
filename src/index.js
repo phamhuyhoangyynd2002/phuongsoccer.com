@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const mysql = require('mysql');
 const path = require('path');
 const route = require('./routes');
 const db = require('./connection_database/connector.js');

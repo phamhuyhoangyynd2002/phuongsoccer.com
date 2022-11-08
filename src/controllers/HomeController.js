@@ -1,5 +1,7 @@
 const productsDB = require('../connection_database/products');
 const newsDB = require('../connection_database/news');
+const usersDB = require('../connection_database/users');
+var user = new usersDB({});
 
 class homeController {
     // [GET] /food
@@ -13,8 +15,8 @@ class homeController {
 
             const limitNumberNews = 3;
             const news = await newsDB.find({}).sort({ _id: -1 }).limit(limitNumberNews);
-            const user = JSON.stringify(req.oidc.user, null, 2);
-            res.locals.user = req.oidc.user;
+            //user = JSON.stringify(req.oidc.user, null, 2);
+            //res.locals.user = req.oidc.user;
             console.log(user);
             //console.log("productsNew");
             //console.log(productsNew);
