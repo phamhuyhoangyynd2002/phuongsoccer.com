@@ -1,14 +1,33 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 const path = require('path');
 const route = require('./routes');
 const db = require('./connection_database/connector.js');
 var session = require('express-session');
+const { auth } = require('express-openid-connect');
 db.connect();
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  baseURL: 'http://localhost:3000',
+  clientID: 'qF2PiheLUk8eNKiDtLi76KU9SxSrrEMg',
+  issuerBaseURL: 'https://dev-ydqmozu1.us.auth0.com',
+  secret: 'LONG_RANDOM_STRING'
+};
+
+const port = 3000;
+
+app.use(auth(config));
+
+// Middleware to make the `user` object available for all views
+app.use(function (req, res, next) {
+  res.locals.user = req.oidc.user;
+  next();
+});
 
 // Middleware to make the `user` object available for all views
 app.use(function (req, res, next) {

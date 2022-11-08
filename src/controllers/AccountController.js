@@ -10,7 +10,6 @@ class accountController {
 
     // [GET]
     login(req, res, next) {
-        const user = JSON.stringify(next, null, 2);
         res.render('pages/login',{user});
     }
 
