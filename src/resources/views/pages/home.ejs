@@ -49,7 +49,7 @@
         <!-- start service -->
         <div class="service">
             <div class="container">
-                <div class="row">
+                <div class="row white-text">
                     <div class="col-lg-3 item-service">
                         </i><i class="fa-solid fa-truck-fast"></i>
                         <div class="service-detail">
@@ -88,15 +88,21 @@
             <div class="section-title">
                 <a href=""><h2>Sản phẩm mới</h2></a>
                 <p>Các sản phẩm có tại cửa hàng</p>
-                <a href="#"><img src="/img/img-best-sellers.png" alt=""></a>
+                <a href="#"><img src="/img/img-best-sellers.png" alt="" loading="lazy"></a>
             </div>
             <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <img src="<% productsSold.product_Image %>" alt="">
-                    <p><% productsSold.name %></p>
-                    <p><% productsSold.producer %></p>
-                    <!-- <p><% productsSold.name %></p> -->
-                </div>
+                <% if(productsNew != '') { %>
+                    <% productsNew.forEach(function(newProduct, index) { %>
+                        <div class="block-item">
+                            <img src="<%- newProduct.product_Image %>" alt="<% newProduct.name %>" loading="lazy">
+                            <div class="info-item">
+                                <p><%- newProduct.name %></p>
+                                <p><%- newProduct.producer %></p>
+                            <!-- <p><% newProduct.price %></p> -->
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
             </div>
             <div class="view-more">
 				<a href="#" title="Xem tất cả">Xem tất cả</a>
@@ -108,13 +114,21 @@
             <div class="section-title">
                 <a href=""><h2>Sản phẩm bán chạy</h2></a>
                 <p>Các sản phẩm bán chạy tại cửa hàng</p>
-                <a href="#"><img src="/img/img-best-sellers.png" alt=""></a>
+                <a href="#"><img src="/img/img-best-sellers.png" alt="" loading="lazy"></a>
             </div>
             <div class="owl-carousel owl-theme">
-                <div class="item"><h4>1</h4></div>
-                <div class="item"><h4>2</h4></div>
-                <div class="item"><h4>3</h4></div>
-                <div class="item"><h4>4</h4></div>
+                    <% if(productsSold != '') { %>
+                        <% productsSold.forEach(function(bestProduct, index) { %>
+                            <div class="block-item">
+                                <img src="<%- bestProduct.product_Image %>" alt="<% bestProduct.name %>" loading="lazy">
+                                <div class="info-item">
+                                    <p><%- bestProduct.name %></p>
+                                    <p><%- bestProduct.producer %></p>
+                                <!-- <p><% bestProduct.price %></p> -->
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } %>
             </div>
             <div class="view-more">
 				<a href="#" title="Xem tất cả">Xem tất cả</a>
@@ -129,28 +143,28 @@
             </div>
             <div class="row row-cols-2 accessories">
                 <div class="col-lg-6 item-accessory">
-                    <img src="/img/accessories_2.webp" alt="Tất giày">
+                    <img src="/img/accessories_2.webp" alt="Tất giày" loading="lazy">
                     <div class="info-accessory">
                         <h3>Tất giày</h3>
                         <a href="/phukien">Xem thêm</a>
                     </div>
                 </div>
                 <div class="col-lg-6 item-accessory">
-                    <img src="/img/accessories_2.webp" alt="Găng tay">
+                    <img src="/img/accessories_2.webp" alt="Găng tay" loading="lazy">
                     <div class="info-accessory">
                         <h3>Găng tay</h3>
                         <a href="/phukien">Xem thêm</a>
                     </div>
                 </div>
                 <div class="col-lg-6 item-accessory">
-                    <img src="/img/accessories_3.webp" alt="Túi đựng giày">
+                    <img src="/img/accessories_3.webp" alt="Túi đựng giày" loading="lazy">
                     <div class="info-accessory">
                         <h3>Túi đựng giày</h3>
                         <a href="/phukien">Xem thêm</a>
                     </div>
                 </div>
                 <div class="col-lg-6 item-accessory">
-                    <img src="/img/accessories_3.webp" alt="Băng cuốn">
+                    <img src="/img/accessories_3.webp" alt="Băng cuốn" loading="lazy">
                     <div class="info-accessory">
                         <h3>Băng cuốn</h3>
                         <a href="/phukien">Xem thêm</a>
@@ -167,10 +181,20 @@
                 <a href="#"><img src="/img/img-best-sellers.png" alt=""></a>
             </div>
             <div class="owl-carousel owl-theme">
-                <div class="item"><h4>1</h4></div>
-                <div class="item"><h4>2</h4></div>
-                <div class="item"><h4>3</h4></div>
-                <div class="item"><h4>4</h4></div>
+                <% if(news != '') { %>
+                    <% news.forEach(function(post, index) { %>
+                        <div class="block-item">
+                            <img src="<%- post.img %>" alt="<% post.title %>" loading="lazy">
+                            <div class="info-item">
+                                <p><%- post.title %></p>
+                                <p><%- post.author %></p>
+                                <p><%- post.updated_At %></p>
+                                <p><%- post.description %></p>
+                            <!-- <p><% post.price %></p> -->
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
             </div>
         </div>
 
