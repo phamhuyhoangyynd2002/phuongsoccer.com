@@ -2,10 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const route = require('./routes');
-const db = require('./connection_database/connector.js');
-var session = require('express-session');
 const { auth } = require('express-openid-connect');
-db.connect();
+const mysql = require('mysql');
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded

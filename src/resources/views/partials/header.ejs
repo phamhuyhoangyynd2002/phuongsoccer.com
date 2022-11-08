@@ -7,7 +7,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       
-      <% if ( user == undefined || user.role == 1 ) { %>
+      <% if ( user == undefined ) { %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -56,17 +56,10 @@
             <i class="fa-regular fa-user"></i>
             <div class="nav-item dropdown">
                 <div class="dropdown-menu">
-                  <% if ( user == undefined ) { %>
                     <ul>
                       <li><a class="dropdown-item" href="/account/login">Đăng Nhập</a></li>
                       <li><a class="dropdown-item" href="/account/register">Đăng Ký</a></li>
                     </ul>
-                  <%} else { %>
-                    <ul>
-                      <li><a class="dropdown-item" href="/account/profile">Hồ sơ cá nhân</a></li>
-                      <li><a class="dropdown-item" href="/account/logout">Đăng Xuất</a></li>
-                    </ul>
-                  <% } %>  
                 </div>
             </div>
           </div>
@@ -80,7 +73,71 @@
 
       </div>
       <%} else { %>
-          <% if ( user == '' || user.role == 1 ) { %>
+          <% if ( user.role == 1 ) { %>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Giới thiệu</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Sản phẩm
+                    </a>
+                    <div class="dropdown-menu">
+                      <ul>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                      <ul>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                    </div>
+                    
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Tin tức</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Liên hệ</a>
+                </li>
+              </ul>
+              
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">
+                  <a href="/search" title="Tìm kiếm" rel="nofollow">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </a>
+                </button>
+              </form>
+      
+              <div class="btn btn-outline-success">
+                <div title="Tài khoản của bạn" rel="nofollow">
+                  <i class="fa-regular fa-user"></i>
+                  <div class="nav-item dropdown">
+                      <div class="dropdown-menu">
+                          <ul>
+                            <li><a class="dropdown-item" href="/account/profile">Hồ sơ cá nhân</a></li>
+                            <li><a class="dropdown-item" href="/account/logout">Đăng Xuất</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="btn btn-outline-success">
+                <a href="/cart" aria-label="Xem giỏ hàng" title="Giỏ hàng">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+              </div>
+      
+            </div>
           <% } %>  
       <% } %>  
       

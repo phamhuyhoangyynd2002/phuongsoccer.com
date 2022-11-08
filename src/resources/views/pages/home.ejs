@@ -91,6 +91,7 @@
                 <a href="#"><img src="/img/img-best-sellers.png" alt="" loading="lazy"></a>
             </div>
             <div class="owl-carousel owl-theme">
+                <!--
                 <% if(productsNew != '') { %>
                     <% productsNew.forEach(function(newProduct, index) { %>
                         <div class="block-item">
@@ -98,11 +99,12 @@
                             <div class="info-item">
                                 <p><%- newProduct.name %></p>
                                 <p><%- newProduct.producer %></p>
-                            <!-- <p><% newProduct.price %></p> -->
+                             <p><% newProduct.price %></p> 
                             </div>
                         </div>
                     <% }) %>
                 <% } %>
+            -->
             </div>
             <div class="view-more">
 				<a href="#" title="Xem tất cả">Xem tất cả</a>
@@ -117,6 +119,7 @@
                 <a href="#"><img src="/img/img-best-sellers.png" alt="" loading="lazy"></a>
             </div>
             <div class="owl-carousel owl-theme">
+                <!--
                     <% if(productsSold != '') { %>
                         <% productsSold.forEach(function(bestProduct, index) { %>
                             <div class="block-item">
@@ -124,11 +127,12 @@
                                 <div class="info-item">
                                     <p><%- bestProduct.name %></p>
                                     <p><%- bestProduct.producer %></p>
-                                <!-- <p><% bestProduct.price %></p> -->
+                                <p><% bestProduct.price %></p> 
                                 </div>
                             </div>
                         <% }) %>
                     <% } %>
+                    -->
             </div>
             <div class="view-more">
 				<a href="#" title="Xem tất cả">Xem tất cả</a>
@@ -181,6 +185,7 @@
                 <a href="#"><img src="/img/img-best-sellers.png" alt=""></a>
             </div>
             <div class="owl-carousel owl-theme">
+                <!--
                 <% if(news != '') { %>
                     <% news.forEach(function(post, index) { %>
                         <div class="block-item">
@@ -190,11 +195,12 @@
                                 <p><%- post.author %></p>
                                 <p><%- post.updated_At %></p>
                                 <p><%- post.description %></p>
-                            <!-- <p><% post.price %></p> -->
+                            
                             </div>
                         </div>
                     <% }) %>
                 <% } %>
+                -->
             </div>
         </div>
 
