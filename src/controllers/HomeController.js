@@ -18,12 +18,12 @@ class homeController {
             //user = JSON.stringify(req.oidc.user, null, 2);
             //res.locals.user = req.oidc.user;
             console.log(user);
-            //console.log("productsNew");
-            //console.log(productsNew);
-            //console.log("products");
-            //console.log(products);
-            //console.log("New");
-            //console.log(news);
+            console.log("productsNew");
+            console.log(productsNew);
+            console.log("productsSold");
+            console.log(productsSold);
+            console.log("New");
+            console.log(news);
             res.render('pages/home',{
                 title: 'Home',
                 productsNew,
