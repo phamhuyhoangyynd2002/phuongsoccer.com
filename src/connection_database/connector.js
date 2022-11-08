@@ -1,16 +1,14 @@
-const mongoose = require('mongoose');
+let mysql = require('mysql');
+let config = require('./config.js');
 
-async function connect(){
-  try {
-    await mongoose.connect('mongodb+srv://phuongsoccer:88phuong88@cluster0.hnjzdpq.mongodb.net/phuongsoccer', {
-       useNewUrlParser: true, 
-       useUnifiedTopology: true 
-      });
-    console.log("Connected phuongsoccerDB");
-  }
-  catch (error){
-    console.log("Connect phuongsoccerDB error:"+ error);
-  }
-}
+let connection = mysql.createConnection(config);
 
-module.exports ={connect};
+connection.connect(function (err) {
+  if (err) {
+    return console.error('error: ' + err.message);
+  }
+
+  console.log('Connected to the MySQL server.');
+});
+
+module.exports = connection;

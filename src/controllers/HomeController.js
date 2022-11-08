@@ -1,6 +1,4 @@
-const productsDB = require('../connection_database/products');
-const newsDB = require('../connection_database/news');
-const usersDB = require('../connection_database/users');
+const connection = require('../connection_database/connector.js');
 
 class homeController {
     // [GET] /food
