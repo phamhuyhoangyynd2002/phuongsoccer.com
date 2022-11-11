@@ -1,5 +1,5 @@
-let mysql = require('mysql');
 let config = require('./config.js');
+const mysql = require('mysql');
 
 let connection = mysql.createConnection(config);
 
