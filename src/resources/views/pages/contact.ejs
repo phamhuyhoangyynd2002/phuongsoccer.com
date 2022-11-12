@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Liên Hệ</title>
+</head>
+<body>
+    <div class="row pt-5" >
+    <div class="col-lg-6 col-sm-12 leave-your-message order-md-2">
+        <h2>LIÊN HỆ CHÚNG TÔI</h2>
+        <p>Để liên hệ và nhận các thông tin khuyến mãi sớm nhất, Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất
+        </p>
+        <form action="/action_page.php">
+
+            <div class="mb-3">
+                <label for="hoten">Họ Và Tên</label>
+                <span class="required">*</span>
+                <input placeholder="Nhập họ và tên" type="text" name="contact[name]" id="name"
+                    class="form-control form-control-lg" data-validation-error-control-lg="không được để trống"
+                    data-validation="required" required>
+            </div>
+
+            <div class="mb-3">
+                <label >Email:</label>
+                <span for="email">*</span>
+                <input placeholder="Nhập địa chỉ Email" type="email" class="form-control" name="contact[email]" id="email" 
+                class="form-control form-control-lg" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$"
+                data-validation-error-msg="Không được để trống" data-validation="required" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Điện Thoại</label>
+                <span class="required">*</span>
+                <input placeholder="Nhập số điện thoại" type="tel" name="contact[phone]" data-validation-error-msg="Không được để trống"
+                data-validation="required" id="tel" class="numer-phone form-control form-control-lg" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="comment">Nội Dung</label>
+                <textarea name="text" id="comment" class="form-control" rows="5"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="col-lg-6 col-12 order-md-1">
+        <div class="contact-maps">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3717.7341088920157!2d106.19958581485875!3d21.28199008586172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+            1!3m3!1m2!1s0x31356d090ccde7c3%3A0xd814c7924e1ea06f!2zODUgVGjDom4gxJDhu6ljIEx14bqtbiwgUGjGsOG7nW5nIE5nw7QgUXV54buBbiwgQuG6r2MgR2lhbmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s
+            !4v1667360203422!5m2!1svi!2s" width="600" height="450" style="border:0;" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+</body>
+</html>

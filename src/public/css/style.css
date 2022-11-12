@@ -229,7 +229,7 @@ sup {
 
 a {
     color: #0d6efd;
-    text-decoration: underline
+    text-decoration: none
 }
 
 a:hover {
@@ -4195,12 +4195,7 @@ fieldset:disabled .btn {
 }
 
 .dropdown-header {
-    display: block;
-    padding: .5rem 1rem;
-    margin-bottom: 0;
-    font-size: .875rem;
-    color: #6c757d;
-    white-space: nowrap
+    min-width: 21rem;
 }
 
 .dropdown-item-text {
@@ -8135,6 +8130,10 @@ fieldset:disabled .btn {
     padding-left: 3rem !important
 }
 
+.ps-8 {
+    padding-left: 8rem !important
+}
+
 .font-monospace {
     font-family: var(--bs-font-monospace) !important
 }
@@ -11806,7 +11805,6 @@ fieldset:disabled .btn {
 .section-title > p {
     line-height: 20px;
     color: #616161;
-    margin-bottom: 36px;
 }
 
 .view-more {
@@ -11827,6 +11825,14 @@ fieldset:disabled .btn {
     color: var(--bs-white);
 }
 
+/* header */
+.dropdown-user > ul{
+    list-style: none;
+    padding: unset;
+    margin: unset;
+}
+
+
 /* accessories */
 .item-accessory {
     position: relative;
@@ -11846,4 +11852,39 @@ fieldset:disabled .btn {
 
 .info-accessory > h3:hover {
     cursor: default;
+}
+
+/* footer */
+.footer-body {
+    color: rgb(198, 178, 40)
+}
+
+.links-service ul li:hover {
+    color: rgb(226, 202, 45);
+    cursor: pointer;
+}
+
+.links-service ul,
+.info-shop ul {
+    list-style: none;
+}
+
+.links-social i {
+    font-size: 32px;
+    margin: 4px 24px;
+}
+
+.form-getNews {
+    margin-top: 16px;
+}
+
+.form-getNews input {
+    width: 62%;
+}
+
+/* home page */
+.img-product {
+    width: 280px;
+    height: 280px;
+    margin: auto;
 }
