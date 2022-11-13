@@ -9,13 +9,13 @@ class accountController {
 
     // [GET]
     login(req, res, next) {
-        var user = null;
+        const user = {_id: 0, name: null, role: 1, picture: ""};
         res.render('pages/login',{user});
     }
 
     // [GET]
     register(req, res, next) {
-        var user = null;
+        const user = {_id: 0, name: null, role: 1, picture: ""};
         res.render('pages/register',{user});
     }
 
