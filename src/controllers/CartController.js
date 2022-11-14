@@ -2,9 +2,9 @@ const connection = require('../connection_database/connector.js');
 const jwt = require('jsonwebtoken');
 
 
-class productController {
+class cartController {
     // [GET] /:slug
-    async show_detail(req, res, next) {
+    async cart(req, res, next) {
         try {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, '12345');
@@ -21,50 +21,53 @@ class productController {
                     delete user.updated_at;
                     delete user.sub;
                     //console.log(user);
-                    show_detail(req, res, user);    
+                    cart(req, res, user);    
                 }
             });
             }  
             else {
-                const user = {_id: 0, name: null, role: 1, picture: ""};
-                show_detail(req, res, user);
+                res.redirect('/account/login');
             }   
         } catch(err) {
-                const user = {_id: 0, name: null, role: 1, picture: ""};
-                show_detail(req, res, user);
+            res.redirect('/cart');
         }
     }
 
 }
 
-module.exports = new productController;
+module.exports = new cartController;
 
-function show_detail(req, res, user) {
+function cart(req, res, user) {
     try {
-    const code = req.params.slug;
-    let sql_products=`SELECT * FROM products p  WHERE p.code = '`+code+"'";
-    connection.query(sql_products, function (error, products) {
+    let sql_cart=`SELECT * FROM cart c  WHERE c._id_users = '`+user._id+"'";
+    connection.query(sql_cart, function (error, carts) {
             if (error) {
                 return console.error(error.message);
             }
-            product = products[0];
-            let sql_img=`SELECT * FROM img i  WHERE i._id_Products = '`+product._id+"'";
-            connection.query(sql_img, function (error, img) {
+            var cart = carts[0];
+            console.log("cart");
+            console.log(cart);
+            
+            res.redirect('/');
+            /*
+            let sql_productsSold="SELECT * FROM products ORDER BY sold DESC LIMIT 8";
+            connection.query(sql_productsSold, function (error, productsSold) {
                 if (error) {
                     return console.error(error.message);
                 }
-                let sql_products_details=`SELECT * FROM products_details p  WHERE p._id_Products = '`+product._id+"'";
-                connection.query(sql_products_details, function (error, products_details) {
+                let sql_news="SELECT * FROM news ORDER BY updated_At DESC LIMIT 3";
+                connection.query(sql_news, function (error, news) {
                     if (error) {
                         return console.error(error.message);
                     }
-                    res.render('pages/home',{ user, product, img, products_details});
+                    res.render('pages/home',{ user, productsNew, productsSold, news});
                     });
                 });
+            */
         });
     }
     catch(err) {
-        res.redirect('/');
+        res.redirect('/cart');
     }
 
 }

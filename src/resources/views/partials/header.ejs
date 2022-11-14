@@ -1,0 +1,162 @@
+<nav class="navbar navbar-expand-lg navbar-211e3d bg-211e3d">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> 
+        <img src="/img/logo.png" alt="logo-shop"  height="55px">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <% if ( user.role == 1 ) { %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Giới thiệu</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sản phẩm
+              </a>
+              <div class="dropdown-menu dropdown-header">
+                <div class="d-flex products-list">
+                  <div class="col">
+                    <div class="dropdown-item link-product"><a href="">Giày cỏ tự nhiên</a></div>
+                    <div class="dropdown-item link-product"><a href="">Giày cỏ nhân tạo</a></div>
+                    <div class="dropdown-item link-product"><a href="">Giày futsal</a></div>
+                    <div class="dropdown-item link-product"><a href="">Giày sneaker</a></div>
+                    <div class="dropdown-item link-product"><a href="">Dép thể thao</a></div>
+                  </div>
+                  <div class="col">
+                    <div class="dropdown-item link-product"><a href="">Giày Adidas</a></div>
+                    <div class="dropdown-item link-product"><a href="">Giày Nike</a></div>
+                    <div class="dropdown-item link-product"><a href="">Giày Mizuno</a></div>
+                    <div class="dropdown-item link-product"><a href="">Giày Puma</a></div>
+                    <div class="dropdown-item link-product"><a href="">Dép thời trang</a></div>
+                  </div>
+                </div>
+              </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Phụ kiện
+            </a>
+            <div class="dropdown-menu">
+              <div class="dropdown-item"><a href="">Tất bóng đá</a></div>
+              <div class="dropdown-item"><a href="">Găng tay thủ môn</a></div>
+              <div class="dropdown-item"><a href="">Băng cuốn</a></div>
+              <div class="dropdown-item"><a href="">Túi đựng giày</a></div>
+            </div>
+            
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tin tức</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Liên hệ</a>
+          </li>
+        </ul>
+        
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">
+            <a href="/search" title="Tìm kiếm" rel="nofollow">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+          </button>
+        </form>
+        <div class="btn btn-outline-success">
+          <div title="Tài khoản của bạn" rel="nofollow">
+            <i class="fa-regular fa-user"></i>
+            <div class="nav-item dropdown">
+                <div class="dropdown-menu">
+                    <ul>
+                      <li><a class="dropdown-item" href="/account/login">Đăng Nhập</a></li>
+                      <li><a class="dropdown-item" href="/account/register">Đăng Ký</a></li>
+                    </ul>
+                </div>
+            </div>
+        <div class="dropdown dropdown-menu-start">
+          <div class="btn btn-outline-success" data-bs-toggle="dropdown"  title="Giỏ hàng">
+            <a href="/cart" aria-label="Xem giỏ hàng">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+          </div>
+          <div class="dropdown-menu translate-middle-x">
+            <p>Giỏ hàng của bạn không có gì</p>
+          </div>
+        </div>
+      </div>
+      <%} else { %>
+          <% if ( user.role != 1 ) { %>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Giới thiệu</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Sản phẩm
+                    </a>
+                    <div class="dropdown-menu">
+                      <ul>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                      <ul>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                    </div>
+                    
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Tin tức</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Liên hệ</a>
+                </li>
+              </ul>
+              
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">
+                  <a href="/search" title="Tìm kiếm" rel="nofollow">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </a>
+                </button>
+              </form>
+      
+              <div class="btn btn-outline-success">
+                <div title="Tài khoản của bạn" rel="nofollow">
+                  <i class="fa-regular fa-user"></i>
+                  <div class="nav-item dropdown">
+                      <div class="dropdown-menu">
+                          <ul>
+                            <li><a class="dropdown-item" href="/account/profile">Hồ sơ cá nhân</a></li>
+                            <li><a class="dropdown-item" href="/account/logout">Đăng Xuất</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="btn btn-outline-success">
+                <a href="/cart" aria-label="Xem giỏ hàng" title="Giỏ hàng">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+              </div>
+      
+            </div>
+          <% } %>  
+      <% } %>  
+      
+    </div>
+  </nav>
