@@ -2,10 +2,14 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const route = require('./routes');
-const session = require('express-session')
+const session = require('express-session');
+require('dotenv').config({ path: 'hi.env' });
 
+process.env.PORT = 3000;
+process.env.KEY_TOKEN = 123456;
 
-const port = 3000;
+const port = process.env.PORT = 3000 || 3000;
+
 //session middleware
 app.use(session({
   secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
@@ -23,10 +27,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-// Middleware to make the `user` object available for all views
-app.use(function (req, res, next) {
-  next();
-});
 //static file
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/css', express.static(path.join(__dirname, 'public/css')));

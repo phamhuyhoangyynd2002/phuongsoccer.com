@@ -1,4 +1,4 @@
-const connection = require('../connection_database/connector.js');
+const { users} = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
 
 class accountController {
@@ -9,33 +9,35 @@ class accountController {
 
     // [GET]
     login(req, res, next) {
-        const user = {_id: 0, name: null, role: 1, picture: ""};
+        const user = {id: 0, name: null, role: 1, picture: ""};
         res.render('pages/login',{user});
     }
 
     // [GET]
     register(req, res, next) {
-        const user = {_id: 0, name: null, role: 1, picture: ""};
+        const user = {id: 0, name: null, role: 1, picture: ""};
         res.render('pages/register',{user});
     }
 
     // [POST]
     async PostLogin(req, res, next) {
-        const email = req.body.email;
-        const password = req.body.password;
-        let sql_user= `SELECT * FROM users u  WHERE u.email = '`+email+"' AND u.password = '"+password+"'";
-        connection.query(sql_user, function (error, results_user) {
-            if (error) {
-                console.log(error);
-            }
-            else{
-                var token = jwt.sign({
-                    _id: results_user[0]._id
-                },'12345');
-                res.session.token=token;
-                res.redirect('/');
-            }
-        });
+        console.log(process.env.PORT);
+        const { email, password } = req.body;
+
+        const user = await users.findOne({ where: { email } });
+        if(user !=  null){
+            var token = await jwt.sign({
+                id: user.id,
+                name: user.name,
+                role: user.role,
+                picture: user.picture
+            },process.env.KEY_TOKEN);
+            res.session.token=token;
+            res.redirect('/');
+        }
+        else{
+            res.redirect('/account/login');
+        }
     }
 
     // [POST]
