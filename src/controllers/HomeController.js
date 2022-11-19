@@ -1,5 +1,4 @@
 const { users, products, news} = require('../connection_database/index');
-//const connection = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
 
 
@@ -30,16 +29,29 @@ module.exports = new homeController;
 
 async function home(req, res, user) {
     try {
-        let sql_productsNew = "SELECT * FROM products ORDER BY updated_At DESC LIMIT 8";
+        
         let productsNew = await products.findAll({
+            order: [['createdAt', 'DESC']],
+            limit: 8,
+        });
+        let productsSold = await products.findAll({
+            order: [['sold', 'DESC']],
+            limit: 8,
+        });
+        let newdb = await news.findAll({
+            order: [['createdAt', 'DESC']],
             limit: 3,
         });
-        console.log(productsNew);
-
-    
+        res.render('pages/home', { 
+            title: 'Home', 
+            productsNew, 
+            productsSold, 
+            user, 
+            newdb
+          });
     }
     catch(err) {
-        console.log("lỗi");
-        //res.redirect('/');
+        console.log(err);
+        res.redirect('/');
     }
 }
