@@ -1,0 +1,38 @@
+<form method="POST" action="/productmanager/submitproduct">
+
+  <div class="mb-3">
+    <label class="form-label">Tên sản phẩm</label>
+    <input type="text" class="form-control" name = "name">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Mô tả</label>
+    <input type="text" class="form-control" name = "description">
+  </div>
+
+  <div class="mb-3">
+    <select class="form-select" aria-label="Default select example" name = "_id_Producer">
+      <option selected>Hãng</option>
+      <option value="1">nike</option>
+      <option value="2">adidas</option>
+      <option value="3">converse</option>
+      <option value="4">vans</option>
+      <option value="5">puma</option>
+      <option value="6">fila</option>
+      <option value="7">mlb</option>
+      <option value="8">new-balance</option>
+    </select>
+  </div>
+
+  <div class="mb-3" >
+    <label class="form-label">Hình ảnh đại diện</label>
+    <input class="form-control" type="file" name = "product_Image">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">code</label>
+    <input type="description" class="form-control" name = "code">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
