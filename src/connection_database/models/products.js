@@ -35,7 +35,11 @@ module.exports = (sequelize, DataTypes) => {
         code: {
             allowNull: false,
             type: DataTypes.STRING,
-           }
+           },
+        user_Update: {
+            allowNull: false,
+            type: DataTypes.INTEGER(11),
+        }
       }, 
     {
         tableName: 'products'

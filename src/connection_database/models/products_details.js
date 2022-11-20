@@ -1,37 +1,36 @@
 const { Sequelize } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('users', {
-        email: {
-            allowNull: false,
-            type: DataTypes.STRING,
-        },
-        password: {
-            allowNull: false,
-            type: DataTypes.STRING,
-        },
-        name: {
-            allowNull: false,
-            type: DataTypes.STRING,
-        },
-        phone_Number: {
+    return sequelize.define('products_details', {
+        id_products: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },
-        id_role: {
+        size: {
+            allowNull: false,
+            type: DataTypes.STRING(10),
+        },
+        amount: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
-            defaultValue: 1,
         },
-        picture: {
+        out_price: {
             allowNull: false,
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER(11),
         },
-        sub: {
+        discout_percent: {
             allowNull: false,
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER(11),
+        },
+        discount_minus: {
+            allowNull: false,
+            type: DataTypes.INTEGER(11),
+        },
+        users_Updater: {
+            allowNull: false,
+            type: DataTypes.INTEGER(11),
         },
     }, {
-        tableName: 'users',
+        tableName: 'products_details',
     });
 };

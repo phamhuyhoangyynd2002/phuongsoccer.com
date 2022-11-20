@@ -1,56 +1,38 @@
-//const connection = require('../connection_database/connector.js');
+const { users, orders} = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
 
 
 class ordersController {
 
     // [GET] /
-    async orders(req, res, next) {
+    async index(req, res, next) {
         try {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
-            //console.log(token);
             let user = {id: token.id, name: token.name, role: token.role, picture: token.picture};
-            //console.log(user);
-            home(req, res, user);  
+            index(req, res, user);  
             }  
             else {
-                let user = {id: 0, name: null, role: 1, picture: ""};
-                home(req, res, user);    
+                res.redirect('/');    
             }   
         } catch(err) {
-                let user = {id: 0, name: null, role: 1, picture: ""};
-                home(req, res, user);
+            res.redirect('/');
         }
     }
 
     // [GET] /:slug
     async show_detail(req, res, next) {
         try {
-            /*
-            if(req.session.token != null){
-            var token = jwt.verify(req.session.token, '12345');
-            let sql_user= `SELECT * FROM users u  WHERE u._id = '`+token._id+"'";
-            connection.query(sql_user, function (error, results_users) {
-                if (error) {
-                    console.log(error);
-                }
-                else{
-                    var user = results_users[0];
-                    delete user.email;
-                    delete user.password;
-                    delete user.phone_Number;
-                    delete user.updated_at;
-                    delete user.sub;
-                    //console.log(user);
-                    show_detail(req, res, user);    
-                }
-            });
-            }  
-            else {
-                res.redirect('/');
-            }   
-            */
+            
+        } catch(err) {
+            res.redirect('/');
+        }
+    }
+
+    // [POST] /add
+    async add(req, res, next) {
+        try {
+            
         } catch(err) {
             res.redirect('/');
         }
@@ -59,24 +41,20 @@ class ordersController {
 }
 
 module.exports = new ordersController;
-/*
-function orders(req, res, user) {
+
+async function index(req, res, user) {
     try {
-    let sql_orders=`SELECT * FROM orders o  WHERE o._id_buyer = '`+user._id+"'";
-    connection.query(sql_orders, function (error, orders) {
-            if (error) {
-                return console.error(error.message);
-            }
-            res.render('pages/home',{ user, orders});
-            });
+        let order = await orders.findAll(
+            { where: { _id_buyer: user.id} }
+        );
     }
     catch(err) {
         res.redirect('/');
     }
 }
-*/
 
-function show_detail(req, res, user) {
+
+async function show_detail(req, res, user) {
     try {
         let sql_orders=`SELECT * FROM orders o  WHERE o._id = '`+req.params.slug+"'";
         connection.query(sql_orders, function (error, orders) {

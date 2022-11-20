@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.STRING(100),
         },
-        users_Updater: {
+        user_Updater: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },
