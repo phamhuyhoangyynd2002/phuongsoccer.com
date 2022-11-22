@@ -11832,6 +11832,16 @@ fieldset:disabled .btn {
     margin: unset;
 }
 
+.dropdown-menu.dropdown-user.show {
+    top: 50px;
+    left: -50px;
+}
+
+.dropdown-menu.dropdown-cart.show {
+    top: 50px;
+    left: -100px;
+}
+
 
 /* accessories */
 .item-accessory {

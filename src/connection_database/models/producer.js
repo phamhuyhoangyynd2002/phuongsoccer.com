@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: {
         allowNull: false,
-        type: DataTypes.STRING(50000),
+        type: DataTypes.STRING(10000),
     },
 }, {
     tableName: 'producer',
