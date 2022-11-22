@@ -10,16 +10,16 @@ class homeController {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             //console.log(token);
-            let user = {id: token.id, name: token.name, role: token.role, picture: token.picture};
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
             //console.log(user);
             home(req, res, user);  
             }  
             else {
-                let user = {id: 0, name: null, role: 1, picture: ""};
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
                 home(req, res, user);    
             }   
         } catch(err) {
-                let user = {id: 0, name: null, role: 1, picture: ""};
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
                 home(req, res, user);
         }
     }

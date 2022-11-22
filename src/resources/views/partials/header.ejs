@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <%- console.log(user) %>
-    <% if (user.id == 0 && user.role == 1) { %>
+    <% if (user.id == 0 && user.id_role == 1) { %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -86,7 +86,7 @@
         </div>
       </div>
     <% } %>
-    <% if (user.id !== 0 && user.role == 1) { %>
+    <% if (user.id !== 0 && user.id_role == 1) { %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -168,7 +168,7 @@
           </div>
         </div>
     <% } %>
-    <% if (user.id !== 0 && user.role !== 1) { %> 
+    <% if (user.id !== 0 && user.id_role !== 1) { %> 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">

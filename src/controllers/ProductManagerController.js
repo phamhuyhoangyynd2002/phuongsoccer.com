@@ -9,7 +9,6 @@ class productManagerController {
 
     // [POST]
     PostSubmitproduct(req, res, next) {
-        const { name, description, _id_Producer, product_Image, code } = req.body;
         console.log(name);
         console.log(description);
         console.log(_id_Producer);

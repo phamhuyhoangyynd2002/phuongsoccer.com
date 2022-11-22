@@ -1,6 +1,5 @@
 const { users, products, img} = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
-const role = require('../connection_database/models/role');
 
 
 class productController {
@@ -9,15 +8,15 @@ class productController {
         try {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
-            let user = {id: token.id, name: token.name, role: token.role, picture: token.picture};
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
             show_detail(req, res, user);  
             }  
             else {
-                let user = {id: 0, name: null, role: 1, picture: ""};
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
                 show_detail(req, res, user);    
             }   
         } catch(err) {
-                let user = {id: 0, name: null, role: 1, picture: ""};
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
                 show_detail(req, res, user);
         }
     }
@@ -26,8 +25,8 @@ class productController {
         try {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
-            let user = {id: token.id, name: token.name, role: token.role, picture: token.picture};
-            if(user.role == 2 || user.role == 4) add(req, res, user);  
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            if(user.id_role == 2 || user.id_role == 4) add(req, res, user);  
                 else res.redirect('/'); 
             }  
             else {
@@ -43,8 +42,8 @@ class productController {
         try {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
-            let user = {id: token.id, name: token.name, role: token.role, picture: token.picture};
-            if(user.role == 2 || user.role == 4) postAdd(req, res, user);  
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            if(user.id_role == 2 || user.id_role == 4) postAdd(req, res, user);  
                 else res.redirect('/'); 
             }  
             else {

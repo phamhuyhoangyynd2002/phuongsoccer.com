@@ -8,7 +8,7 @@ require('dotenv').config({ path: 'hi.env' });
 process.env.PORT = 3000;
 process.env.KEY_TOKEN = 123456;
 
-const port = process.env.PORT = 3000 || 3000;
+const port = process.env.PORT || 3000;
 
 //session middleware
 app.use(session({

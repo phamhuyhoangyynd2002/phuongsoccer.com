@@ -12,7 +12,7 @@ const orders_detailsModel = require("./models/orders_details");
 const producerModel = require("./models/producer");
 const products_detailsModel = require("./models/products_details");
 
-const sequelize = new Sequelize('phuongsoccer.com', 'duchoangt', 'tdh1792', {
+const sequelize = new Sequelize('phuongsoccer.com', 'root', '', {
   host: '127.0.0.1',
   dialect: 'mysql',
   logging: false

@@ -9,13 +9,16 @@ class accountController {
 
     // [GET]
     login(req, res, next) {
-        const user = {id: 0, name: null, role: 1, picture: ""};
-        res.render('pages/login',{user});
+        let user = {id: 0, name: null, id_role: 1, picture: ""};
+        res.render('pages/login',{ 
+        title: 'Login', 
+        user, 
+        });
     }
 
     // [GET]
     register(req, res, next) {
-        const user = {id: 0, name: null, role: 1, picture: ""};
+        const user = {id: 0, name: null, id_role: 1, picture: ""};
         res.render('pages/register',{user});
     }
 
@@ -23,13 +26,12 @@ class accountController {
     async PostLogin(req, res, next) {
         console.log(process.env.PORT);
         const { email, password } = req.body;
-
         const user = await users.findOne({ where: { email } });
         if(user !=  null){
             var token = await jwt.sign({
                 id: user.id,
                 name: user.name,
-                role: user.role,
+                id_role: user.id_role,
                 picture: user.picture
             },process.env.KEY_TOKEN);
             res.session.token=token;
