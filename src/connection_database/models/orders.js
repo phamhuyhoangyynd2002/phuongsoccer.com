@@ -19,14 +19,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(11),
         },
         note: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING,
         },
         cash_payment: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },
-        _id_status: {
+        id_status: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },

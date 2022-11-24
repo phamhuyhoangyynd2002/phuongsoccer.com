@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
         },
         phone_Number: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.INTEGER(11),
         },
         id_role: {
@@ -24,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 1,
         },
         picture: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING,
         },
         sub: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING,
         },
     }, {

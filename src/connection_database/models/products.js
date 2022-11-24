@@ -9,31 +9,34 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(1000),
           },
         description: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING(1000),
           },
-        _id_Producer: {
-            allowNull: false,
+        id_Producer: {
+            allowNull: true,
             type: DataTypes.INTEGER(11),
           },
         product_Image: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING(1000),
           },
         sold: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
+            defaultValue: 0
           },
         discount_max: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
+            defaultValue: 0,
           },
         discount_min: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
+            defaultValue: 1000000000,
           },
         code: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING,
            },
         user_Update: {

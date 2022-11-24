@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(1000),
         },
         author: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING(100),
         },
         description: {

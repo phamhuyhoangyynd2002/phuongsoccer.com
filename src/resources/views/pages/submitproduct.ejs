@@ -11,16 +11,16 @@
   </div>
 
   <div class="mb-3">
-    <select class="form-select" aria-label="Default select example" name = "_id_Producer">
+    <select class="form-select" aria-label="Default select example" name = "id_Producer">
       <option selected>Hãng</option>
-      <option value="1">nike</option>
-      <option value="2">adidas</option>
-      <option value="3">converse</option>
-      <option value="4">vans</option>
-      <option value="5">puma</option>
-      <option value="6">fila</option>
-      <option value="7">mlb</option>
-      <option value="8">new-balance</option>
+      <option value = 1>nike</option>
+      <option value = 2 >adidas</option>
+      <option value = 3>converse</option>
+      <option value = 4>vans</option>
+      <option value = 5>puma</option>
+      <option value = 6>fila</option>
+      <option value = 7>mlb</option>
+      <option value = 8>new-balance</option>
     </select>
   </div>
 
@@ -31,7 +31,12 @@
 
   <div class="mb-3">
     <label class="form-label">code</label>
-    <input type="description" class="form-control" name = "code">
+    <input type="text" class="form-control" name = "code">
+  </div>
+
+  <div class="mb-3">
+    <label for="formFileMultiple" class="form-label">Ảnh sản phẩm</label>
+    <input class="form-control" type="file" id="formFileMultiple" multiple name = "image">
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

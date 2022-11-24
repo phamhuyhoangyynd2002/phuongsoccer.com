@@ -16,6 +16,10 @@ class accountController {
         });
     }
 
+    logout(req, res, next) {
+        res.session.token = null;
+        res.redirect('/');
+    }
     // [GET]
     register(req, res, next) {
         const user = {id: 0, name: null, id_role: 1, picture: ""};
@@ -24,7 +28,6 @@ class accountController {
 
     // [POST]
     async PostLogin(req, res, next) {
-        console.log(process.env.PORT);
         const { email, password } = req.body;
         const user = await users.findOne({ where: { email } });
         if(user !=  null){
@@ -34,7 +37,7 @@ class accountController {
                 id_role: user.id_role,
                 picture: user.picture
             },process.env.KEY_TOKEN);
-            res.session.token=token;
+            res.session.token = token;
             res.redirect('/');
         }
         else{

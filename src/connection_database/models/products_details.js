@@ -21,10 +21,12 @@ module.exports = (sequelize, DataTypes) => {
         discout_percent: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
+            defaultValue: 0,
         },
         discount_minus: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
+            defaultValue: 0,
         },
         users_Updater: {
             allowNull: false,

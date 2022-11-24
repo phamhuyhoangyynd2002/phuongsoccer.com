@@ -17,10 +17,12 @@ module.exports = (sequelize, DataTypes) => {
         discount_Percent: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
+            defaultValue: 0,
         },
         discount_Minus: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
+            defaultValue: 0,
         },
         minimun_order_value: {
             allowNull: false,
