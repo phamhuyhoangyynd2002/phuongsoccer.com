@@ -8,7 +8,11 @@ class submitProductController {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if(user.id_role == 2 || user.id_role == 4) res.render('pages/submitproduct');
+            if(user.id_role == 2 || user.id_role == 4)
+                            res.render('pages/submitproduct', { 
+                                title: 'Đăng bán mới', 
+                                user, 
+                            });
             else res.redirect('/');
             }  
             else {
