@@ -2,7 +2,7 @@ const { Sequelize } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('orders', {
-        _id_buyer: {
+        id_buyer: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },

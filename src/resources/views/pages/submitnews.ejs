@@ -1,0 +1,24 @@
+<form method="POST" enctype="multipart/form-data" action="/news/submitnews">
+
+    <div class="mb-3">
+      <label class="form-label">Tiêu đề tin tức</label>
+      <input type="text" class="form-control" name = "title">
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label">Tác giả</label>
+      <input type="text" class="form-control" name = "author">
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Mô tả</label>
+        <input type="text" class="form-control" name = "description">
+    </div>
+
+    <div class="mb-3" >
+      <label class="form-label">Hình ảnh đại diện</label>
+      <input class="form-control" type="file" name = "image">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

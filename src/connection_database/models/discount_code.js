@@ -28,9 +28,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },
-        minimize: {
+        code: {
             allowNull: false,
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.STRING(1000),
         },
     }, {
         tableName: 'discount_code',

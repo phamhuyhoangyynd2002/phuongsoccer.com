@@ -9,6 +9,7 @@ const warehouseStaffRouter = require('./warehouseStaff');
 const customerCareStaffRouter = require('./customerCareStaff');
 */
 const cartRouter = require('./cart');
+const newsRouter = require('./news');
 const ordersRouter = require('./orders');
 
 
@@ -24,6 +25,7 @@ function route(app){
     app.use('/customercarestaff',customerCareStaffRouter);
     */
     app.use('/cart',cartRouter);
+    app.use('/news',newsRouter);
     app.use('/orders',ordersRouter);
     app.use('/',homeRouter);
 }

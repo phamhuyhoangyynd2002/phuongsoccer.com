@@ -32,6 +32,65 @@ const discount_code= discount_codeModel(sequelize, DataTypes);
 const orders_details= orders_detailsModel(sequelize, DataTypes);
 const producer= producerModel(sequelize, DataTypes);
 const products_details= products_detailsModel(sequelize, DataTypes);
+
+role.hasMany(users, {
+  foreignKey: "id_role",
+});
+
+users.hasMany(news, {
+  foreignKey: "user_Updater",
+});
+
+users.hasMany(products_details, {
+  foreignKey: "user_Updater",
+});
+
+users.hasMany(discount_code, {
+  foreignKey: "user_Updater",
+});
+
+users.hasMany(orders, {
+  foreignKey: "id_buyer",
+});
+
+users.hasMany(cart, {
+  foreignKey: "id_users",
+});
+
+cart.hasMany(products_details, {
+  foreignKey: "id_Products_details",
+});
+
+products.hasMany(products_details, {
+  foreignKey: "id_products",
+});
+
+products.hasMany(img, {
+  foreignKey: "id_Products",
+});
+
+orders.hasMany(orders_details, {
+  foreignKey: "id_order",
+});
+
+status.hasMany(orders, {
+  foreignKey: "id_status",
+});
+
+products_details.hasMany(orders_details, {
+  foreignKey: "id_products_details",
+});
+
+products_details.hasMany(cart, {
+  foreignKey: "id_Products_details",
+});
+
+/*
+producer.hasMany(products, {
+  foreignKey: "id_producer",
+});
+*/
+
 module.exports = {
   users,
   img,

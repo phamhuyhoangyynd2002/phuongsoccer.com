@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(11),
             defaultValue: 0,
         },
-        users_Updater: {
+        user_Updater: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },

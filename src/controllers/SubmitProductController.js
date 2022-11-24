@@ -47,7 +47,7 @@ async function PostSubmitproduct(req, res, user) {
     try {
         let _name = req.body.name;
         let _description = req.body.description;
-        let _id_Producer  = req.body.id_Producer;
+        let _id_producer  = req.body.id_Producer;
         let file_product_Image = req.files.product_Image;
         let file_Image = req.files.image;
         let _code = req.body.code;
@@ -55,7 +55,7 @@ async function PostSubmitproduct(req, res, user) {
         //console.log(file_Image);
         //console.log("hi");
         let _product_Image = Math.random().toString(36).substring(7) + file_product_Image.name;
-        let p ={ name: _name, description: _description, id_Producer: _id_Producer, user_Update : user.id, code: _code, product_Image : _product_Image};
+        let p ={ name: _name, description: _description, id_producer: _id_producer, user_Update : user.id, code: _code, product_Image : _product_Image};
         //console.log(p);
         let product = await products.create(p);
         //console.log(product);
@@ -75,7 +75,8 @@ async function PostSubmitproduct(req, res, user) {
             }
         res.redirect('/');
     } catch(err) {
-        res.redirect('/account/login');
+        console.log(err);
+        res.redirect('/');
     }
 
 }

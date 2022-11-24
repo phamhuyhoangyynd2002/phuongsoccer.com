@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             type: DataTypes.STRING(1000),
           },
-        id_Producer: {
-            allowNull: true,
-            type: DataTypes.INTEGER(11),
+        id_producer: {
+          allowNull: false,
+          type: DataTypes.INTEGER(11),
           },
         product_Image: {
             allowNull: true,
