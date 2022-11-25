@@ -15,7 +15,8 @@ const products_detailsModel = require("./models/products_details");
 const sequelize = new Sequelize('phuongsoccer.com', 'root', '', {
   host: '127.0.0.1',
   dialect: 'mysql',
-  logging: false
+  logging: false,
+  timezone:"+07:00"
 });
 
 (async () => await sequelize.sync({ alter: true }))();
@@ -49,6 +50,10 @@ users.hasMany(discount_code, {
   foreignKey: "user_Updater",
 });
 
+users.hasMany(products, {
+  foreignKey: "user_Update",
+});
+
 users.hasMany(orders, {
   foreignKey: "id_buyer",
 });
@@ -57,9 +62,6 @@ users.hasMany(cart, {
   foreignKey: "id_users",
 });
 
-cart.hasMany(products_details, {
-  foreignKey: "id_Products_details",
-});
 
 products.hasMany(products_details, {
   foreignKey: "id_products",
@@ -85,11 +87,10 @@ products_details.hasMany(cart, {
   foreignKey: "id_Products_details",
 });
 
-/*
 producer.hasMany(products, {
   foreignKey: "id_producer",
 });
-*/
+
 
 module.exports = {
   users,
