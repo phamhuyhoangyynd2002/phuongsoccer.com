@@ -7484,6 +7484,10 @@ fieldset:disabled .btn {
     width: 25% !important
 }
 
+.w-40 {
+    width: 40% !important
+}
+
 .w-50 {
     width: 50% !important
 }
@@ -11857,7 +11861,6 @@ fieldset:disabled .btn {
     position: absolute;
     bottom: 30px;
     left: 50px;
-    color: var(--bs-white);
 }
 
 .info-accessory > h3:hover {
@@ -11897,4 +11900,8 @@ fieldset:disabled .btn {
     width: 280px;
     height: 280px;
     margin: auto;
+}
+
+/* submitproduct page*/
+.submitproduct {
 }
