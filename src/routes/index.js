@@ -12,6 +12,8 @@ const newsRouter = require('./news');
 const ordersRouter = require('./orders');
 const searchRouter = require('./search');
 const contactRouter = require('./contact');
+const producerRouter = require('./producer');
+const tagRouter = require('./tag');
 
 
 function route(app){
@@ -30,6 +32,8 @@ function route(app){
     app.use('/orders',ordersRouter);
     app.use('/search',searchRouter);
     app.use('/contact',contactRouter);
+    app.use('/producer',producerRouter);
+    app.use('/tag',tagRouter);
     app.use('/',homeRouter);
     
 }

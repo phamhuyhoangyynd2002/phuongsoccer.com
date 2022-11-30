@@ -2,15 +2,11 @@ const { users} = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
 
 class accountController {
-    // [GET]
-    account(req, res, next) {
-        res.render('pages/account');
-    }
 
     // [GET]
     login(req, res, next) {
         let user = {id: 0, name: null, id_role: 1, picture: ""};
-        res.render('pages/login',{ 
+        res.render('pages/account/login',{ 
         title: 'Login', 
         user, 
         });
@@ -23,7 +19,7 @@ class accountController {
     // [GET]
     register(req, res, next) {
         const user = {id: 0, name: null, id_role: 1, picture: ""};
-        res.render('pages/register',{user});
+        res.render('pages/account/register',{user});
     }
 
     // [POST]

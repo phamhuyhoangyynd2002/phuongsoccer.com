@@ -11,10 +11,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(10),
         },
         amount: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.INTEGER(11),
+            defaultValue: 0,
         },
-        out_price: {
+        price: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },

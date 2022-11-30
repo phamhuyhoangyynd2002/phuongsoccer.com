@@ -8,5 +8,4 @@ router.get('/logout', accountController.logout);
 router.get('/register', accountController.register);
 router.post('/login', accountController.PostLogin);
 router.post('/register', accountController.PostRegister);
-router.get('/', accountController.account);
 module.exports = router;
