@@ -1,43 +1,148 @@
-<form method="POST" enctype="multipart/form-data" action="/productmanager/submitproduct">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+    <main>
+      <div class="container">
+        <div class="title ms-3 mt-5 pb-sm-3 border-bottom">
+          <h3 class="mb-2">Đăng sản phẩm</h3>
+          <span class="text-secondary">Khi bạn thêm sản phẩm ở đây nó sẽ được tải lên website của bạn.</span>
+        </div>
+  
+        <div class="d-flex submitproduct">
+          <div class="flex-fill info-product m-5">
+              <div class="mb-4">
+                <label class="form-label">Tên sản phẩm</label>
+                <input type="text" class="form-control" name = "name">
+              </div>
+  
+              <div class="mb-4">
+                <label class="form-label">Mã sản phẩm</label>
+                <input type="text" class="form-control" name = "code">
+              </div>
+  
+              <div class="mb-4">
+                <label class="form-label">Loại sản phẩm</label>
+                <select type="number" class="form-select" aria-label="Default select example" name = "id_typeProduct">
+                  <option value = 1>giày sneaker</option>
+                  <option value = 2>giày sân tự nhiên</option>
+                  <option value = 3>giày sân nhân tạo</option>
+                  <option value = 4>giày futsal</option>
+                  <option value = 5>dép</option>
+                  <option value = 6>găng tay</option>
+                  <option value = 7>tất</option>
+                  <option value = 8>túi</option>
+                  <option value = 9>băng cuốn</option>
+                </select>
+              </div>
+  
+              <div class="mb-4">
+                <label class="form-label">Tên thương hiệu</label>
+                <select type="number" class="form-select" aria-label="Default select example" name = "id_Producer">
+                  <option value = 1>nike</option>
+                  <option value = 2>adidas</option>
+                  <option value = 3>converse</option>
+                  <option value = 4>vans</option>
+                  <option value = 5>puma</option>
+                  <option value = 6>fila</option>
+                  <option value = 7>mlb</option>
+                  <option value = 8>new-balance</option>
+                </select>
+              </div>
+  
+              <div class="mb-4">
+                <label class="form-label">Mô tả sản phẩm</label>
+                <input type="text" style="height: 100px;" class="form-control" name = "product_description">
+              </div>
+          </div>
+  
+          <div class="flex-fill product-details m-5">
+            <div class="mb-3" >
+              <label class="form-label">Ảnh đại diện sản phẩm</label>
+              <input class="form-control" type="file" name = "product_image" accept=".jpg, .jpeg, .png">
+            </div>
+          
+            <div class="mb-5">
+              <label for="formFileMultiple" class="form-label">Ảnh chi tiết phẩm (đủ 3 ảnh trên trước sau)</label>
+              <input class="form-control" type="file" id="formFileMultiple" name = "product_images" accept=".jpg, .jpeg, .png" multiple min="3">
+            </div>
+      
+            <div class="d-flex detail_add">
+              <div class="add me-5">
+                <div class="input-group mb-4">
+                  <span class="input-group-text">Size</span>
+                  <select type="number" id="size-input" class="form-select" aria-label="Default select example" name = "size">
+                    <option value = 39>39</option>
+                    <option value = 40>40</option>
+                    <option value = 41>41</option>
+                    <option value = 42>42</option>
+                    <option value = 43>43</option>
+                    <option value = 44>44</option>
+                    <option value = 45>45</option>
+                  </select>
+                </div>
 
-  <div class="mb-3">
-    <label class="form-label">Tên sản phẩm</label>
-    <input type="text" class="form-control" name = "name">
-  </div>
+                <div class="input-group mb-4">
+                  <span class="input-group-text">Giá</span>
+                  <input type="number" id="price-input" class="form-control" name = "price">
+                </div>
 
-  <div class="mb-3">
-    <label class="form-label">Mô tả</label>
-    <input type="text" class="form-control" name = "description">
-  </div>
+                <div class="input-group mb-4">
+                  <span class="input-group-text">Khuyến mãi(%)</span>
+                  <input type="number" id="discount-percent-input" class="form-control" name = "discount-p">
+                </div>
+                
+                <div class="input-group mb-5">
+                  <span class="input-group-text">Khuyến mãi trực tiếp</span>
+                  <input type="number" id="discount-minus-input" class="form-control" name = "discount-m">
+                </div>
 
-  <div class="mb-3">
-    <select type="number" class="form-select" aria-label="Default select example" name = "id_Producer">
-      <option selected>Hãng</option>
-      <option value = 1>nike</option>
-      <option value = 2>adidas</option>
-      <option value = 3>converse</option>
-      <option value = 4>vans</option>
-      <option value = 5>puma</option>
-      <option value = 6>fila</option>
-      <option value = 7>mlb</option>
-      <option value = 8>new-balance</option>
-    </select>
-  </div>
+                <div class="btn-edit me-5">
+                  <button type="button" class="btn btn-success me-5" id="add-product-btn">Thêm</button>
+                  <button type="button" class="btn btn-warning" id="remove-product-btn">Xóa</button>
+                </div>  
+              </div>
 
-  <div class="mb-3" >
-    <label class="form-label">Hình ảnh đại diện</label>
-    <input class="form-control" type="file" name = "product_Image">
-  </div>
+              <table class="table table-bordered w-75 mb-0" id="detail-product-table">
+                <thead>
+                  <tr class="text-center">
+                    <th class="w-25">Size</th>
+                    <th class="w-50">Giá</th>
+                    <th class="">Khuyến mãi(%)</th>
+                    <th class="">Khuyến mãi(vnd)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg mb-5 ms-5">Submit</button>
+      </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer') -%>
+    </footer>
 
-  <div class="mb-3">
-    <label class="form-label">code</label>
-    <input type="text" class="form-control" name = "code">
-  </div>
-
-  <div class="mb-3">
-    <label for="formFileMultiple" class="form-label">Ảnh sản phẩm</label>
-    <input class="form-control" type="file" id="formFileMultiple" multiple name = "image">
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <!-- javascript -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
