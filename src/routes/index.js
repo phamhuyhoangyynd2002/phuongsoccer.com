@@ -1,4 +1,3 @@
-
 const homeRouter = require('./home');
 const accountRouter = require('./account');
 const productRouter = require('./product');
@@ -11,6 +10,8 @@ const customerCareStaffRouter = require('./customerCareStaff');
 const cartRouter = require('./cart');
 const newsRouter = require('./news');
 const ordersRouter = require('./orders');
+const searchRouter = require('./search');
+const contactRouter = require('./contact');
 
 
 function route(app){
@@ -27,7 +28,10 @@ function route(app){
     app.use('/cart',cartRouter);
     app.use('/news',newsRouter);
     app.use('/orders',ordersRouter);
+    app.use('/search',searchRouter);
+    app.use('/contact',contactRouter);
     app.use('/',homeRouter);
+    
 }
 
 module.exports = route;

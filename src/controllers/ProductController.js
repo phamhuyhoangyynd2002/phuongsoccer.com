@@ -37,23 +37,6 @@ class productController {
             res.redirect('/');
         }
     }
-
-    async postAdd(req, res, next) {
-        try {
-            if(req.session.token != null){
-            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
-            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if(user.id_role == 2 || user.id_role == 4) postAdd(req, res, user);  
-                else res.redirect('/'); 
-            }  
-            else {
-                res.redirect('/'); 
-            }   
-        } catch(err) {
-            console.log(err);
-            res.redirect('/');
-        }
-    }
 }
 
 module.exports = new productController;
@@ -63,29 +46,19 @@ async function show_detail(req, res, user) {
     let code = req.params.slug;
     let product = await products.findOne({ where: { code: code } });
     //console.log(product);
-    let imgdb = await img.findAll({ where: {_id_Products: product.id}}); 
-    console.log(imgdb);
-    }
-    catch(err) {
-        res.redirect('/');
-    }
-}
-
-async function add(req, res, user) {
-    try {
-        res.render('pages/home', { 
-            title: 'Thêm Sản phẩm', 
-            user, 
-          });
-    }
-    catch(err) {
-        res.redirect('/');
-    }
-}
-
-async function postAdd(req, res, user) {
-    try {
-        res.redirect('/');
+    let imgdb = await img.findAll({ where: {id_Products: product.id}}); 
+    //console.log(imgdb);
+    let productsSold = await products.findAll({
+        order: [['sold', 'DESC']],
+        limit: 8,
+    });
+    res.render('pages/products_show_detail', { 
+        title: 'products', 
+        user,
+        product,
+        imgdb,
+        productsSold
+      });
     }
     catch(err) {
         res.redirect('/');

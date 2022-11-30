@@ -54,7 +54,7 @@ async function PostSubmitDiscount_Code(req, res, user) {
         let dc = { user_Updater: user.id, code: _code, start_time: _start_time, end_time: _end_time, discount_Percent: _discount_Percent, discount_Minus: _discount_Minus, minimun_order_value: _minimun_order_value};
         console.log(dc);
         let _discount_code = await discount_code.create(dc);
-        console.log(_discount_code);
+        //console.log(_discount_code);
         res.redirect('/');
     } catch(err) {
         console.log(err);

@@ -11,6 +11,9 @@ const discount_codeModel = require("./models/discount_code");
 const orders_detailsModel = require("./models/orders_details");
 const producerModel = require("./models/producer");
 const products_detailsModel = require("./models/products_details");
+const tagModel = require("./models/tag");
+const contactModel = require("./models/contact");
+
 
 const sequelize = new Sequelize('phuongsoccer.com', 'root', '', {
   host: '127.0.0.1',
@@ -33,7 +36,8 @@ const discount_code= discount_codeModel(sequelize, DataTypes);
 const orders_details= orders_detailsModel(sequelize, DataTypes);
 const producer= producerModel(sequelize, DataTypes);
 const products_details= products_detailsModel(sequelize, DataTypes);
-
+const tag = tagModel(sequelize, DataTypes);
+const contact = contactModel(sequelize, DataTypes);
 role.hasMany(users, {
   foreignKey: "id_role",
 });
@@ -104,5 +108,7 @@ module.exports = {
   discount_code,
   orders_details,
   producer,
-  products_details
+  products_details,
+  tag,
+  contact
 };

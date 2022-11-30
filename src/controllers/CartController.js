@@ -12,7 +12,7 @@ class cartController {
             index(req, res, user);  
             }  
             else {
-                let user = {id: 9, name: null, id_role: 1, picture: ""};
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
                 index(req, res, user); 
                 //res.redirect('/');
             }   

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/js/script_products.js">
+</head>
+
+<body>
+
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+    <main>
+        <section class="featured" id="featured">
+    
+            <div class="row">
+                <div class="image-container">
+                    <div class="small-image">
+                        
+                            <% imgdb.forEach(function(image, index) { %>
+                                <img src="/img/<%- image.image_path %>" class="featured-image-1">
+                            <% }) %>
+                        
+                    </div>
+                    <div class="big-image">
+                        <div class="big-image">
+                        <img src="/img/<%- imgdb[0].image_path %>" class="big-image-1" alt=""> 
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="content">
+                    <h3><%- product.name %></h3>
+                    <p> <%- product.description %></p>
+                    <div class="price"><p> <%- product.	discount_min %></p> <span><p> <%- product.discount_max %></p></span><P><p> <%- product.sold %></p></P></div>
+                    <a href="#" class="btn">Mua Hàng</a>
+                    <button type="submit" class="btn btn-primary">Giỏ hàng</button>
+                    <button type="submit" class="btn btn-primary">Mua Hàng</button>
+                </div>
+            </div>
+        </section>
+    
+        <section class="products" id="products">
+    
+            <h1 class="heading"> SẢN PHẨM <span> BÁN CHẠY</span> </h1>
+    
+            <div class="box-container">
+                <% imgdb.forEach(function(image, index) { %>
+                    <% if(productsSold != '') { %>
+                        <% productsSold.forEach(function(bestProduct, index) { %>
+                            <div class="block-item">
+                                <div class="img-product"><img src="/img/<%- bestProduct.product_Image %>" alt="<% bestProduct.name %>" loading="lazy"></div>
+                                <div class="info-item">
+                                    <p><%- bestProduct.name %></p>
+                                    <p><%- bestProduct.producer %></p>
+                                <p><% bestProduct.discount_min %></p> 
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                <% }) %>
+                
+            </div>
+        </section>
+    </main>
+       
+    <footer>
+        <%- include('../partials/footer') -%>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
