@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
           type: DataTypes.INTEGER(11),
           },
+        id_tag: {
+          allowNull: false,
+          type: DataTypes.INTEGER(11),
+          },
         product_Image: {
             allowNull: true,
             type: DataTypes.STRING(1000),

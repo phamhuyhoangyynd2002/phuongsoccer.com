@@ -45,15 +45,15 @@ module.exports = new submitProductController;
 
 async function PostSubmitproduct(req, res, user) {
     try {
+        console.log(req.body);
+        /*
         let _name = req.body.name;
         let _description = req.body.description;
         let _id_producer  = req.body.id_Producer;
+        let _code = req.body.code;
         let file_product_Image = req.files.product_Image;
         let file_Image = req.files.image;
-        let _code = req.body.code;
-        //console.log(file_product_Image);
-        //console.log(file_Image);
-        //console.log("hi");
+        
         let _product_Image = Math.random().toString(36).substring(7) + file_product_Image.name;
         let p ={ name: _name, description: _description, id_producer: _id_producer, user_Update : user.id, code: _code, product_Image : _product_Image};
         //console.log(p);
@@ -73,6 +73,7 @@ async function PostSubmitproduct(req, res, user) {
                 });
                 }
             }
+        */
         res.redirect('/');
     } catch(err) {
         console.log(err);

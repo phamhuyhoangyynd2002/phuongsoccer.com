@@ -95,6 +95,9 @@ producer.hasMany(products, {
   foreignKey: "id_producer",
 });
 
+tag.hasMany(products, {
+  foreignKey: "id_tag",
+});
 
 module.exports = {
   users,

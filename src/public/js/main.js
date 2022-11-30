@@ -1,4 +1,6 @@
 // add detail products
+var numRow = 0;
+
 document.getElementById('add-product-btn').onclick = function add_row() {
     var size = document.querySelector('#size-input').value;
     var price = document.querySelector('#price-input').value;
@@ -7,10 +9,16 @@ document.getElementById('add-product-btn').onclick = function add_row() {
 
     var table = document.getElementById('detail-product-table');
     var row = table.insertRow(1);
-    row.insertCell(0).innerHTML = size;
-    row.insertCell(1).innerHTML = price;
-    row.insertCell(2).innerHTML = discount_Percent;
-    row.insertCell(3).innerHTML = discount_Minus;
+    numRow++;
+    let namesize= "size"+ numRow;
+    let nameprice= "price"+ numRow;
+    let namediscount_Percent= "discount_Percent"+ numRow;
+    let namediscount_Minus= "discount_Minus"+ numRow;
+    
+    row.insertCell(0).innerHTML = '<input type="number" class="w-25" name = "'+namesize+'"value = '+size+'>';
+    row.insertCell(1).innerHTML = '<input type="number" class="w-50" name = "'+nameprice+'"value = '+price+'>';
+    row.insertCell(2).innerHTML = '<input type="number" class="w-25" name = "'+namediscount_Percent+'"value = '+discount_Percent+'>';
+    row.insertCell(3).innerHTML = '<input type="number" class="w-25" name = "'+namediscount_Minus+'"value = '+discount_Minus+'>';
 }
 
 // remove detail products
