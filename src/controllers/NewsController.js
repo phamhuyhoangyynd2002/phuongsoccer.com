@@ -42,22 +42,7 @@ module.exports = new newsController;
 
 async function show_detail(req, res, user) {
     try {
-    let code = req.params.slug;
-    let product = await products.findOne({ where: { code: code } });
-    //console.log(product);
-    let imgdb = await img.findAll({ where: {id_Products: product.id}}); 
-    //console.log(imgdb);
-    let productsSold = await products.findAll({
-        order: [['sold', 'DESC']],
-        limit: 8,
-    });
-    res.render('pages/products_show_detail', { 
-        title: 'products', 
-        user,
-        product,
-        imgdb,
-        productsSold
-      });
+    
     }
     catch(err) {
         res.redirect('/');
@@ -66,21 +51,11 @@ async function show_detail(req, res, user) {
 
 async function index(req, res, user) {
     try {
-    let code = req.params.slug;
-    let product = await products.findOne({ where: { code: code } });
-    //console.log(product);
-    let imgdb = await img.findAll({ where: {id_Products: product.id}}); 
-    //console.log(imgdb);
-    let productsSold = await products.findAll({
-        order: [['sold', 'DESC']],
-        limit: 8,
-    });
+    let news = await news.findAll(); 
     res.render('pages/products_show_detail', { 
         title: 'products', 
         user,
-        product,
-        imgdb,
-        productsSold
+        news
       });
     }
     catch(err) {

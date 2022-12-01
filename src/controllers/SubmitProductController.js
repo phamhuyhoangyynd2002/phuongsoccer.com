@@ -1,4 +1,4 @@
-const { users, products, products_details} = require('../connection_database/index');
+const { users, products, products_details,img} = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 class submitProductController {
@@ -9,7 +9,7 @@ class submitProductController {
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
             if(user.id_role == 2 || user.id_role == 4)
-                            res.render('pages/submitproduct', { 
+                            res.render('productManager/submitproduct', { 
                                 title: 'Đăng bán mới', 
                                 user, 
                             });
@@ -55,7 +55,7 @@ async function PostSubmitproduct(req, res, user) {
         let _numRow = req.body.numRow;
         let file_product_Image = req.files.product_Image;
         let file_Image = req.files.image;
-        let _product_Image = Math.random().toString(36).substring(7) + file_product_Image.name;
+        let _product_Image = Math.random().toString(36).substring(7) + _code +file_product_Image.name;
         let new_product ={ name: _name, description: _description, id_producer: _id_producer, user_Update : user.id, code: _code, product_Image : _product_Image, id_tag: _id_tag};
         let product = await products.create(new_product);
         if(file_product_Image.mimetype == "image/jpeg" ||file_product_Image.mimetype == "image/png"||file_product_Image.mimetype == "image/gif" || Image.mimetype == "image/jpg"){
@@ -65,7 +65,9 @@ async function PostSubmitproduct(req, res, user) {
         }
         for (let i in file_Image) {
                 let Image = file_Image[i];
-                let _Image = Math.random().toString(36).substring(7) + Image.name;
+                let _Image = Math.random().toString(36).substring(7) + _code + Image.name ;
+                let _new_img ={id_Products: product.id, image_path: _Image};
+                let new_img = await img.create(_new_img);
                 if(Image.mimetype == "image/jpeg" ||Image.mimetype == "image/png"||Image.mimetype == "image/gif" || Image.mimetype == "image/jpg" ){
                     Image.mv('src/public/img/'+ _Image, function(err) {
                         if (err) console.log(err);

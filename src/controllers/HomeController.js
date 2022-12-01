@@ -42,7 +42,7 @@ async function home(req, res, user) {
             order: [['createdAt', 'DESC']],
             limit: 3,
         });
-        res.render('pages/home', { 
+        res.render('Home/home', { 
             title: 'Home', 
             productsNew, 
             productsSold, 

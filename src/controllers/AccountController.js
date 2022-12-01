@@ -6,7 +6,7 @@ class accountController {
     // [GET]
     login(req, res, next) {
         let user = {id: 0, name: null, id_role: 1, picture: ""};
-        res.render('pages/account/login',{ 
+        res.render('account/login',{ 
         title: 'Login', 
         user, 
         });
@@ -19,7 +19,7 @@ class accountController {
     // [GET]
     register(req, res, next) {
         const user = {id: 0, name: null, id_role: 1, picture: ""};
-        res.render('pages/account/register',{user});
+        res.render('account/register',{user});
     }
 
     // [POST]
@@ -43,7 +43,7 @@ class accountController {
 
     // [POST]
     PostRegister(req, res, next) {
-        res.render('pages/login');
+        //res.render('account/login');
     }
 }
 

@@ -9,7 +9,7 @@ class submitDiscount_CodeController {
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
             if(user.id_role == 2 || user.id_role == 4)
-                            res.render('pages/submitdiscountcode', { 
+                            res.render('productManager/submitdiscountcode', { 
                                 title: 'Thêm mã giảm giá', 
                                 user, 
                             });
