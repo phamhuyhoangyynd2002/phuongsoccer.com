@@ -11900,4 +11900,26 @@ fieldset:disabled .btn {
     width: 280px;
     height: 280px;
     margin: auto;
+    background-color: #dfdfdf85;
+    position: relative;
+}
+
+.img-product:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.cart-plus {
+    position: absolute;
+    top: 0px;
+    right: 42px;
+}
+
+.product-name:hover {
+    color: var(--bs-orange) !important;
+}
+
+.min-price {
+    color: var(--bs-orange) !important;
+    font-size: 18px;
 }

@@ -1,34 +1,71 @@
-<form method="POST" enctype="multipart/form-data" action="/productmanager/submitdiscountcode">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title%></title>
+    <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+    <main>
+      <form method="POST" enctype="multipart/form-data" action="/productmanager/submitdiscountcode">
+        <div class="container">
+          <div class="title ms-3 mt-5 pb-sm-3 mb-5 border-bottom">
+            <h3 class="mb-2">Tạo mã khuyến mãi</h3>
+            <span class="text-secondary">Bạn có thể tạo mã giảm giá cho cửa hàng tại đây.</span>
+          </div>
 
-  <div class="mb-3">
-    <label class="form-label">Code</label>
-    <input type="text" class="form-control" name = "code">
-  </div>
+          <div class="submitdiscountcode w-50 ms-5">
+            
+            <div class="input-group mb-4">
+              <span class="input-group-text">Mã code</span>
+              <input type="text" class="form-control" name = "code">
+            </div>
+          
+            <div class="input-group mb-4">
+              <span class="input-group-text">Thời gian bắt đầu</span>
+              <input type="datetime-local" class="form-control" name = "start_time">
+            </div>
+          
+            <div class="input-group mb-4">
+              <span class="input-group-text">Thời gian kết thúc</span>
+              <input type="datetime-local" class="form-control" name = "end_time">
+            </div>
+          
+            <div class="input-group mb-4">
+              <span class="input-group-text">Giảm giá theo phần trăm</span>
+              <input type="number" class="form-control" value = 0 name = "discount_Percent" min="0" max="100">
+            </div>
+          
+            <div class="input-group mb-4">
+              <span class="input-group-text">Giảm giá trừ</span>
+              <input type="number" class="form-control" value = 0 name = "discount_Minus" min="0" max="10000000">
+            </div>
+          
+            <div class="input-group mb-4">
+              <span class="input-group-text">Giá trị đơn tối thiểu</span>
+              <input type="number" class="form-control" value = 0 name = "minimun_order_value" min="0" max="10000000">
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-lg mt-5 mb-4">Submit</button>
+          </div>
+        </div>
+      </form>
+    </main>
+    <footer>
+        <%- include('../partials/footer') -%>
+    </footer>
 
-  <div class="mb-3">
-    <label class="form-label">Thời gian bắt đầu</label>
-    <input type="datetime-local" class="form-control" name = "start_time">
-  </div>
+    <!-- javascript -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
 
-  <div class="mb-3">
-    <label class="form-label">Thời gian kết thúc</label>
-    <input type="datetime-local" class="form-control" name = "end_time">
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Giảm giá theo phần trăm</label>
-    <input type="number" class="form-control" value = 0 name = "discount_Percent" min="0" max="100">
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Giảm giá trừ</label>
-    <input type="number" class="form-control" value = 0 name = "discount_Minus" min="0" max="10000000">
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Giá trị đơn tối thiểu</label>
-    <input type="number" class="form-control" value = 0 name = "minimun_order_value" min="0" max="10000000">
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
