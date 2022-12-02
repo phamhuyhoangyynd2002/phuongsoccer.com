@@ -1,24 +1,67 @@
-<form method="POST" enctype="multipart/form-data" action="/news/submitnews">
-
-    <div class="mb-3">
-      <label class="form-label">Tiêu đề tin tức</label>
-      <input type="text" class="form-control" name = "title">
-    </div>
-  
-    <div class="mb-3">
-      <label class="form-label">Tác giả</label>
-      <input type="text" class="form-control" name = "author">
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+    <main>
+      <form method="POST" action="/productmanager/submitnews" enctype="multipart/form-data"></form>
+        <div class="container">
+          <div class="title ms-3 mt-5 pb-sm-3 border-bottom">
+            <h3 class="mb-2">Đăng sản phẩm</h3>
+            <span class="text-secondary">Khi bạn thêm tin tức ở đây nó sẽ được tải lên website của bạn.</span>
+          </div>
     
-    <div class="mb-3">
-        <label class="form-label">Mô tả</label>
-        <input type="text" class="form-control" name = "description">
-    </div>
-    <p></p>
-    <div class="mb-3" >
-      <label class="form-label">Hình ảnh đại diện</label>
-      <input class="form-control" type="file" name = "image">
-    </div>
+          <div class="d-flex submitproduct">
+            <div class="flex-fill info-product m-5">
+                <div class="mb-4">
+                  <label class="form-label">Tiêu đề tin tức</label>
+                  <input type="text" class="form-control" name = "name">
+                </div>
+    
+                <div class="mb-4">
+                  <label class="form-label">Tác giả</label>
+                  <input type="text" class="form-control" name = "code">
+                </div>
+    
+                <div class="mb-4">
+                  <label class="form-label">Mô tả</label>
+                  <input type="text" style="height: 100px;" class="form-control" name = "product_description">
+                </div>
+            </div>
+    
+            <div class="flex-fill product-details m-5">
+              <div class="mb-3" >
+                <label class="form-label">Hình đại diện</label>
+                <input class="form-control" type="file" name = "product_image" accept=".jpg, .jpeg, .png">
+              </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg mb-5 ms-5">Submit</button>
+        </div>
+      </main>
+      <footer>
+          <%- include('../partials/footer') -%>
+      </footer>
+
+    <!-- javascript -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

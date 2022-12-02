@@ -26,21 +26,12 @@ module.exports = new tagController;
 
 async function show_tag(req, res, user) {
     try {
-    let code = req.params.slug;
-    let product = await products.findOne({ where: { code: code } });
-    //console.log(product);
-    let imgdb = await img.findAll({ where: {id_Products: product.id}}); 
-    //console.log(imgdb);
-    let productsSold = await products.findAll({
-        order: [['sold', 'DESC']],
-        limit: 8,
-    });
-    res.render('pages/products_show_detail', { 
+    let id_tag = req.params.slug;
+    let product = await products.findAll({ where: { id_tag: id_tag } });
+    res.render('products/index', { 
         title: 'products', 
         user,
-        product,
-        imgdb,
-        productsSold
+        product
       });
     }
     catch(err) {

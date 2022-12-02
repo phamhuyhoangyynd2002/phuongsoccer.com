@@ -26,21 +26,12 @@ module.exports = new producerController;
 
 async function show_producer(req, res, user) {
     try {
-    let code = req.params.slug;
-    let product = await products.findOne({ where: { code: code } });
-    //console.log(product);
-    let imgdb = await img.findAll({ where: {id_Products: product.id}}); 
-    //console.log(imgdb);
-    let productsSold = await products.findAll({
-        order: [['sold', 'DESC']],
-        limit: 8,
-    });
-    res.render('pages/products_show_detail', { 
+    let id_producer = req.params.slug;
+    let product = await products.findALL({ where: { id_producer: id_producer } });
+    res.render('products/index', { 
         title: 'products', 
         user,
-        product,
-        imgdb,
-        productsSold
+        product
       });
     }
     catch(err) {
