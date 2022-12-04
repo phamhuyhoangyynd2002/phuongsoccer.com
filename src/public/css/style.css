@@ -11900,6 +11900,7 @@ fieldset:disabled .btn {
     width: 280px;
     height: 280px;
     margin: auto;
+<<<<<<< Updated upstream
     background-color: #dfdfdf85;
     position: relative;
 }
@@ -11922,4 +11923,12 @@ fieldset:disabled .btn {
 .min-price {
     color: var(--bs-orange) !important;
     font-size: 18px;
+=======
+}
+
+/* cart */
+.img-cart {
+    width: 100px;
+    height: 100px;
+>>>>>>> Stashed changes
 }

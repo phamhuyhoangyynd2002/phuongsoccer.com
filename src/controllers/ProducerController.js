@@ -26,7 +26,7 @@ module.exports = new producerController;
 
 async function show_producer(req, res, user) {
     try {
-    let id_producer = req.params.slug;
+    let id_producer = req.params.slug; 
     let product = await products.findAll({ where: { id_producer: id_producer } });
     res.render('products/index', { 
         title: 'products', 
