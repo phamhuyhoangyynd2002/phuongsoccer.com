@@ -96,11 +96,11 @@
                     <% productsNew.forEach(function(newProduct, index) { %>
                         <div class="block-item">
                             <div class="img-product">
-                                <a href="product-details"><img src="/img/<%- newProduct.product_Image %>" alt="<% newProduct.name %>" loading="lazy"></a>
+                                <a href="/product/<%- newProduct.code%>"><img src="/img/<%- newProduct.product_Image %>" alt="<% newProduct.name %>" loading="lazy"></a>
                             </div>
                             <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
                             <div class="info-item mt-3">
-                                <a href="product-details" class="text-dark product-name"><%- newProduct.name %></a>
+                                <a href="/product/<%- newProduct.code%>" class="text-dark product-name"><%- newProduct.name %></a>
                                 <p><%- newProduct.producer %></p>
                                 <div class="min-price"><%- newProduct.discount_min %>vnđ</div> 
                                 <div class="text-decoration-line-through"><%- newProduct.discount_max %>vnđ</div> 
@@ -126,11 +126,11 @@
                         <% productsSold.forEach(function(bestProduct, index) { %>
                             <div class="block-item">
                                 <div class="img-product">
-                                    <a href="product-details"><img src="/img/<%- bestProduct.product_Image %>" alt="<% bestProduct.name %>" loading="lazy"></a>
+                                    <a href="/product/<%- productsSold.code%>"><img src="/img/<%- bestProduct.product_Image %>" alt="<% bestProduct.name %>" loading="lazy"></a>
                                 </div>
                                 <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
                                 <div class="info-item mt-3">
-                                    <a href="product-details" class="text-dark product-name"><%- bestProduct.name %></a>
+                                    <a href="/product/<%- productsSold.code%>" class="text-dark product-name"><%- bestProduct.name %></a>
                                     <p><%- bestProduct.producer %></p>
                                     <div class="min-price"><%- bestProduct.discount_min %>vnđ</div> 
                                     <div class="text-decoration-line-through"><%- bestProduct.discount_max %>vnđ</div> 

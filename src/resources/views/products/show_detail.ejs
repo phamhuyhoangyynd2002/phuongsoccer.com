@@ -13,32 +13,30 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/js/script_products.js">
 </head>
-
 <body>
 
     <header>
         <%- include('../partials/header') -%>
     </header>
     <main>
-        <section class="featured" id="featured">
-    
+        <div class="container featured">
             <div class="row">
-                <div class="image-container">
-                    <div class="small-image">
-                        
-                            <% imgdb.forEach(function(image, index) { %>
-                                <img src="/img/<%- image.image_path %>" class="featured-image-1">
-                            <% }) %>
-                        
-                    </div>
-                    <div class="big-image">
-                        <div class="big-image">
-                        <img src="/img/<%- imgdb[0].image_path %>" class="big-image-1" alt=""> 
+                    <div class="col-6 image-container ">
+                        <div class="small-image">
+                            
+                                <% imgdb.forEach(function(image, index) { %>
+                                    <img src="/img/<%- image.image_path %>" class="featured-image-1">
+                                <% }) %>
+                            
                         </div>
+                        <div class=" big-image">
+                            <div class="big-image">
+                            <img src="/img/<%- imgdb[0].image_path %>" class="big-image-1" alt=""> 
+                            </div>
+                        </div>
+                        
                     </div>
-                    
-                </div>
-                <div class="content">
+                <div class="col-6 content ">
                     <h3><%- product.name %></h3>
                     <p> <%- product.description %></p>
                     <div class="price"><p> <%- product.	discount_min %></p> <span><p> <%- product.discount_max %></p></span><P><p> <%- product.sold %></p></P></div>
@@ -47,30 +45,35 @@
                     <button type="submit" class="btn btn-primary">Mua Hàng</button>
                 </div>
             </div>
-        </section>
-    
-        <section class="products" id="products">
-    
-            <h1 class="heading"> SẢN PHẨM <span> BÁN CHẠY</span> </h1>
-    
-            <div class="box-container">
-                <% imgdb.forEach(function(image, index) { %>
-                    <% if(productsSold != '') { %>
+        </div>
+        <div class="container-fluid section-body">
+            <div class="section-title mb-5">
+                <a href=""><h2>Sản phẩm bán chạy</h2></a>
+                <p>Các sản phẩm bán chạy tại cửa hàng</p>
+                <a href="#"><img src="/img/img-best-sellers.png" alt="" loading="lazy"></a>
+            </div>
+            <div class="owl-carousel owl-theme">
+                    <% if(productsSold != '') {  %>
                         <% productsSold.forEach(function(bestProduct, index) { %>
                             <div class="block-item">
-                                <div class="img-product"><img src="/img/<%- bestProduct.product_Image %>" alt="<% bestProduct.name %>" loading="lazy"></div>
-                                <div class="info-item">
-                                    <p><%- bestProduct.name %></p>
+                                <div class="img-product">
+                                    <a href="/product/<%- productsSold.code%>"><img src="/img/<%- bestProduct.product_Image %>" alt="<% bestProduct.name %>" loading="lazy"></a>
+                                </div>
+                                <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
+                                <div class="info-item mt-3">
+                                    <a href="/product/<%- productsSold.code%>" class="text-dark product-name"><%- bestProduct.name %></a>
                                     <p><%- bestProduct.producer %></p>
-                                <p><% bestProduct.discount_min %></p> 
+                                    <div class="min-price"><%- bestProduct.discount_min %>vnđ</div> 
+                                    <div class="text-decoration-line-through"><%- bestProduct.discount_max %>vnđ</div> 
                                 </div>
                             </div>
                         <% }) %>
+                    <% } else{ %>
+                        <h1>rỗng</h1>
                     <% } %>
-                <% }) %>
-                
             </div>
-        </section>
+        </div>
+
     </main>
        
     <footer>
