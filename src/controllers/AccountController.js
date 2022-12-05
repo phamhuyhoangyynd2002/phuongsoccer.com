@@ -43,7 +43,22 @@ class accountController {
 
     // [POST]
     PostRegister(req, res, next) {
-        //res.render('account/login');
+        const email = req.body.email;
+        const user = await users.findOne({ where: { email } });
+        if (user != null) {
+            const user = {id: 0, name: null, role: 1, picture: ""};
+            res.render('pages/register', {user, canRegister: false})
+        } else {
+            await users.create({
+                email: req.body.email,
+                password: req.body.password,
+                name: req.body.name,
+                phone_Number: req.body.phoneNumber,
+                picture: req.body.avatar,
+                sub: 'a',   
+            });
+            res.redirect('/');
+        }
     }
 }
 
