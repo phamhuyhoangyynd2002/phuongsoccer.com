@@ -8,7 +8,7 @@ class accountController {
         let user = {id: 0, name: null, id_role: 1, picture: ""};
         res.render('account/login',{ 
         title: 'Login', 
-        user, 
+        user, canLogin: undefined
         });
     }
 
@@ -19,7 +19,7 @@ class accountController {
     // [GET]
     register(req, res, next) {
         const user = {id: 0, name: null, id_role: 1, picture: ""};
-        res.render('account/register',{user});
+        res.render('account/register',{user, canRegister: undefined});
     }
 
     // [POST]
@@ -37,12 +37,13 @@ class accountController {
             res.redirect('/');
         }
         else{
-            res.redirect('/account/login');
+            const user = {id: 0, name: null, id_role: 1, picture: ""};
+            res.render('/account/login', {user, canLogin: false});
         }
     }
 
     // [POST]
-    PostRegister(req, res, next) {
+     async PostRegister(req, res, next) {
         const email = req.body.email;
         const user = await users.findOne({ where: { email } });
         if (user != null) {
@@ -57,7 +58,7 @@ class accountController {
                 picture: req.body.avatar,
                 sub: 'a',   
             });
-            res.redirect('/');
+            res.redirect('/account/login');
         }
     }
 }
