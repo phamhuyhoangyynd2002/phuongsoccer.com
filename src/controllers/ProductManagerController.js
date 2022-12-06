@@ -43,7 +43,7 @@ module.exports = new productManagerController;
 async function productList(req, res, user) {
     try {
     let product = await products.findAll();
-    res.render('products/productlist', { 
+    res.render('productManager/productlist', { 
         title: 'products', 
         user,
         product

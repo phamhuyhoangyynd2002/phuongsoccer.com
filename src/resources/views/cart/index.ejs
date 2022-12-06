@@ -16,7 +16,7 @@
     <header>
         <%- include('../partials/header') -%>
     </header>
-    <main>
+    <!-- <main>
       <form method="POST" action="/productmanager/submitproduct" enctype="multipart/form-data">
         <div class="container mt-4">
             <h1 class="text-center">Giỏ hàng</h1>
@@ -57,7 +57,66 @@
             </div>
           </div>
       </form>
-    </main>
+    </main> -->
+    <main>
+        <form
+          method="POST"
+          action="/productmanager/submitproduct"
+          enctype="multipart/form-data"
+        >
+          <div class="container mt-4">
+            <h1 class="text-center">Danh sách Sản phẩm</h1>
+            <div class="row">
+              <div class="col col-md-12">
+                <% if(cartdb != '') { %>
+                <table class="ProductTable">
+                  <thead>
+                    <tr>
+                      <th style="background-color: rgb(17, 76, 185);">
+                        <button style="" onclick="RemoveFunction()">
+                          Delete
+                        </button>
+                      </th>
+                      <th>Sản Phẩm</th>
+                      <th>Đơn Giá</th>
+                      <th>Số Lượng</th>
+                      <th>Số Tiền</th>
+                      <th>Thao Tác</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% cartdb.forEach(function(cart, index) { %>
+                    <tr>
+                      <td>
+                        <input type="checkbox" />
+                      </td>
+                      <td>
+                        <p><%- cart.nane_product %></p>
+                      </td>
+                      <td>
+                        <%- cart.out_price %>
+                      </td>
+                      <td><%- cart.amount %></td>
+                      <td><%- cart.out_price %></td>
+                      <td><%- cart.out_price %></td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+                <% } else { %> <% } %>
+              </div>
+            </div>
+          </div>
+        </form>
+      </main>
+      <script type="text/javascript">
+        function RemoveFunction() {
+          let checkboxs = ProductTable.querySelectorAll(
+            "input[type='checkbox']:checked"
+          );
+          checkboxs.forEach((checkbox) => checkbox.parentElement.remove());
+        }
+      </script>
     <footer>
         <%- include('../partials/footer') -%>
     </footer>
