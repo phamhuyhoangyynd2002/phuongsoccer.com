@@ -1,4 +1,4 @@
-const { users, products, img} = require('../connection_database/index');
+const { users, products, img, products_details} = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
 
 
@@ -67,6 +67,8 @@ async function show_detail(req, res, user) {
     //console.log(product);
     let imgdb = await img.findAll({ where: {id_Products: product.id}}); 
     //console.log(imgdb);
+    let products_detail = await products_details.findAll({ where: {id_products: product.id}}); 
+
     let productsSold = await products.findAll({
         order: [['sold', 'DESC']],
         limit: 8,
@@ -76,7 +78,8 @@ async function show_detail(req, res, user) {
         user,
         product,
         imgdb,
-        productsSold
+        productsSold,
+        products_detail
       });
     }
     catch(err) {

@@ -33,7 +33,7 @@
           <h1 class="text-center">Danh sách Sản phẩm</h1>
           <div class="row">
             <div class="col col-md-12">
-              <% if(cartdb != '') { %>
+              <% if(product != '') { %>
               <table class="ProductTable">
                 <thead>
                   <tr>
@@ -42,28 +42,28 @@
                         Delete
                       </button>
                     </th>
+                    <th>Code</th>
                     <th>Sản Phẩm</th>
-                    <th>Đơn Giá</th>
+                    <th>Size</th>
                     <th>Số Lượng</th>
                     <th>Số Tiền</th>
-                    <th>Thao Tác</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% cartdb.forEach(function(cart, index) { %>
+                  <% product.forEach(function(p, index) { %>
                   <tr>
                     <td>
                       <input type="checkbox" />
                     </td>
                     <td>
-                      <p><%- cart.nane_product %></p>
+                      <p><%- p.code %></p>
                     </td>
                     <td>
-                      <%- cart.out_price %>
+                      <%- p.name %>
                     </td>
-                    <td><%- cart.amount %></td>
-                    <td><%- cart.out_price %></td>
-                    <td><%- cart.out_price %></td>
+                    <td><%- p.size %></td>
+                    <td><%- p.amount %></td>
+                    <td><%- p.price %></td>
                   </tr>
                   <% }) %>
                 </tbody>
