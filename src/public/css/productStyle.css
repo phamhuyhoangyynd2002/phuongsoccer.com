@@ -12,7 +12,9 @@
 }
 
 .flex-item {
+    max-width: fit-content;
     position: relative;
+    flex: 1 21%;
 }
 
 .img-product {

@@ -102,7 +102,7 @@
                             <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
                             <div class="icon-product"><img src="/img/new-icon.png" alt=""></div>
                             <div class="info-item mt-3">
-                                <a href="/product/<%- newProduct.code%>" class="text-dark product-name"><%- newProduct.name %></a>
+                                <div style="height: 48px;"><a href="/product/<%- newProduct.code%>" class="text-dark product-name"><%- newProduct.name %></a></div>
                                 <p><%- newProduct.producer %></p>
                                 <div class="min-price">Khuyến mãi: <%- newProduct.discount_min %>vnđ</div> 
                                 <div class="text-decoration-line-through">Giá gốc: <%- newProduct.discount_max %>vnđ</div> 
@@ -133,7 +133,7 @@
                                 <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
                                 <div class="icon-product"><img src="/img/hot-icon.png" alt=""></div>
                                 <div class="info-item mt-3">
-                                    <a href="/product/<%- productsSold.code%>" class="text-dark product-name"><%- bestProduct.name %></a>
+                                    <div style="height: 48px;"><a href="/product/<%- bestProduct.code%>" class="text-dark product-name"><%- bestProduct.name %></a></div>
                                     <p><%- bestProduct.producer %></p>
                                     <div class="min-price">Khuyến mãi: <%- bestProduct.discount_min %>vnđ</div> 
                                     <div class="text-decoration-line-through">Giá gốc: <%- bestProduct.discount_max %>vnđ</div> 
@@ -186,25 +186,24 @@
         </div>
 
         <!-- section news-->
-        <div class="container-fluid section-body">
+        <div class="container section-body news-section">
             <div class="section-title my-5">
                 <a href=""><h2>Tin tức</h2></a>
                 <p class="my-3">Tổng hợp tin tức, mẹo vặt cho bạn</p>
-                <img src="/img/img-best-sellers.png" class="my-5" alt="" loading="lazy">
             </div>
             <div class="owl-carousel owl-theme">
-
                 <% if(newdb != '') { %>
                     <% newdb.forEach(function(post, index) { %>
-                        <div class="block-item">
-                            <div class="img-new" ><img src="/img/<%- post.img %>" alt="<% post.title %>" loading="lazy"></div>
-                            <div class="info-item">
-                                <p><%- post.title %></p>
-                                <p><%- post.author %></p>
-                                <p><%- post.updated_At %></p>
-                                <p><%- post.description %></p>
-                            
+                        <div class="block-item mx-3">
+                            <div class="img-new" ><img src="/img/<%- post.image %>" alt="<% post.title %>" loading="lazy"></div>
+                            <div class="info">
+                                <h6><%- post.title %></h6>
+                                <div class="author float-start">
+                                    <i class="fa-regular fa-user"></i>
+                                    <span class="ms-1"><%- post.author %></span>
+                                </div>
                             </div>
+                            <div class="float-end"><a href="news_detail">Đọc bài</a></div>
                         </div>
                     <% }) %>
                 <% } %>

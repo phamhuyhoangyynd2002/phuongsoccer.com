@@ -116,3 +116,7 @@
     color: var(--bs-orange) !important;
     font-size: 18px;
 }
+
+.news-section {
+    margin-bottom: 56px;
+}
