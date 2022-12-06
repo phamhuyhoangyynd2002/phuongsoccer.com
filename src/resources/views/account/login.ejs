@@ -12,27 +12,103 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
 </head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+  * {box-sizing: border-box}
+  body {
+     background-color: white;
+  }
+  h1, label {
+     color: rgba(253,220,89,255)
+  }
+  
+  h1 {
+      text-align: center;
+      margin: 0px auto;
+      display: block;
+  }
+  
+  input[type=text], input[type=password], input[type=email] {
+     width: 100%;
+     padding: 15px;
+     margin: 5px 0 22px 0;
+     display: inline-block;
+     border: none;
+     width:100%;
+     resize: vertical;
+     padding:15px;
+     border-radius:15px;
+     border:0;
+     box-shadow:4px 4px 10px rgba(33,30,61,255);
+  }
+  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+     outline: none;
+  }
+  hr {
+     border: 1px solid rgba(33,30,61,255);
+     margin-bottom: 25px;
+  }
+  button {
+     background-color: rgba(33,30,61,255);
+     color: white;
+     padding: 14px 20px;
+     margin: 8px 0;
+     border: none;
+     cursor: pointer;
+     width: 100%;
+     opacity: 0.9;
+  }
+  button:hover {
+     opacity:1;
+  }
+  .cancelbtn {
+     padding: 14px 20px;
+     background-color: rgba(33,30,61,255);
+  }
+  .signupbtn {
+     float: left;
+     width: 100%;
+     border-radius:15px;
+     border:0;
+     box-shadow:4px 4px 10px rgba(33,30,61,255);
+  }
+  .container {
+     padding: 16px;
+  }
+  .clearfix::after {
+     content: "";
+     clear: both;
+     display: table;
+  }
+  .registerRe {
+   display: flex;
+  }
+  </style>
 <body>
     <header>
         <%- include('../partials/header') -%>
     </header>
     <main>
-		<form method="POST" action="/account/login">
-			<div class="mb-3">
-			  <label for="exampleInputEmail1" class="form-label">Email address</label>
-			  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email">
-			  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-			</div>
-			<div class="mb-3">
-			  <label for="exampleInputPassword1" class="form-label">Password</label>
-			  <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-			</div>
-			<div class="mb-3 form-check">
-			  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-			  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
-		  </form>
+      <form action="/account/login" method="POST">
+        <div class="container">
+        <h1>Đăng nhập</h1>
+        <hr>
+        <label for="email"><b>Email</b></label>
+          <input type="email" id="email" placeholder="Nhập Email" pattern=".+@gmail.com" name="email" required>
+        <label for="psw"><b>Mật Khẩu</b></label>
+          <input type="password" placeholder="Nhập Mật Khẩu" name="password" required>
+         <% if (canLogin == false) { %>
+            <label for="" style="color:red">Sai email hoặc mật khẩu</label>
+         <% } %> 
+            <div class="clearfix">
+               <button type="submit" class="signupbtn">Đăng nhập</button>
+            </div>
+            <div class="registerRe">
+               <p>Chưa có tài khoản?</p><a href="/account/register">Đăng ký</a>
+            </div>
+          </div>
+        </div>
+        </form>
     </main>
     <footer>
         <%- include('../partials/footer') -%>

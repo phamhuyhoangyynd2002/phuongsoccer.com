@@ -1,37 +1,127 @@
-<%- include('../partials/header') -%>
-<form method="POST" action="/account/register">
-	<div class="mb-3">
-	  <label for="exampleInputEmail1" class="form-label">Email address</label>
-	  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email">
-	  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-	</div>
-	<div class="mb-3">
-	  <label for="exampleInputPassword1" class="form-label">Password</label>
-	  <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-	</div>
-	<div class="mb-3">
-		<label for="exampleInputPhoneNumber1" class="form-label">Phone Number</label>
-		<input type="number" class="form-control" id="exampleInputPhoneNumber1" name="phoneNumber">
-	  </div>
-	<div class="mb-3">
-		<label for="exampleInputSub1" class="form-label">Sub</label>
-		<input type="text" class="form-control" id="exampleInputSub1" name="sub">
-	</div>
-	<div class="mb-3">
-		<label for="exampleInputAvatar1" class="form-label">avatar</label>
-		<input type="text" class="form-control" id="exampleInputAvatar1" name="avatar">
-	</div>
-	<div class="mb-3">
-		<label for="exampleInputName1" class="form-label">Name</label>
-		<input type="text" class="form-control" id="exampleInputName1" name="name">
-	</div>
-	<div class="mb-3 form-check">
-	  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-	  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-	</div>
-	<% if (canCreate == false) { %>
-		<p>Tài khoản đã tồn tại</p>
-	<% } %>
-	<button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-<%- include('../partials/footer') -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title%></title>
+    <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+* {box-sizing: border-box}
+body {
+   background-color: white;
+}
+h1, label {
+   color: rgba(253,220,89,255)
+}
+
+h1 {
+    text-align: center;
+    margin: 0px auto;
+    display: block;
+}
+
+input[type=text], input[type=password], input[type=email] {
+   width: 100%;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   display: inline-block;
+   border: none;
+   width:100%;
+   resize: vertical;
+   padding:15px;
+   border-radius:15px;
+   border:0;
+   box-shadow:4px 4px 10px rgba(33,30,61,255);
+}
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+   outline: none;
+}
+hr {
+   border: 1px solid rgba(33,30,61,255);
+   margin-bottom: 25px;
+}
+button {
+   background-color: rgba(33,30,61,255);
+   color: white;
+   padding: 14px 20px;
+   margin: 8px 0;
+   border: none;
+   cursor: pointer;
+   width: 100%;
+   opacity: 0.9;
+}
+button:hover {
+   opacity:1;
+}
+.cancelbtn {
+   padding: 14px 20px;
+   background-color: rgba(33,30,61,255);
+}
+.signupbtn {
+   float: left;
+   width: 100%;
+   border-radius:15px;
+   border:0;
+   box-shadow:4px 4px 10px rgba(33,30,61,255);
+}
+.container {
+   padding: 16px;
+}
+.clearfix::after {
+   content: "";
+   clear: both;
+   display: table;
+}
+.loginRe {
+   display: flex;
+}
+</style>
+<body>
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+    <main>
+		<form action="/account/register" method="POST">
+			<div class="container">
+			<h1>Đăng ký tài khoản</h1>
+			<hr>
+			<label for="name"><b>Tên của bạn</b></label>
+				<input type="text" placeholder="Nhập tên" name="name" required>
+			<label for="name"><b>Số điện thoại</b></label>
+				<input type="text" placeholder="Nhập số điện thoại" name="phoneNumber" required>
+			<label for="email"><b>Email</b></label>
+				<input type="email" id="email" placeholder="Nhập Email" pattern=".+@gmail.com" name="email" required>
+			<label for="psw"><b>Mật Khẩu</b></label>
+				<input type="password" placeholder="Nhập Mật Khẩu" name="password" required>
+			<label for="picture"><b>Ảnh</b></label>
+				<input type="text" placeholder="Nhập Ảnh" name="avatar" required>
+         <% if (canRegister == false) { %>
+               <label for="" style="color: red"><p>Email đã tồn tại</p></label>
+         <% } %>
+			 	<div class="clearfix">
+					<button type="submit" class="signupbtn">Đăng ký</button>
+				</div>
+            <div class="loginRe">
+               <p>Đã có tài khoản?</p><a href="/account/login">Đăng nhập</a>
+            </div>   
+         </div>
+		  </form>
+    </main>
+    <footer>
+        <%- include('../partials/footer') -%>
+    </footer>
+
+    <!-- javascript -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+</body>
+</html>
