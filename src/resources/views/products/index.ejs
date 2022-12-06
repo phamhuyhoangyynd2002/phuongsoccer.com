@@ -7,10 +7,9 @@
     <title><%= locals.title%></title>
     <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/productStyle.css">
 </head>
 <body>
     <header>
@@ -45,6 +44,123 @@
             </button>
           </div>
         <!-- end slideshow -->
+
+        <div class="container">
+          <div class="banner-section text-center mt-5 mb-3">
+            <h2 class="main-title">ADIDAS</h2>
+            <div class="path mt-3">
+              <span><a href="#">Trang chủ</a></span>
+              <span>/ Adidas</span>
+            </div>
+          </div>
+          <div class="main-body d-flex mt-5">
+            <div class="side-bar border-end">
+              <div class="sort-product"> 
+                <h5 class="mb-3">Sắp xếp</h5>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" id="radio0" name="optradio" value="option0" checked>
+                  <label class="form-check-label" for="radio0">Mặc định</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1">
+                  <label class="form-check-label" for="radio1">Tên A-Z</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+                  <label class="form-check-label" for="radio2">Tên Z-A</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" id="radio3" name="optradio" value="option3">
+                  <label class="form-check-label" for="radio3">Giá thấp đến cao</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" id="radio4" name="optradio" value="option4">
+                  <label class="form-check-label" for="radio4">Giá cao đến thấp</label>
+                </div>
+              </div>
+
+              <div class="type">
+                <h5 class="my-3">Loại sản phẩm</h5>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="check1" value="type1">
+                  <label class="form-check-label" for="check1">Giày sân tự nhiên</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="check2" value="type2">
+                  <label class="form-check-label" for="check2">Giày sân nhân tạo</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="check3" value="type3">
+                  <label class="form-check-label" for="check3">giày futsal</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="check4" value="type4">
+                  <label class="form-check-label" for="check4">Giày sneaker</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="check5" value="type5">
+                  <label class="form-check-label" for="check5">Dép thể thao</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="check6" value="type6">
+                  <label class="form-check-label" for="check6">Dép thời trang</label>
+                </div>
+              </div>
+
+              <div class="brand">
+                <h5 class="my-3">Thương hiệu</h5>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="box1" value="nike">
+                  <label class="form-check-label" for="box1">Nike</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="box2" value="adidas">
+                  <label class="form-check-label" for="box2">Adidas</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="box3" value="mizuno">
+                  <label class="form-check-label" for="box3">Mizuno</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="box4" value="puma">
+                  <label class="form-check-label" for="box4">Puma</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="list-product container d-flex flex-wrap">
+              <% if(product != '') { %>
+                <% product.forEach(function(itemProduct, index) { %>
+                    <div class="flex-item">
+                        <div class="img-product">
+                            <a href="product-details"><img src="/img/<%- itemProduct.product_Image %>" alt="<% itemProduct.name %>" loading="lazy"></a>
+                        </div>
+                        <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
+                        <div class="info-item mt-3">
+                            <a href="product-details" class="text-dark product-name"><%- itemProduct.name %></a>
+                            <p><%- itemProduct.producer %></p>
+                            <div class="min-price">Khuyến mãi: <%- itemProduct.discount_min %>vnđ</div> 
+                            <div class="text-decoration-line-through">Giá gốc: <%- itemProduct.discount_max %>vnđ</div> 
+                        </div>
+                    </div>
+                <% }) %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
     </main>
     <footer>
         <%- include('../partials/footer') -%>

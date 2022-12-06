@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/homeStyle.css">
 </head>
 <body>
     <header>
@@ -84,11 +85,11 @@
         <!-- end service -->
 
         <!-- section new products -->
-        <div class="container-fluid section-body">
-            <div class="section-title mb-5">
+        <div class="container section-body">
+            <div class="section-title my-5">
                 <a href=""><h2>Sản phẩm mới</h2></a>
-                <p>Các sản phẩm có tại cửa hàng</p>
-                <a href="#"><img src="/img/img-best-sellers.png" alt="" loading="lazy"></a>
+                <p class="my-3">Các sản phẩm có tại cửa hàng</p>
+                <img src="/img/img-best-sellers.png" class="my-5" alt="" loading="lazy">
             </div>
             <div class="owl-carousel owl-theme">
              
@@ -99,27 +100,28 @@
                                 <a href="product-details"><img src="/img/<%- newProduct.product_Image %>" alt="<% newProduct.name %>" loading="lazy"></a>
                             </div>
                             <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
+                            <div class="icon-product"><img src="/img/new-icon.png" alt=""></div>
                             <div class="info-item mt-3">
                                 <a href="product-details" class="text-dark product-name"><%- newProduct.name %></a>
                                 <p><%- newProduct.producer %></p>
-                                <div class="min-price"><%- newProduct.discount_min %>vnđ</div> 
-                                <div class="text-decoration-line-through"><%- newProduct.discount_max %>vnđ</div> 
+                                <div class="min-price">Khuyến mãi: <%- newProduct.discount_min %>vnđ</div> 
+                                <div class="text-decoration-line-through">Giá gốc: <%- newProduct.discount_max %>vnđ</div> 
                             </div>
                         </div>
                     <% }) %>
                 <% } %>
             </div>
-            <div class="view-more">
+            <div class="view-more my-5">
 				<a href="#" title="Xem tất cả">Xem tất cả</a>
 			</div>
         </div>
 
         <!-- section best seller products -->
-        <div class="container-fluid section-body">
-            <div class="section-title mb-5">
+        <div class="container section-body">
+            <div class="section-title my-5">
                 <a href=""><h2>Sản phẩm bán chạy</h2></a>
-                <p>Các sản phẩm bán chạy tại cửa hàng</p>
-                <a href="#"><img src="/img/img-best-sellers.png" alt="" loading="lazy"></a>
+                <p class="my-3">Các sản phẩm bán chạy tại cửa hàng</p>
+                <img src="/img/img-best-sellers.png" class="my-5" alt="" loading="lazy">
             </div>
             <div class="owl-carousel owl-theme">
                     <% if(productsSold != '') { %>
@@ -129,26 +131,27 @@
                                     <a href="product-details"><img src="/img/<%- bestProduct.product_Image %>" alt="<% bestProduct.name %>" loading="lazy"></a>
                                 </div>
                                 <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
+                                <div class="icon-product"><img src="/img/hot-icon.png" alt=""></div>
                                 <div class="info-item mt-3">
                                     <a href="product-details" class="text-dark product-name"><%- bestProduct.name %></a>
                                     <p><%- bestProduct.producer %></p>
-                                    <div class="min-price"><%- bestProduct.discount_min %>vnđ</div> 
-                                    <div class="text-decoration-line-through"><%- bestProduct.discount_max %>vnđ</div> 
+                                    <div class="min-price">Khuyến mãi: <%- bestProduct.discount_min %>vnđ</div> 
+                                    <div class="text-decoration-line-through">Giá gốc: <%- bestProduct.discount_max %>vnđ</div> 
                                 </div>
                             </div>
                         <% }) %>
                     <% } %>
             </div>
-            <div class="view-more">
+            <div class="view-more my-5">
 				<a href="#" title="Xem tất cả">Xem tất cả</a>
 			</div>
         </div>
 
         <!-- section accessories -->
         <div class="container section-body">
-            <div class="section-title mb-5">
+            <div class="section-title my-5">
                 <a href=""><h2>Phụ kiện</h2></a>
-                <p>Tất cả các phụ kiện có tại cửa hàng</p>
+                <p class="my-3">Tất cả các phụ kiện có tại cửa hàng</p>
             </div>
             <div class="row row-cols-2 accessories">
                 <div class="col-lg-6 item-accessory">
@@ -184,10 +187,10 @@
 
         <!-- section news-->
         <div class="container-fluid section-body">
-            <div class="section-title mb-5">
+            <div class="section-title my-5">
                 <a href=""><h2>Tin tức</h2></a>
-                <p>Tổng hợp tin tức, mẹo vặt cho bạn</p>
-                <a href="#"><img src="/img/img-best-sellers.png" alt=""></a>
+                <p class="my-3">Tổng hợp tin tức, mẹo vặt cho bạn</p>
+                <img src="/img/img-best-sellers.png" class="my-5" alt="" loading="lazy">
             </div>
             <div class="owl-carousel owl-theme">
 
