@@ -58,13 +58,11 @@ async function productList(req, res, user) {
                 amount: product_detail[j].amount,
                 price: product_detail[j].price
               };
-            console.log(p_d);
             product.push(p_d);
 
         }
         
     }
-    console.log(product);
     res.render('productManager/productlist', { 
         title: 'products', 
         user,

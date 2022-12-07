@@ -42,11 +42,11 @@ async function index(req, res, user) {
             cartdb[i].product_Image = product.product_Image;
             cartdb[i].code = product.code;
             cartdb[i].size = product_details.size;
-            cartdb[i].out_price = product_details.price;
+            cartdb[i].price = product_details.price;
             cartdb[i].discout_percent = product_details.discout_percent;
             cartdb[i].discount_minus = product_details.discount_minus;
           }
-        console.log(cartdb);
+        //console.log(cartdb);
         res.render('cart/index', { 
             title: 'Giỏ hàng', 
             user,
