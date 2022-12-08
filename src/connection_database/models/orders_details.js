@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },
+        id_discount_code: {
+            allowNull: true,
+            type: DataTypes.INTEGER(11),
+        }
     }, {
         tableName: 'orders_details',
     });

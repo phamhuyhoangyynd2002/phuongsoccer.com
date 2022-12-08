@@ -47,10 +47,8 @@
 
         <div class="container">
           <div class="banner-section text-center mt-5 mb-3">
-            <h2 class="main-title">ADIDAS</h2>
             <div class="path mt-3">
-              <span><a href="#">Trang chủ</a></span>
-              <span>/ Adidas</span>
+              <span><a href="/">Trang chủ</a></span>
             </div>
           </div>
           <div class="main-body d-flex mt-5">
@@ -140,16 +138,17 @@
               </div>
             </div>
 
-            <div class="list-product container d-flex flex-wrap">
+            <!--
+                <div class="list-product container d-flex flex-wrap">
               <% if(product != '') { %>
                 <% product.forEach(function(itemProduct, index) { %>
                     <div class="flex-item mb-5">
                         <div class="img-product">
-                            <a href="product-details"><img src="/img/<%- itemProduct.product_Image %>" alt="<% itemProduct.name %>" loading="lazy" width="100px" height="100px" display="flex"></a>
+                            <a href="/product/<%- itemProduct.code%>"><img src="/img/<%- itemProduct.product_Image %>" alt="<% itemProduct.name %>" loading="lazy"></a>
                         </div>
                         <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
                         <div class="info-item mt-3">
-                            <div class="" style="height: 48px;"><a href="product-details" class="text-dark product-name"><%- itemProduct.name %></a></div>
+                            <div class="" style="height: 48px;"><a href="/product/<%- itemProduct.code%>" class="text-dark product-name"><%- itemProduct.name %></a></div>
                             <p><%- itemProduct.producer %></p>
                             <div class="min-price">Khuyến mãi: <%- itemProduct.discount_min %>vnđ</div> 
                             <div class="text-decoration-line-through">Giá gốc: <%- itemProduct.discount_max %>vnđ</div> 
@@ -158,7 +157,28 @@
                 <% }) %>
               <% } %>
             </div>
+            -->
+            <div class="list-product container d-flex flex-wrap">
+              <% if(product != '') { %>
+                <% product.forEach(function(itemProduct, index) { %>
+                  <a href="/product/<%- itemProduct.code%>">
+                    <div class="card" style="width: 18rem; margin: 0.5rem" >
+                      <img src="/img/<%- itemProduct.product_Image %>" style="width: 17rem; margin: 0.5rem" class="card-img-top" alt="<% itemProduct.name %>">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <a href="/product/<%- itemProduct.code%>"><%- itemProduct.name %></a>
+                        </h5>
+                        <h5 class="min-price">Khuyến mãi: <%- itemProduct.discount_min %>vnđ</h5>
+                        <h6 class="text-decoration-line-through">Giá gốc: <%- itemProduct.discount_max %>vnđ</h6>
+                      </div>
+                    </div>
+                  </a>
+                  
+                <% }) %>
+              <% } %>
+            </div>
           </div>
+          
         </div>
 
     </main>

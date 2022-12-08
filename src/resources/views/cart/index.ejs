@@ -41,11 +41,11 @@
                                         <p><%- cart.nane_product %></p>
                                     </td>
                                     <td>
-                                        <%- cart.out_price %>
+                                        <%- cart.price %>
                                     </td>
                                     <td><%- cart.amount %></td>
-                                    <td><%- cart.out_price %></td>
-                                    <td><%- cart.out_price %></td>
+                                    <td><%- cart.price * cart.amount %></td>
+                                    <td><%- cart.price %></td>
                                 </tr>
                             <% }) %>
                         </tbody>
@@ -58,6 +58,18 @@
           </div>
       </form>
     </main>
+      <script type="text/javascript">
+        function RemoveFunction() {
+          let checkboxs = ProductTable.querySelectorAll(
+            "input[type='checkbox']:checked"
+          );
+          checkboxs.forEach((checkbox) => checkbox.parentElement.remove());
+        }
+      </script>
+    <footer>
+        <%- include('../partials/footer') -%>
+    </footer>
+
     <!-- javascript -->
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
