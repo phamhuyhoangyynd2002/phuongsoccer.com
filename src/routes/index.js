@@ -14,7 +14,7 @@ const searchRouter = require('./search');
 const contactRouter = require('./contact');
 const producerRouter = require('./producer');
 const tagRouter = require('./tag');
-
+const ordersProcessRouter = require('./ordersProcess');
 
 function route(app){
 
@@ -35,7 +35,7 @@ function route(app){
     app.use('/producer',producerRouter);
     app.use('/tag',tagRouter);
     app.use('/',homeRouter);
-    
+    app.use('/ordersProcess', ordersProcessRouter);
 }
 
 module.exports = route;
