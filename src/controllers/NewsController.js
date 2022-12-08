@@ -51,11 +51,12 @@ async function show_detail(req, res, user) {
 
 async function index(req, res, user) {
     try {
-    let news = await news.findAll(); 
-    res.render('pages/products_show_detail', { 
+    let newdb = await news.findAll(); 
+    console.log(newdb);
+    res.render('news/index', { 
         title: 'products', 
         user,
-        news
+        newdb
       });
     }
     catch(err) {
