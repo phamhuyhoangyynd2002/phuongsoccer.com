@@ -17,7 +17,7 @@ document.getElementById('add-product-btn').onclick = function add_row() {
         let namediscount_Percent= "discount_Percent"+ numRow;
         let namediscount_Minus= "discount_Minus"+ numRow;
         
-        row.insertCell(0).innerHTML = '<input type="number" class="w-25" name = "'+namesize+'"value = '+size+'>';
+        row.insertCell(0).innerHTML = '<input type="text" class="w-25" name = "'+namesize+'"value = '+size+'>';
         row.insertCell(1).innerHTML = '<input type="number" class="w-50" name = "'+nameprice+'"value = '+price+'>';
         row.insertCell(2).innerHTML = '<input type="number" class="w-25" name = "'+namediscount_Percent+'"value = '+discount_Percent+'>';
         row.insertCell(3).innerHTML = '<input type="number" class="w-25" name = "'+namediscount_Minus+'"value = '+discount_Minus+'>';

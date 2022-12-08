@@ -42,6 +42,8 @@ async function index(req, res, user) {
             cartdb[i].product_Image = product.product_Image;
             cartdb[i].code = product.code;
             cartdb[i].size = product_details.size;
+            if(product_details.price + product_details.discount_minus > product_details.price / ((100-product_details.discout_percent)/100)) cartdb[i]._price = product_details.price + product_details.discount_minus;
+                else cartdb[i]._price = product_details.price / ((100-product_details.discout_percent)/100);
             cartdb[i].price = product_details.price;
             cartdb[i].discout_percent = product_details.discout_percent;
             cartdb[i].discount_minus = product_details.discount_minus;

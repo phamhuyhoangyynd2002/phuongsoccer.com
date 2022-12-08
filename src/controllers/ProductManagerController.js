@@ -52,6 +52,7 @@ async function productList(req, res, user) {
         for (let j in product_detail)
         {
             let p_d = {
+                product_Image: p.product_Image,
                 name: p.name,
                 code: p.code,
                 size: product_detail[j].size,
