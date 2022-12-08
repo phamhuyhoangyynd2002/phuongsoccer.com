@@ -76,9 +76,14 @@ async function PostSubmitproduct(req, res, user) {
             }
         if(_numRow >= 1){
             let _size = req.body.size1;
+
             let _price =  req.body.price1;
             let _discount_Percent = req.body.discount_Percent1;
             let _discount_Minus = req.body.discount_Minus1;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
@@ -87,6 +92,10 @@ async function PostSubmitproduct(req, res, user) {
             let _price =  req.body.price2;
             let _discount_Percent = req.body.discount_Percent2;
             let _discount_Minus = req.body.discount_Minus2;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
@@ -95,6 +104,10 @@ async function PostSubmitproduct(req, res, user) {
             let _price =  req.body.price3;
             let _discount_Percent = req.body.discount_Percent3;
             let _discount_Minus = req.body.discount_Minus3;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
@@ -103,6 +116,10 @@ async function PostSubmitproduct(req, res, user) {
             let _price =  req.body.price4;
             let _discount_Percent = req.body.discount_Percent4;
             let _discount_Minus = req.body.discount_Minus4;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
@@ -111,6 +128,10 @@ async function PostSubmitproduct(req, res, user) {
             let _price =  req.body.price5;
             let _discount_Percent = req.body.discount_Percent5;
             let _discount_Minus = req.body.discount_Minus5;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
@@ -119,6 +140,10 @@ async function PostSubmitproduct(req, res, user) {
             let _price =  req.body.price6;
             let _discount_Percent = req.body.discount_Percent6;
             let _discount_Minus = req.body.discount_Minus6;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
@@ -127,6 +152,10 @@ async function PostSubmitproduct(req, res, user) {
             let _price =  req.body.price7;
             let _discount_Percent = req.body.discount_Percent7;
             let _discount_Minus = req.body.discount_Minus7;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
@@ -135,6 +164,10 @@ async function PostSubmitproduct(req, res, user) {
             let _price =  req.body.price8;
             let _discount_Percent = req.body.discount_Percent8;
             let _discount_Minus = req.body.discount_Minus8;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
@@ -143,6 +176,10 @@ async function PostSubmitproduct(req, res, user) {
             let _price =  req.body.price9;
             let _discount_Percent = req.body.discount_Percent9;
             let _discount_Minus = req.body.discount_Minus9;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
@@ -151,11 +188,14 @@ async function PostSubmitproduct(req, res, user) {
             let _price =  req.body.price10;
             let _discount_Percent = req.body.discount_Percent10;
             let _discount_Minus = req.body.discount_Minus10;
+            if(product.discount_max < _price) product.discount_max = _price;
+            if(_price - _discount_Minus > _price * (100 - _discount_Percent) /100 ) _price = _price * (100 - _discount_Percent) /100;
+                else _price = _price - _discount_Minus;
+            if(product.discount_min > _price) product.discount_min = _price;
             let new_product_detail = {id_products: product.id, size: _size, discout_percent: _discount_Percent, discount_minus: _discount_Minus, user_Updater: user.id, price:_price};
             let product_detail = await products_details.create(new_product_detail);
         }
-        //console.log(product);
-        
+        await product.save();
         res.redirect('/');
     } catch(err) {
         console.log(err);

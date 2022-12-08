@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/style_index_cart.css">
 </head>
 <body>
     <header>
@@ -26,6 +27,7 @@
                     <table class="table">
                         <thead>
                           <tr>
+                            <th scope="col"> <input type="checkbox"></th>
                             <th scope="col">Sản Phẩm</th>
                             <th scope="col">Đơn Giá</th>
                             <th scope="col">Số Lượng</th>
@@ -37,14 +39,30 @@
                             <% cartdb.forEach(function(cart, index) { %>
                                 <tr>
                                     <td>
-                                        <div class="img-new img-cart"><img src="/img/<%- cart.product_Image %>" loading="lazy" class="img-new img-cart"></div>
+                                    <input type="checkbox">
+                                    </td>
+                                    <td>
+                                        <div class="img-new img-cart" ><img src="/img/<%- cart.product_Image %>" loading="lazy" class="img-new img-cart" style="width: 100px"></div>
                                         <p><%- cart.nane_product %></p>
                                     </td>
                                     <td>
-                                        <%- cart.price %>
+                                      <div class="min-price">Khuyến mãi: <%- cart.price %>vnđ</div> 
+                                      <div class="text-decoration-line-through">Giá gốc: <%- cart._price %>vnđ</div>
                                     </td>
-                                    <td><%- cart.amount %></td>
-                                    <td><%- cart.price * cart.amount %></td>
+                                    <td>
+                                      <div class="uRjDya">
+                                        <button class="page-item zpjHdR zpjHdR-" >
+                                          <span aria-hidden="true">&laquo;</span>
+                                        </button>
+                                        <p hidden class="zpjHdRpVY1dQ"><%- cart.amount %></p>
+                                        <input class="page-item zpjHdR pVY1dQ" type="number" name= <%- cart.id %> value= <%- cart.amount %>>
+                                        <button class="page-item zpjHdR zpjHdR+">
+                                          <span aria-hidden="true" >&raquo;</span>
+                                        </button>
+                                      </div>
+                                          
+                                    </td>
+                                    <td><%- cart.price * cart.amount %> VND</td>
                                     <td><%- cart.price %></td>
                                 </tr>
                             <% }) %>
@@ -58,14 +76,7 @@
           </div>
       </form>
     </main>
-      <script type="text/javascript">
-        function RemoveFunction() {
-          let checkboxs = ProductTable.querySelectorAll(
-            "input[type='checkbox']:checked"
-          );
-          checkboxs.forEach((checkbox) => checkbox.parentElement.remove());
-        }
-      </script>
+
     <footer>
         <%- include('../partials/footer') -%>
     </footer>

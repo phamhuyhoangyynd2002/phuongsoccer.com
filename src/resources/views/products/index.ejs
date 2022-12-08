@@ -61,22 +61,22 @@
                 </div>
 
                 <div class="form-check">
-                  <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1">
+                  <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" onclick="nameaz();">
                   <label class="form-check-label" for="radio1">Tên A-Z</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
+                  <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2"onclick="nameza();">
                   <label class="form-check-label" for="radio2">Tên Z-A</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="radio" class="form-check-input" id="radio3" name="optradio" value="option3">
+                  <input type="radio" class="form-check-input" id="radio3" name="optradio" value="option3"onclick="price_min();">
                   <label class="form-check-label" for="radio3">Giá thấp đến cao</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="radio" class="form-check-input" id="radio4" name="optradio" value="option4">
+                  <input type="radio" class="form-check-input" id="radio4" name="optradio" value="option4"onclick="price_max();">
                   <label class="form-check-label" for="radio4">Giá cao đến thấp</label>
                 </div>
               </div>
@@ -84,56 +84,57 @@
               <div class="type">
                 <h5 class="my-3">Loại sản phẩm</h5>
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="check1" value="type1">
+                  <input type="checkbox" class="form-check-input" id="check1" value="type1" onclick="tag1();">
                   <label class="form-check-label" for="check1">Giày sân tự nhiên</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="check2" value="type2">
+                  <input type="checkbox" class="form-check-input" id="check2" value="type2" onclick="tag2();">
                   <label class="form-check-label" for="check2">Giày sân nhân tạo</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="check3" value="type3">
-                  <label class="form-check-label" for="check3">giày futsal</label>
+                  <input type="checkbox" class="form-check-input" id="check3" value="type3" onclick="tag3();">
+                  <label class="form-check-label" for="check3">Giày futsal</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="check4" value="type4">
+                  <input type="checkbox" class="form-check-input" id="check4" value="type4" onclick="tag4();">
                   <label class="form-check-label" for="check4">Giày sneaker</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="check5" value="type5">
+                  <input type="checkbox" class="form-check-input" id="check5" value="type5" onclick="tag5();">
                   <label class="form-check-label" for="check5">Dép thể thao</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="check6" value="type6">
+                  <input type="checkbox" class="form-check-input" id="check6" value="type6" onclick="tag6();">
                   <label class="form-check-label" for="check6">Dép thời trang</label>
                 </div>
               </div>
 
               <div class="brand">
                 <h5 class="my-3">Thương hiệu</h5>
+                
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="box1" value="nike">
-                  <label class="form-check-label" for="box1">Nike</label>
+                    <input type="checkbox" class="form-check-input" id="box1" value="nike" onclick="nike();">
+                    <label class="form-check-label" for="box1">Nike</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="box2" value="adidas">
+                  <input type="checkbox" class="form-check-input" id="box2" value="adidas" onclick="adidas();">
                   <label class="form-check-label" for="box2">Adidas</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="box3" value="mizuno">
-                  <label class="form-check-label" for="box3">Mizuno</label>
+                    <input type="checkbox" class="form-check-input" id="box3" value="mizuno" onclick="mizuno();">
+                    <label class="form-check-label" for="box3">Mizuno</label>
                 </div>
 
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="box4" value="puma">
-                  <label class="form-check-label" for="box4">Puma</label>
+                    <input type="checkbox" class="form-check-input" id="box4" value="puma" onclick="puma();">
+                    <label class="form-check-label" for="box4">Puma</label>
                 </div>
               </div>
             </div>
@@ -188,6 +189,54 @@
 
     <!-- javascript -->
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+      
+         function nike() {
+            window.location="/producer/1";
+         }
+         function adidas() {
+            window.location="/producer/2";
+         }
+         function puma() {
+            window.location="/producer/5";
+         }
+         function puma() {
+            window.location="/producer/9";
+         }
+        function tag1() {
+            window.location="/tag/1";
+         }
+         function tag2() {
+            window.location="/tag/2";
+         }
+         function tag2() {
+            window.location="/tag/2";
+         }
+         function tag3() {
+            window.location="/tag/3";
+         }
+         function tag4() {
+            window.location="/tag/4";
+         }
+         function tag5() {
+            window.location="/tag/5";
+         }
+         function tag6() {
+            window.location="/tag/6";
+         }
+         function nameaz() {
+            window.location=window.location +"/nameaz";
+         }
+         function nameza() {
+            window.location=window.location +"/nameza";
+         }
+         function price_min() {
+            window.location=window.location +"/price_min";
+         }
+         function price_max() {
+            window.location=window.location +"/price_max";
+         }
+   </script>
 </body>
 </html>
 
