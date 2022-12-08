@@ -15,7 +15,7 @@ const tagModel = require("./models/tag");
 const contactModel = require("./models/contact");
 
 
-const sequelize = new Sequelize('phuongsoccer.com', 'root', '', {
+const sequelize = new Sequelize('phuongsoccer.com', 'duchoangt', 'tdh1792', {
   host: '127.0.0.1',
   dialect: 'mysql',
   logging: false,
