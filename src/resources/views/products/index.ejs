@@ -145,7 +145,7 @@
                 <% product.forEach(function(itemProduct, index) { %>
                     <div class="flex-item mb-5">
                         <div class="img-product">
-                            <a href="product-details"><img src="/img/<%- itemProduct.product_Image %>" alt="<% itemProduct.name %>" loading="lazy"></a>
+                            <a href="product-details"><img src="/img/<%- itemProduct.product_Image %>" alt="<% itemProduct.name %>" loading="lazy" width="100px" height="100px" display="flex"></a>
                         </div>
                         <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
                         <div class="info-item mt-3">
