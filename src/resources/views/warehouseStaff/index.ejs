@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= locals.title%>
+  </title>
+  <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/productStyle.css">
+  <script src="/js/product_list.js"></script>
+
+<head>
+  
+  <style type="text/css">
+    h1 {
+      text-align: center;
+      padding: 15px;
+    }
+
+    th,
+    td {
+      border: solid rgb(149, 195, 229) 1px;
+      padding: 5px;
+      text-align: center;
+    }
+
+    #ProductTable {
+      border-collapse: collapse;
+      width: 70%;
+      margin: auto;
+      padding-bottom: 10px;
+    }
+
+    #ProductTable tr.selectedr {
+      background-color: beige;
+    }
+
+    div.group-op-container {
+  height: 30px;
+    }
+    .nodisplay {
+  display: none;
+}
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <%- include('../partials/header') -%>
+
+  </header>
+  <main>
+    <form method="POST" action="/productmanager/postproductlist" enctype="multipart/form-data">
+      <h1 class="text-center">Kho</h1>
+      <% if(product !='' ) { %>
+        <table id="ProductTable">
+          <thead>
+            <tr style="background-color: rgb(17, 76, 185); color: aliceblue; ">
+              <th>Ảnh</th>
+              <th>Code</th>
+              <th>Sản Phẩm</th>
+              <th>Size</th>
+              <th>Số Lượng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% product.forEach(function(p, index) { %>
+              <tr>
+                <td>
+                  <div class="img-new img-cart" style="width:100px ; height: 100px; display: flex;"><img src="/img/<%- p.product_Image %>" loading="lazy" class="img-new img-cart "></div>
+                </td>
+                <td>
+                  <p>
+                    <a href="/productmanager/updateproduct/<%- p.code %>">
+                      <%- p.code %>
+                    </a>
+                  </p>
+                </td>
+                <td>
+                  <a href="/productmanager/updateproduct/<%- p.code %>">
+                    <%- p.name %>
+                  </a>
+                </td>
+                <td>
+                  <%- p.size %>
+                </td>
+                <td>
+                    <input type="number" name = "<%- p.id %>" value="<%- p.amount %>">
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+        <% } else { %>
+          <% } %>
+            <!-- </div>
+          </div>
+        </div> -->
+        <button type="submit" class="btn btn-primary btn-lg mb-5 ms-5">Submit</button>
+    </form>
+  </main>
+ 
+  <footer>
+    <%- include('../partials/footer') -%>
+  </footer>
+</body>
+
+</html>

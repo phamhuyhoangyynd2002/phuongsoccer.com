@@ -1,4 +1,4 @@
-const { users, orders} = require('../connection_database/index');
+const { users, orders, products_details, products, cart} = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
 
 
@@ -32,7 +32,31 @@ class ordersController {
     // [POST] /add
     async add(req, res, next) {
         try {
-            
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            let id_cart = req.params.slug; 
+            const cartdb = await cart.findByPk(id_cart);
+            if(cartdb.id_users == user.id)  {
+                let Totalmoney = 0;
+                const product_details = await products_details.findByPk(cartdb.id_Products_details);
+                const product = await products.findByPk(product_details.id_products);
+                cartdb.nane_product = product.name;
+                cartdb.product_Image = product.product_Image;
+                cartdb.code = product.code;
+                cartdb.size = product_details.size;
+                if(product_details.price + product_details.discount_minus > product_details.price / ((100-product_details.discout_percent)/100)) cartdb._price = product_details.price + product_details.discount_minus;
+                    else cartdb._price = product_details.price / ((100-product_details.discout_percent)/100);
+                cartdb.price = product_details.price;
+                cartdb.discout_percent = product_details.discout_percent;
+                cartdb.discount_minus = product_details.discount_minus;
+                Totalmoney += cartdb.price * cartdb.amount;
+                res.render('orders/add',{ user, orderdb,Totalmoney});
+            }
+            }  
+            else {
+                res.redirect('/');    
+            }   
         } catch(err) {
             res.redirect('/');
         }

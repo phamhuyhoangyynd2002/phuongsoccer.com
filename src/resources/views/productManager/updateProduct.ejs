@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title%></title>
+    <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+    <main>
+      <form method="POST" action="/productmanager/updateproduct" enctype="multipart/form-data">
+        <div class="submitproduct">
+            <div class="title ms-3 mt-5 pb-sm-3 border-bottom">
+                <h3 class="mb-2">Cập nhật sản phẩm</h3>
+                <span class="text-secondary">Khi bạn thêm sản phẩm ở đây nó sẽ được tải lên website của bạn.</span>
+            </div>
+            <div class="d-flex">
+                <div class="info-product m-5">
+                    <div class="mb-4">
+                      <label class="form-label">Nhập code giày</label>
+                      <input type="text" name="code">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg mb-5 ms-5">Submit</button>
+        </div>
+      </form>
+    </main>
+    <footer>
+        <%- include('../partials/footer') -%>
+    </footer>
+
+    <!-- javascript -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

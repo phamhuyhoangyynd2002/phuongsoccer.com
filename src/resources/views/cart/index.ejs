@@ -17,7 +17,6 @@
         <%- include('../partials/header') -%>
     </header>
     <main>
-      <form method="POST" action="/productmanager/submitproduct" enctype="multipart/form-data">
         <div class="container mt-4">
             <h1 class="text-center">Giỏ hàng</h1>
             <div class="row">
@@ -49,20 +48,17 @@
                                       <div class="text-decoration-line-through">Giá gốc: <%- cart._price %>vnđ</div>
                                     </td>
                                     <td>
-                                      <div class="uRjDya">
-                                        <button class="page-item zpjHdR zpjHdR-" >
-                                          <span aria-hidden="true">&laquo;</span>
-                                        </button>
-                                        <p hidden class="zpjHdRpVY1dQ"><%- cart.amount %></p>
-                                        <input class="page-item zpjHdR pVY1dQ" type="number" name= <%- cart.id %> value= <%- cart.amount %>>
-                                        <button class="page-item zpjHdR zpjHdR+">
-                                          <span aria-hidden="true" >&raquo;</span>
-                                        </button>
-                                      </div>
-                                          
+                                      <p class="zpjHdRpVY1dQ"><%- cart.amount %></p>
                                     </td>
                                     <td><%- cart.price * cart.amount %> VND</td>
-                                    <td><%- cart.price %></td>
+                                    <td>
+                                      <a href="/orders/add/<%- cart.id %>">
+                                        <button type="button" class="btn btn-success me-5" id="add-product-btn">Mua</button>
+                                      </a>
+                                      <a  href="/cart/delete/<%- cart.id %>">
+                                        <button type="button" class="btn btn-warning" id="remove-product-btn">Xóa</button>
+                                      </a>
+                                    </td>
                                 </tr>
                             <% }) %>
                         </tbody>
@@ -73,7 +69,6 @@
               </div>
             </div>
           </div>
-      </form>
     </main>
 
     <footer>

@@ -4,9 +4,9 @@ const productRouter = require('./product');
 const productManagerRouter = require('./productManager');
 /*
 const managementStaffRouter = require('./managementStaff');
-const warehouseStaffRouter = require('./warehouseStaff');
 const customerCareStaffRouter = require('./customerCareStaff');
 */
+const warehouseStaffRouter = require('./warehouseStaff');
 const cartRouter = require('./cart');
 const newsRouter = require('./news');
 const ordersRouter = require('./orders');
@@ -22,9 +22,9 @@ function route(app){
     app.use('/product',productRouter);
     app.use('/account',accountRouter);
     app.use('/productmanager',productManagerRouter);
+    app.use('/warehousestaff',warehouseStaffRouter);
     /*
     app.use('/managementstaff',managementStaffRouter);
-    app.use('/warehousestaff',warehouseStaffRouter);
     app.use('/customercarestaff',customerCareStaffRouter);
     */
     app.use('/cart',cartRouter);
@@ -35,7 +35,7 @@ function route(app){
     app.use('/producer',producerRouter);
     app.use('/tag',tagRouter);
     app.use('/',homeRouter);
-    app.use('/ordersProcess', ordersProcessRouter);
+    app.use('/ordersprocess', ordersProcessRouter);
 }
 
 module.exports = route;

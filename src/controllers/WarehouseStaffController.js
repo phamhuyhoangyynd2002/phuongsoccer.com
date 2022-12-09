@@ -2,14 +2,14 @@ const { users, products, products_details} = require('../connection_database/ind
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
-class productManagerController {
+class warehouseStaffController {
     // [GET]
-    productList(req, res, next) {
+    warehouse(req, res, next) {
         try {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if(user.id_role != 1) productList(req, res, user);  
+            if(user.id_role != 1) warehouse(req, res, user);  
             else res.redirect('/');
             }  
             else {
@@ -21,12 +21,12 @@ class productManagerController {
     }
 
     // [POST]
-    PostProductList(req, res, next) {
+    PostWarehouse(req, res, next) {
         try {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if(user.id_role == 2 || user.id_role == 5) postProductList(req, res, user);  
+            if(user.id_role == 2 || user.id_role == 5) postWarehouse(req, res, user);  
             else res.redirect('/');
             }  
             else {
@@ -38,12 +38,13 @@ class productManagerController {
     }
 }
 
-module.exports = new productManagerController;
+module.exports = new warehouseStaffController;
 
-async function productList(req, res, user) {
+async function warehouse(req, res, user) {
     try {
     let allproducts = await products.findAll();
     //console.log(product);
+    let numRow = 0;
     let product = [];
     for (let i in allproducts)
     {
@@ -52,6 +53,7 @@ async function productList(req, res, user) {
         for (let j in product_detail)
         {
             let p_d = {
+                id: numRow,
                 product_Image: p.product_Image,
                 name: p.name,
                 code: p.code,
@@ -59,12 +61,13 @@ async function productList(req, res, user) {
                 amount: product_detail[j].amount,
                 price: product_detail[j].price
               };
+            numRow++;
             product.push(p_d);
 
         }
         
     }
-    res.render('productManager/productlist', { 
+    res.render('warehouseStaff/index', { 
         title: 'products', 
         user,
         product
@@ -75,8 +78,9 @@ async function productList(req, res, user) {
     }
 }
 
-async function postProductList(req, res, user) {
+async function postWarehouse(req, res, user) {
     try {
+        let n=1;
     console.log(req.body);
     res.redirect('/');
     }

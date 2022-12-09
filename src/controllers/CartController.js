@@ -12,9 +12,23 @@ class cartController {
             index(req, res, user);  
             }  
             else {
-                let user = {id: 0, name: null, id_role: 1, picture: ""};
-                index(req, res, user); 
-                //res.redirect('/');
+                res.redirect('/');
+            }   
+        } catch(err) {
+            console.log(err);
+            res.redirect('/');
+        }
+    }
+
+    async deletecart(req, res, next) {
+        try {
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            deletecart(req, res, user);  
+            }  
+            else {
+                res.redirect('/');
             }   
         } catch(err) {
             console.log(err);
@@ -37,6 +51,7 @@ async function index(req, res, user) {
         for (let i in cartdb) {
             const product_details = await products_details.findByPk(cartdb[i].id_Products_details);
             const product = await products.findByPk(product_details.id_products);
+            cartdb[i].stt = i;
             cartdb[i].nane_product = product.name;
             cartdb[i].description = product.description;
             cartdb[i].product_Image = product.product_Image;
@@ -54,6 +69,22 @@ async function index(req, res, user) {
             user,
             cartdb
           });
+    }
+    catch(err) {
+        console.log(err);
+        res.redirect('/cart');
+    }
+
+}
+
+async function deletecart(req, res, user) {
+    try {
+        let id_cart = req.params.slug; 
+        const cartdb = await cart.findByPk(id_cart);
+        if(cartdb.id_users == user.id)  {
+            await cartdb.destroy();
+        }
+        res.redirect('/cart');
     }
     catch(err) {
         console.log(err);

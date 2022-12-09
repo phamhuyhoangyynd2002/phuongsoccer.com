@@ -3,31 +3,240 @@ const jwt = require('jsonwebtoken');
 
 
 class tagController {
-    // [GET] /:slug
-    async show_tag(req, res, next) {
+
+    async indexx(req, res, next) {
+        res.redirect('/producer')
+    }
+
+    async index(req, res, next) {
         try {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            show_tag(req, res, user);  
+            index(req, res, user);  
             }  
             else {
                 let user = {id: 0, name: null, id_role: 1, picture: ""};
-                show_tag(req, res, user);    
+                imdex(req, res, user);    
             }   
         } catch(err) {
                 let user = {id: 0, name: null, id_role: 1, picture: ""};
-                show_tag(req, res, user);
+                index(req, res, user);
+        }
+    }
+
+    // [GET] /:slug
+    async show_producer(req, res, next) {
+        try {
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            show_producer(req, res, user);  
+            }  
+            else {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                show_producer(req, res, user);    
+            }   
+        } catch(err) {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                show_producer(req, res, user);
+        }
+    }
+
+    async nameaz(req, res, next) {
+        try {
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            nameaz(req, res, user);  
+            }  
+            else {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                nameaz(req, res, user);    
+            }   
+        } catch(err) {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                nameaz(req, res, user);
+        }
+    }
+
+    async nameza(req, res, next) {
+        try {
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            nameza(req, res, user);  
+            }  
+            else {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                nameza(req, res, user);    
+            }   
+        } catch(err) {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                nameza(req, res, user);
+        }
+    }
+
+    async price_min(req, res, next) {
+        try {
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            price_min(req, res, user);  
+            }  
+            else {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                price_min(req, res, user);    
+            }   
+        } catch(err) {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                price_min(req, res, user);
+        }
+    }
+
+    async price_max(req, res, next) {
+        try {
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            price_max(req, res, user);  
+            }  
+            else {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                price_max(req, res, user);    
+            }   
+        } catch(err) {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                price_max(req, res, user);
         }
     }
 }
 
 module.exports = new tagController;
 
-async function show_tag(req, res, user) {
+async function index(req, res, user) {
     try {
-    let id_tag = req.params.slug;
+    let product = await products.findAll();
+    res.render('products/index', { 
+        title: 'products', 
+        user,
+        product
+      });
+    }
+    catch(err) {
+        res.redirect('/');
+    }
+}
+
+async function show_producer(req, res, user) {
+    try {
+    let id_tag = req.params.slug; 
     let product = await products.findAll({ where: { id_tag: id_tag } });
+    res.render('products/index', { 
+        title: 'products', 
+        user,
+        product
+      });
+    }
+    catch(err) {
+        res.redirect('/');
+    }
+}
+
+async function nameaz(req, res, user) {
+    try {
+    let id_tag = req.params.slug; 
+    let product;
+    if(id_tag != null){
+        product = await products.findAll({ 
+            where: { id_tag: id_tag },
+            order: [['name', 'ASC']],
+        });
+    }
+    else {
+        product = await products.findAll({ 
+            order: [['name', 'ASC']],
+        });
+    }
+    
+    res.render('products/index', { 
+        title: 'products', 
+        user,
+        product
+      });
+    }
+    catch(err) {
+        res.redirect('/');
+    }
+}
+
+async function nameza(req, res, user) {
+    try {
+    let id_tag = req.params.slug; 
+    let product;
+    if(id_tag != null){
+        product = await products.findAll({ 
+            where: { id_tag: id_tag },
+            order: [['name', 'DESC']],
+        });
+    }
+    else {
+        product = await products.findAll({ 
+            order: [['name', 'DESC']],
+        });
+    }
+    res.render('products/index', { 
+        title: 'products', 
+        user,
+        product
+      });
+    }
+    catch(err) {
+        res.redirect('/');
+    }
+}
+
+async function price_min(req, res, user) {
+    try {
+    let id_tag = req.params.slug; 
+    let product;
+    if(id_tag != null){
+        product = await products.findAll({ 
+            where: { id_tag: id_tag },
+            order: [['discount_min', 'ASC']],
+        });
+    }
+    else {
+        product = await products.findAll({ 
+            order: [['discount_min', 'ASC']],
+        });
+    }
+    res.render('products/index', { 
+        title: 'products', 
+        user,
+        product
+      });
+    }
+    catch(err) {
+        res.redirect('/');
+    }
+}
+
+async function price_max(req, res, user) {
+    try {
+    let id_tag = req.params.slug; 
+    let product;
+    if(id_tag != null){
+        product = await products.findAll({ 
+            where: { id_tag: id_tag },
+            order: [['discount_max', 'DESC']],
+        });
+    }
+    else {
+        product = await products.findAll({ 
+            order: [['discount_max', 'DESC']],
+        });
+    }
     res.render('products/index', { 
         title: 'products', 
         user,
