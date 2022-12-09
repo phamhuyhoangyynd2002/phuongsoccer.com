@@ -7,112 +7,54 @@
     <title><%= locals.title%></title>
     <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/responsive.css">
 </head>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
-* {box-sizing: border-box}
-body {
-   background-color: white;
-}
-h1, label {
-   color: rgba(253,220,89,255)
-}
-
-h1 {
-    text-align: center;
-    margin: 0px auto;
-    display: block;
-}
-
-input[type=text], input[type=password], input[type=email] {
-   width: 100%;
-   padding: 15px;
-   margin: 5px 0 22px 0;
-   display: inline-block;
-   border: none;
-   width:100%;
-   resize: vertical;
-   padding:15px;
-   border-radius:15px;
-   border:0;
-   box-shadow:4px 4px 10px rgba(33,30,61,255);
-}
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
-   outline: none;
-}
-hr {
-   border: 1px solid rgba(33,30,61,255);
-   margin-bottom: 25px;
-}
-button {
-   background-color: rgba(33,30,61,255);
-   color: white;
-   padding: 14px 20px;
-   margin: 8px 0;
-   border: none;
-   cursor: pointer;
-   width: 100%;
-   opacity: 0.9;
-}
-button:hover {
-   opacity:1;
-}
-.cancelbtn {
-   padding: 14px 20px;
-   background-color: rgba(33,30,61,255);
-}
-.signupbtn {
-   float: left;
-   width: 100%;
-   border-radius:15px;
-   border:0;
-   box-shadow:4px 4px 10px rgba(33,30,61,255);
-}
-.container {
-   padding: 16px;
-}
-.clearfix::after {
-   content: "";
-   clear: both;
-   display: table;
-}
-.loginRe {
-   display: flex;
-}
-</style>
 <body>
     <header>
         <%- include('../partials/header') -%>
     </header>
     <main>
 		<form action="/account/register" method="POST">
-			<div class="container">
-			<h1>Đăng ký tài khoản</h1>
+			<div class="container min-vh-100">
+            <h1 class="mt-5 mb-3 text-center">Đăng ký tài khoản</h1>
 			<hr>
-			<label for="name"><b>Tên của bạn</b></label>
-				<input type="text" placeholder="Nhập tên" name="name" required>
-			<label for="name"><b>Số điện thoại</b></label>
-				<input type="text" placeholder="Nhập số điện thoại" name="phoneNumber" required>
-			<label for="email"><b>Email</b></label>
-				<input type="email" id="email" placeholder="Nhập Email" pattern=".+@gmail.com" name="email" required>
-			<label for="psw"><b>Mật Khẩu</b></label>
-				<input type="password" placeholder="Nhập Mật Khẩu" name="password" required>
-			<label for="picture"><b>Ảnh</b></label>
-				<input type="text" placeholder="Nhập Ảnh" name="avatar" required>
-         <% if (canRegister == false) { %>
-               <label for="" style="color: red"><p>Email đã tồn tại</p></label>
-         <% } %>
-			 	<div class="clearfix">
-					<button type="submit" class="signupbtn">Đăng ký</button>
+			
+            <div class="section" style="margin-left:300px; margin-right:200px">
+                <div class="form-group mt-5 mb-3">
+                    <label for="name" class="">Tên của bạn</label> <br>
+                    <input type="text" class="form-control-lg w-100" placeholder="Nhập tên" name="name" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="phoneNumber">Số điện thoại</label>
+                    <input type="text" class="form-control-lg w-100" placeholder="Nhập số điện thoại" name="phoneNumber" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control-lg w-100" placeholder="Nhập Email" pattern=".+@gmail.com" name="email" required>                  
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="password">Mật Khẩu</label>
+				    <input type="password" class="form-control-lg w-100" placeholder="Nhập Mật Khẩu" name="password" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="avatar">Ảnh đại diện</label>
+                    <input type="file" placeholder="Nhập Ảnh" name="avatar" accept="image/*" required>
+                </div>
+			    
+                <% if (canRegister == false) { %>
+                <label for="" style="color: red"><p>Email đã tồn tại</p></label>
+                <% } %>
+			 	<div class="clearfix mt-5">
+					<button type="submit" class="signupbtn btn-lg btn-primary mb-5">Đăng ký</button>
 				</div>
-            <div class="loginRe">
-               <p>Đã có tài khoản?</p><a href="/account/login">Đăng nhập</a>
-            </div>   
-         </div>
+                <div class="loginRe float-end">
+                    <span>Đã có tài khoản?</span><a href="/account/login"> Đăng nhập</a>
+                </div>   
+            </div>
 		  </form>
     </main>
     <footer>
@@ -121,7 +63,5 @@ button:hover {
 
     <!-- javascript -->
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/js/owl.carousel.min.js"></script>
 </body>
 </html>

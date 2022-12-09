@@ -7,107 +7,39 @@
     <title><%= locals.title%></title>
     <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/responsive.css">
 </head>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
-  * {box-sizing: border-box}
-  body {
-     background-color: white;
-  }
-  h1, label {
-     color: rgba(253,220,89,255)
-  }
-  
-  h1 {
-      text-align: center;
-      margin: 0px auto;
-      display: block;
-  }
-  
-  input[type=text], input[type=password], input[type=email] {
-     width: 100%;
-     padding: 15px;
-     margin: 5px 0 22px 0;
-     display: inline-block;
-     border: none;
-     width:100%;
-     resize: vertical;
-     padding:15px;
-     border-radius:15px;
-     border:0;
-     box-shadow:4px 4px 10px rgba(33,30,61,255);
-  }
-  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
-     outline: none;
-  }
-  hr {
-     border: 1px solid rgba(33,30,61,255);
-     margin-bottom: 25px;
-  }
-  button {
-     background-color: rgba(33,30,61,255);
-     color: white;
-     padding: 14px 20px;
-     margin: 8px 0;
-     border: none;
-     cursor: pointer;
-     width: 100%;
-     opacity: 0.9;
-  }
-  button:hover {
-     opacity:1;
-  }
-  .cancelbtn {
-     padding: 14px 20px;
-     background-color: rgba(33,30,61,255);
-  }
-  .signupbtn {
-     float: left;
-     width: 100%;
-     border-radius:15px;
-     border:0;
-     box-shadow:4px 4px 10px rgba(33,30,61,255);
-  }
-  .container {
-     padding: 16px;
-  }
-  .clearfix::after {
-     content: "";
-     clear: both;
-     display: table;
-  }
-  .registerRe {
-   display: flex;
-  }
-  </style>
 <body>
     <header>
         <%- include('../partials/header') -%>
     </header>
     <main>
       <form action="/account/login" method="POST">
-        <div class="container">
-        <h1>Đăng nhập</h1>
-        <hr>
-        <label for="email"><b>Email</b></label>
-          <input type="email" id="email" placeholder="Nhập Email" pattern=".+@gmail.com" name="email" required>
-        <label for="psw"><b>Mật Khẩu</b></label>
-          <input type="password" placeholder="Nhập Mật Khẩu" name="password" required>
-         <% if (canLogin == false) { %>
-            <label for="" style="color:red">Sai email hoặc mật khẩu</label>
-         <% } %> 
-            <div class="clearfix">
-               <button type="submit" class="signupbtn">Đăng nhập</button>
+         <div class="container min-vh-100">
+            <h1 class="mt-5 mb-3 text-center">Đăng nhập</h1>
+            <hr>
+            <div class="section" style="margin-left:300px; margin-right:200px">
+               <div class="form-group mt-5 mb-3">
+                  <label for="email" class="">Email</label> <br>
+                  <input type="email" id="email" class="form-control-lg w-100" placeholder="Nhập Email" pattern=".+@gmail.com" name="email" required>
+               </div>
+   
+               <div class="form-group mb-3">
+                  <label for="password">Password</label> <br>
+                  <input type="password" class="form-control-lg w-100" placeholder="Nhập Mật Khẩu" name="password" required>
+               </div>
+   
+               <% if (canLogin == false) { %>
+                  <label for="" style="color:red">Sai email hoặc mật khẩu</label>
+               <% } %> 
+               <div class="clearfix mt-5">
+                  <button type="submit" class="signupbtn btn-lg btn-primary mb-5">Đăng nhập</button>
+               </div>
+               <div class="registerRe float-end">
+                  <span>Chưa có tài khoản?</span><a href="/account/register"> Đăng ký</a>
+               </div>
             </div>
-            <div class="registerRe">
-               <p>Chưa có tài khoản?</p><a href="/account/register">Đăng ký</a>
-            </div>
-          </div>
-        </div>
+         </div>
         </form>
     </main>
     <footer>
@@ -116,7 +48,5 @@
 
     <!-- javascript -->
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/js/owl.carousel.min.js"></script>
 </body>
 </html>

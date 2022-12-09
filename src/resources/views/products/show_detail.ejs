@@ -18,9 +18,8 @@
         <%- include('../partials/header') -%>
     </header>
     <main>
-        <h3 class="title text-center text-primary mt-4">Sản phẩm <%- product.name %></h3>
         <div class="container d-flex my-5">
-            <div class="img-section">
+            <div class="img-section border-start">
                 <% imgdb.forEach(function(img, index) { %>
                     <div class="img-item my-3">
                         <img src="/img/<%- img.image_path %>" class="" alt="">
@@ -31,13 +30,13 @@
             <div class="content-section">
                 <h4 class="text-dark mt-3 mb-4"><%- product.name %></h4>
                 <p class="producer-code text-secondary mb-3">Mã: <%- product.code %></p>
-                <h5 class="min-price mb-3">Khuyến mãi: <%- product.discount_min %>vnđ</h5>
+                <h5 class="min-price mb-3" id="out-price">Khuyến mãi: <%- product.discount_min %>vnđ</h5>
                 <h6 class="text-decoration-line-through mb-4">Giá gốc: <%- product.discount_max %>vnđ</h6>
                 <div class="select-size mb-4">
-                    <select class="form-select w-25 me-5" aria-label="Default select example">
+                    <select class="form-select w-25 me-5" id="input-size">
                         <% products_detail.forEach(function(pd, index) { %>
-                            <option value="<%- pd.size %>"><%- pd.size %></option>
-                            <% }) %>
+                            <option value="<%- pd.price %>"><%- pd.size %></option>
+                        <% }) %>
                     </select>
                 </div>
 
@@ -64,7 +63,7 @@
             </div>
         </div>
 
-        <div class="container my-5">
+        <div class="container my-5 border-top border-bottom">
             <div class="section-title my-5 text-center">
                 <a href=""><h2>Sản phẩm bán chạy</h2></a>
                 <p class="my-3">Các sản phẩm bán chạy tại cửa hàng</p>
@@ -96,7 +95,7 @@
     <footer>
         <%- include('../partials/footer') -%>
     </footer>
-
+    <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script>
@@ -126,6 +125,16 @@
                 }
             }
         })
+    </script>
+    <script>
+        var isize = document.getElementById('input-size');
+
+        function changePrice() {
+            var oprice = isize.value;
+            document.getElementById('out-price').innerHTML="Khuyến mãi: " + oprice + "vnđ";
+        }
+
+        isize.onchange = changePrice;
     </script>
 </body>
 </html>
