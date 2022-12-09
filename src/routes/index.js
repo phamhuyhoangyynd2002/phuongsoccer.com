@@ -14,6 +14,7 @@ const searchRouter = require('./search');
 const contactRouter = require('./contact');
 const producerRouter = require('./producer');
 const tagRouter = require('./tag');
+const footerRouter = require('./footer');
 const ordersProcessRouter = require('./ordersProcess');
 
 function route(app){
@@ -23,6 +24,7 @@ function route(app){
     app.use('/account',accountRouter);
     app.use('/productmanager',productManagerRouter);
     app.use('/warehousestaff',warehouseStaffRouter);
+    app.use('/footer',footerRouter);
     /*
     app.use('/managementstaff',managementStaffRouter);
     app.use('/customercarestaff',customerCareStaffRouter);
