@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/responsive.css">
   <link rel="stylesheet" href="/css/productStyle.css">
 </head>
 
@@ -62,28 +61,29 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>
+                      <td id="name-product">
                         <div class="img-new img-cart"><img src="/img/<%- cartdb.product_Image %>" loading="lazy"
                             class="img-new img-cart" style="width: 75px"></div>
                         <p><%- cartdb.nane_product %></p>
-                        <input hidden style="width: 75px" type="number" id=<%-"'id_Products_details" + cartdb.stt + "'" %> value= <%- cartdb.id_Products_details %>>
+                        <input hidden style="width: 75px" type="number"  value= "<%- cartdb.id_Products_details %>" id=<%-"'id_Products_details" + cartdb.stt + "'" %>>
                       </td>
-                      <td>
-                        <div class="min-price_" >Khuyến mãi: <%- cartdb.price %>vnđ</div>
-                        <div class="text-decoration-line-through">Giá gốc: <%- cartdb._price %>vnđ</div>
-                        <input hidden style="width: 75px" type="number" id = <%-"'_price" + cartdb.stt + "'" %>  value= <%- cartdb.price %>>
+                      <td id="item-price">
+                        <div class="min-price_"><%- cartdb.price %>vnđ</div>
+                        <input hidden style="width: 75px" type="number" value= "<%-cartdb.price %>" id = <%-"'_price" + cartdb.stt + "'" %>>
                       </td>
-                      <td>
-                        <input style="width: 75px" type="number" id = <%-"'amount" + cartdb.stt + "'" %> onkeydown = <%-"'functionamount" + cartdb.stt + "()'" %> value= <%- cartdb.amount %>>
+                      <td id="quanlity">
+                        <input style="width: 75px" type="number" min="1" onchange="functionAmount()" value="<%- cartdb.amount %>" id =<%-"'amount" + cartdb.stt + "'" %>>
                       </td>
-                      <td id = <%-"'_price" + cartdb.stt + "'" %> ><%- cartdb.price * cartdb.amount %> vnđ</td>
+                      <td id="payment">
+                        <p id = <%-"'total-price" + cartdb.stt + "'" %></p><%- cartdb.price * cartdb.amount %> vnđ</p>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </li>
               <li class="list-group-item d-flex justify-content-between">
                 <span>Tổng thành tiền</span>
-                <h5><%- Totalmoney %> vnđ</h5>
+                <h5 class="total-money"><%- Totalmoney %> vnđ</h5>
               </li>
             </ul>
 
@@ -140,12 +140,14 @@
   <!-- Custom script - Các file js do mình tự viết -->
   <script src="../assets/js/app.js"></script>
   <script>
-    function functionamount1() {
-      const _price = document.getElementById('_price1');
-      const price =  document.querySelector('#price1').value;
-      let amount = document.querySelector('#amount1').value;
-      let num = price * amount
-      _price.textContent = num.toString(10);
+    function functionAmount() {
+      var itemPrice = document.querySelector('#item-price input').value;
+      var quanlity = document.querySelector('#quanlity input').value;
+
+      var totalMoney = itemPrice * quanlity;
+      console.log(totalMoney);
+      document.querySelector('#payment p').innerHTML = totalMoney + " vnđ";
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
     }
   </script>
 </body>

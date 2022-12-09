@@ -76,76 +76,78 @@
         <%- include('../partials/header') -%>
     </header>
     <main>
-        <table class="table table-hover" style="color: blue;">
-            <thead>
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Tên khách hàng</th>
-                <th scope="col">Số điện thoại</th>
-                <th scope="col">Địa chỉ</th>
-                <th scope="col">Sản phẩm</th>
-                <th scope="col">Size</th>
-                <th scope="col">Số lượng</th>
-                <th scope="col">Tổng thanh toán</th>
-                <th scope="col">Trạng thái</th>
-                <th scope="col"> 
-                    <% if (orders[0] != undefined) { %>
-                        <% if (orders[0].id_status == 1) { %>
-                            Xác nhận
-                        <% } else if (orders[0].id_status == 2) { %>
-                            Xử lý
-                        <% } else if (orders[0].id_status == 3) { %>
-                            
+        <div class="container min-vh-100">
+            <table class="table table-hover" style="color: blue;">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Tên khách hàng</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Sản phẩm</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Tổng thanh toán</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col"> 
+                        <% if (orders[0] != undefined) { %>
+                            <% if (orders[0].id_status == 1) { %>
+                                Xác nhận
+                            <% } else if (orders[0].id_status == 2) { %>
+                                Xử lý
+                            <% } else if (orders[0].id_status == 3) { %>
+                                
+                            <% } %>
                         <% } %>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for (var i = 0; i < orders.length; i++) { %>
+                        <tr>
+                            <th scope="row"><%= orders[i].id %></th>
+                            <td><%= orders[i].buyer_name %></td>
+                            <td><%= orders[i].phone_Number %></td>
+                            <td><%= orders[i].address %></td>
+                            <td><% if (orders[i].orders_details[0] != undefined) { %>
+                                <% for (var k = 0; k < orders[i].orders_details.length; k++) { %>
+                                       <%= orders[i].orders_details[k].name %>
+                                       <br>
+                                    <% } %>
+                                <% } %>
+                            </td>
+                            <td><% if (orders[i].orders_details[0] != undefined) { %>
+                                <% for (var k = 0; k < orders[i].orders_details.length; k++) { %>
+                                       <%= orders[i].orders_details[k].size %>
+                                       <br>
+                               <% } %>
+                            <% } %>
+                            </td>                  
+                            <td><% if (orders[i].orders_details[0] != undefined) { %>
+                                     <% for (var k = 0; k < orders[i].orders_details.length; k++) { %>
+                                            <%= orders[i].orders_details[k].amount %>
+                                            <br>
+                                    <% } %>
+                            <% } %>
+                            </td>
+                            <td><%= orders[i].cash_payment %></td>
+                            <td><% if(orders[i].id_status == 1) { %>
+                                    chưa xác nhận
+                                <% } else if (orders[i].id_status == 2) {%>
+                                    đang xử lý    
+                                <% } else { %>
+                                    đã xuất kho    
+                                <% } %>
+                            </td>
+                            <td> <% if (orders[i].id_status != 3) { %>
+                                    <button class="submit snip1582" id="<%=orders[i].id%>">Submit</button>
+                                <% } %>
+                            </td>
+                        </tr>
                     <% } %>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-                <% for (var i = 0; i < orders.length; i++) { %>
-                    <tr>
-                        <th scope="row"><%= orders[i].id %></th>
-                        <td><%= orders[i].buyer_name %></td>
-                        <td><%= orders[i].phone_Number %></td>
-                        <td><%= orders[i].address %></td>
-                        <td><% if (orders[i].orders_details[0] != undefined) { %>
-                            <% for (var k = 0; k < orders[i].orders_details.length; k++) { %>
-                                   <%= orders[i].orders_details[k].name %>
-                                   <br>
-                                <% } %>
-                            <% } %>
-                        </td>
-                        <td><% if (orders[i].orders_details[0] != undefined) { %>
-                            <% for (var k = 0; k < orders[i].orders_details.length; k++) { %>
-                                   <%= orders[i].orders_details[k].size %>
-                                   <br>
-                           <% } %>
-                        <% } %>
-                        </td>                  
-                        <td><% if (orders[i].orders_details[0] != undefined) { %>
-                                 <% for (var k = 0; k < orders[i].orders_details.length; k++) { %>
-                                        <%= orders[i].orders_details[k].amount %>
-                                        <br>
-                                <% } %>
-                        <% } %>
-                        </td>
-                        <td><%= orders[i].cash_payment %></td>
-                        <td><% if(orders[i].id_status == 1) { %>
-                                chưa xác nhận
-                            <% } else if (orders[i].id_status == 2) {%>
-                                đang xử lý    
-                            <% } else { %>
-                                đã xuất kho    
-                            <% } %>
-                        </td>
-                        <td> <% if (orders[i].id_status != 3) { %>
-                                <button class="submit snip1582" id="<%=orders[i].id%>">Submit</button>
-                            <% } %>
-                        </td>
-                    </tr>
-                <% } %>
-                
-          </table>
+                    
+            </table>
+        </div>
     </main>
     <footer>
         <%- include('../partials/footer') -%>
