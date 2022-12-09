@@ -54,7 +54,7 @@ async function index(req, res, user) {
     let newdb = await news.findAll(); 
     console.log(newdb);
     res.render('news/index', { 
-        title: 'products', 
+        title: 'News', 
         user,
         newdb
       });
