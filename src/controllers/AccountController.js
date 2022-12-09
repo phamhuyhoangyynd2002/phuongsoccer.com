@@ -22,10 +22,71 @@ class accountController {
         res.render('account/register',{user, canRegister: undefined});
     }
 
+    async profile(req, res, next) {
+        if(req.session.token == null) {
+            res.redirect('/');
+        } else {
+        var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+        var user = await users.findOne({
+            where: {
+                id: token.id
+            }
+        });
+        res.render('account/profile', {user: user, wrong_password: undefined, passwordMatch: undefined});
+        }
+    }
+
+    async postProfile(req, res, next) {
+        if(req.session.token == null) {
+            res.redirect('/');
+        } else {
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            var user = await users.findOne({
+                where: {
+                    id: token.id
+                }
+            });
+            const {name, phone_Number, email, new_password, re_new_password, current_password} = req.body;
+            if (user.password != current_password) {
+                res.render('account/profile', {user: user, wrong_password: true, passwordMatch: true});
+            } else {
+                if (name != null) {
+                    await users.upsert({
+                        id: token.id,
+                        name: name,
+                    });
+                }
+                if (email != null) {
+                    await users.upsert({
+                        id: token.id,
+                        email: email,
+                    });
+                }
+                if (phone_Number != null) {
+                    await users.upsert({
+                        id: token.id,
+                        phone_Number: phone_Number,
+                    });
+                }
+                if (new_password != null) {
+                    if (new_password == re_new_password) {
+                        await users.upsert({
+                            id: token.id,
+                            password: new_password,
+                        });
+                        res.redirect('/account/profile');
+                    } else if(new_password != re_new_password) {
+                        res.render('account/profile', {user: user, wrong_password: false, passwordMatch: false});
+                    }
+                }
+            }        
+        }
+    }
+
     // [POST]
     async PostLogin(req, res, next) {
         const { email, password } = req.body;
-        const user = await users.findOne({ where: { email } });
+        const user = await users.findOne({ where: { email,password } });
         if(user !=  null){
             var token = await jwt.sign({
                 id: user.id,
@@ -38,7 +99,7 @@ class accountController {
         }
         else{
             const user = {id: 0, name: null, id_role: 1, picture: ""};
-            res.render('/account/login', {user, canLogin: false});
+            res.render('account/login', {user, canLogin: false});
         }
     }
 
