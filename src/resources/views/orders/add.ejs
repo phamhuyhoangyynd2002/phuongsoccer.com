@@ -50,32 +50,40 @@
               <span class="badge badge-secondary badge-pill">2</span>
             </h4>
             <ul class="list-group mb-3">
-              <!--
-                <% cartdb.forEach(function(cart, index) { %>
-              -->
-              
-                <tr>
-                    <td>
-                        <div class="img-new img-cart" ><img src="/img/<%- cart.product_Image %>" loading="lazy" class="img-new img-cart" style="width: 100px"></div>
-                        <p><%- cart.nane_product %></p>
-                    </td>
-                    <td>
-                      <div class="min-price">Khuyến mãi: <%- cart.price %>vnđ</div> 
-                      <div class="text-decoration-line-through">Giá gốc: <%- cart._price %>vnđ</div>
-                    </td>
-                    <td>
-                      <p class="zpjHdRpVY1dQ"><%- cart.amount %></p>
-                    </td>
-                    <td><%- cart.price * cart.amount %> VND</td>
-                </tr>
-              <!--
-                <% }) %>
-              -->
-            
-
+              <li>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Sản Phẩm</th>
+                      <th scope="col">Đơn Giá</th>
+                      <th scope="col">Số Lượng</th>
+                      <th scope="col">Số Tiền</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="img-new img-cart"><img src="/img/<%- cartdb.product_Image %>" loading="lazy"
+                            class="img-new img-cart" style="width: 75px"></div>
+                        <p><%- cartdb.nane_product %></p>
+                        <input hidden style="width: 75px" type="number" id=<%-"'id_Products_details" + cartdb.stt + "'" %> value= <%- cartdb.id_Products_details %>>
+                      </td>
+                      <td>
+                        <div class="min-price_" >Khuyến mãi: <%- cartdb.price %>vnđ</div>
+                        <div class="text-decoration-line-through">Giá gốc: <%- cartdb._price %>vnđ</div>
+                        <input hidden style="width: 75px" type="number" id = <%-"'_price" + cartdb.stt + "'" %>  value= <%- cartdb.price %>>
+                      </td>
+                      <td>
+                        <input style="width: 75px" type="number" id = <%-"'amount" + cartdb.stt + "'" %> onkeydown = <%-"'functionamount" + cartdb.stt + "()'" %> value= <%- cartdb.amount %>>
+                      </td>
+                      <td id = <%-"'_price" + cartdb.stt + "'" %> ><%- cartdb.price * cartdb.amount %> vnđ</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </li>
               <li class="list-group-item d-flex justify-content-between">
                 <span>Tổng thành tiền</span>
-                
+                <h5><%- Totalmoney %> vnđ</h5>
               </li>
             </ul>
 
@@ -87,6 +95,13 @@
                 </button>
               </div>
             </div>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+            <h1></h1>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" name="btnDatHang">
+              Đặt hàng
+            </button>
           </div>
           <div class="col-md-6 order-md-1">
             <h4 class="mb-3">Thông tin khách hàng</h4>
@@ -104,21 +119,7 @@
                 <label for="kh_dienthoai">Điện thoại</label>
                 <input type="text" class="form-control" name="kh_dienthoai" id="kh_dienthoai" required />
               </div>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <h1></h1>
-              <button class="btn btn-primary btn-lg btn-block" type="submit" name="btnDatHang">
-                Đặt hàng
-              </button>
+              
             </div>
           </div>
       </form>
@@ -138,6 +139,15 @@
 
   <!-- Custom script - Các file js do mình tự viết -->
   <script src="../assets/js/app.js"></script>
+  <script>
+    function functionamount1() {
+      const _price = document.getElementById('_price1');
+      const price =  document.querySelector('#price1').value;
+      let amount = document.querySelector('#amount1').value;
+      let num = price * amount
+      _price.textContent = num.toString(10);
+    }
+  </script>
 </body>
 
 </html>

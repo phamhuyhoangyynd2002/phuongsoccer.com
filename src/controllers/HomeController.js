@@ -40,8 +40,8 @@ async function home(req, res, user) {
         });
         let newdb = await news.findAll({
             order: [['createdAt', 'DESC']],
-            limit: 3,
-        });
+            limit: 4,
+        }); 
         res.render('Home/home', { 
             title: 'Home', 
             productsNew, 
