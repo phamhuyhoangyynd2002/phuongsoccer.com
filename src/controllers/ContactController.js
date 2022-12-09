@@ -9,14 +9,14 @@ class contactController {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            res.render('contact', { 
+            res.render('contact/index', { 
                 title: 'Liên hệ', 
                 user
               }); 
             }  
             else {
                 let user = {id: 0, name: null, id_role: 1, picture: ""};
-                res.render('contact', { 
+                res.render('contact/index', { 
                     title: 'Liên hệ', 
                     user
                   });
@@ -24,7 +24,7 @@ class contactController {
         } catch(err) {
             console.log(err);
             let user = {id: 0, name: null, id_role: 1, picture: ""};
-            res.render('contact', { 
+            res.render('contact/index', { 
                 title: 'Liên hệ', 
                 user
               });
