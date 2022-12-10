@@ -37,36 +37,48 @@ class ordersController {
     }
 
     // [POST] /add
-    async add(req, res, next) {
+    async postneworder(req, res, next) {
         try {
             if (req.session.token != null) {
                 var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
                 let user = { id: token.id, name: token.name, id_role: token.id_role, picture: token.picture };
-                let id_cart = req.params.slug;
-                const cartdb = await cart.findByPk(id_cart);
-                if (cartdb.id_users == user.id) {
-                    let Totalmoney = 0;
-                    const product_details = await products_details.findByPk(cartdb.id_Products_details);
-                    const product = await products.findByPk(product_details.id_products);
-                    cartdb.stt = 1;
-                    cartdb.nane_product = product.name;
-                    cartdb.product_Image = product.product_Image;
-                    cartdb.code = product.code;
-                    cartdb.size = product_details.size;
-                    if (product_details.price + product_details.discount_minus > product_details.price / ((100 - product_details.discout_percent) / 100)) cartdb._price = product_details.price + product_details.discount_minus;
-                    else cartdb._price = product_details.price / ((100 - product_details.discout_percent) / 100);
-                    cartdb.price = product_details.price;
-                    cartdb.discout_percent = product_details.discout_percent;
-                    cartdb.discount_minus = product_details.discount_minus;
-                    Totalmoney += cartdb.price * cartdb.amount;
-                    res.render('orders/add', { 
-                        user, 
-                        cartdb, 
-                        Totalmoney });
+                let id_cart = req.body.chk;
+                console.log(id_cart);
+                let cartdata = [];
+                let Totalmoney = 0;
+                for (let i in id_cart)
+                {
+                    
+                    const c = await cart.findByPk(id_cart[i]);
+                    //console.log(c);
+                    if (c.id_users == user.id) {
+                        const product_details = await products_details.findByPk(c.id_Products_details);
+                        const product = await products.findByPk(product_details.id_products);
+                        let cc = {
+                            id : c.id,
+                            stt : i,
+                            nane_product : product.name,
+                            product_Image : product.product_Image,
+                            code : product.code,
+                            size : product_details.size,
+                            price : product_details.price,
+                            amount : c.amount
+                        }
+                        console.log(cc);
+                        Totalmoney += cc.price * c.amount;
+                        cartdata.push(cc);
+                    }
                 }
+                console.log(Totalmoney);
+                if(Totalmoney <= 0) res.redirect('/');
+                res.render('orders/add', { 
+                    user, 
+                    cartdata, 
+                    Totalmoney });
+                
             }
             else {
-                res.redirect('/');
+                
             }
         } catch (err) {
             res.redirect('/');
@@ -104,6 +116,7 @@ async function index(req, res, user) {
 
 async function PostAdd(req, res, user) {
     try {
+        console.log(req.body);
         let _address = req.body.address;
         let _buyer_name = req.body.buyer_name;
         let _phone_Number = req.body.phone_Number;
@@ -111,8 +124,7 @@ async function PostAdd(req, res, user) {
         let order ={ address: _address, buyer_name: _buyer_name, phone_Number: _phone_Number, id_buyer : user.id, note: _note, id_status : 1, cash_payment: 0};
         let new_orders = await orders.create(order);
         let numProduct =  req.body.numProduct;
-
-        console.log(req.body);
+ 
         if(numProduct >= 1){
             let _id_Products_details = req.body.id_Products_details1;
             let _cart_id =  req.body.cart_id1;
@@ -126,6 +138,7 @@ async function PostAdd(req, res, user) {
                 await cartdb.destroy();
             }
         }
+        
         res.redirect('/order/' + new_orders.id);
     }
     catch (err) {

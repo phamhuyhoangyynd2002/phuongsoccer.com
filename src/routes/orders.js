@@ -3,8 +3,7 @@ const router = express.Router();
 
 const ordersController = require('../controllers/OrdersController');
 
-
-router.get('/add/:slug', ordersController.add);
+router.post('/neworder', ordersController.postneworder);
 router.post('/add', ordersController.PostAdd);
 router.get('/:slug', ordersController.show_detail);
 router.get('/', ordersController.index);

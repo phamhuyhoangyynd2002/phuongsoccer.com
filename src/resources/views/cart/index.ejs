@@ -1,84 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= locals.title%>
+  </title>
+  <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/productStyle.css">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= locals.title%></title>
-    <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/style_index_cart.css">
+  
+  <style type="text/css">
+    h1 {
+      text-align: center;
+      padding: 15px;
+    }
+
+    th,
+    td {
+      border: solid rgb(149, 195, 229) 1px;
+      padding: 5px;
+      text-align: center;
+    }
+
+    #ProductTable {
+      border-collapse: collapse;
+      width: 70%;
+      margin: auto;
+      padding-bottom: 10px;
+    }
+
+    #ProductTable tr.selectedr {
+      background-color: beige;
+    }
+
+    div.group-op-container {
+  height: 30px;
+    }
+    .nodisplay {
+  display: none;
+}
+  </style>
+
 </head>
+
 <body>
-    <header>
-        <%- include('../partials/header') -%>
-    </header>
-    <main>
-        <div class="container mt-4">
-            <h1 class="text-center">Giỏ hàng</h1>
-            <div class="row">
-              <div class="col col-md-12">
-                <% if(cartdb != '') { %>
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col"> <input type="checkbox"></th>
-                            <th scope="col">Sản Phẩm</th>
-                            <th scope="col">Đơn Giá</th>
-                            <th scope="col">Số Lượng</th>
-                            <th scope="col">Số Tiền</th>
-                            <th scope="col">Thao Tác</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <% cartdb.forEach(function(cart, index) { %>
-                                <tr>
-                                    <td>
-                                    <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <div class="img-new img-cart" ><img src="/img/<%- cart.product_Image %>" loading="lazy" class="img-new img-cart" style="width: 100px"></div>
-                                        <p><%- cart.nane_product %></p>
-                                    </td>
-                                    <td>
-                                      <div class="min-price">Khuyến mãi: <%- cart.price %>vnđ</div> 
-                                      <div class="text-decoration-line-through">Giá gốc: <%- cart._price %>vnđ</div>
-                                    </td>
-                                    <td>
-                                      <p class="zpjHdRpVY1dQ"><%- cart.amount %></p>
-                                    </td>
-                                    <td><%- cart.price * cart.amount %> VND</td>
-                                    <td>
-                                      <a href="/orders/add/<%- cart.id %>">
-                                        <button type="button" class="btn btn-success me-5" id="add-product-btn">Mua</button>
-                                      </a>
-                                      <a  href="/cart/delete/<%- cart.id %>">
-                                        <button type="button" class="btn btn-warning" id="remove-product-btn">Xóa</button>
-                                      </a>
-                                    </td>
-                                </tr>
-                            <% }) %>
-                        </tbody>
-                    </table>
-                <% } else { %>
-                    <h2 class="text-center">Giỏ hàng của bạn còn trống</h2>
-                <% } %>
-              </div>
-            </div>
+  <header>
+    <%- include('../partials/header') -%>
+
+  </header>
+  <main>
+    <form method="POST" action="/orders/neworder" enctype="multipart/form-data">
+      <!-- <div class="container mt-4"> -->
+      <h1 class="text-center">Giỏ hành</h1>
+      <!-- <div class="row">
+            <div class="col col-md-12"> -->
+      
+      <% if(cartdb != '') { %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th hidden>
+                id
+              </th>
+              <th scope="col">
+                <input type="checkbox" id="chkall" />
+              </th>
+              <th>Sản Phẩm</th>
+              <th>Đơn Giá</th>
+              <th>Số Lượng</th>
+              <th>Thao Tác</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% cartdb.forEach(function(p, index) { %>
+              <tr>
+                <td hidden value="<%- p.id %>">
+                  <input type="number" value="<%- p.id %>"  />
+                </td>
+                <td>
+                  <input type="checkbox" name="chk" value="<%- p.id %>" />
+                </td>
+                <td>
+                  <div class="img-new img-cart" ><img src="/img/<%- p.product_Image %>" loading="lazy" class="img-new img-cart" style="width: 100px"></div>
+                  <p><%- p.nane_product %></p>
+                </td>
+                <td>
+                  <%- p.price %>vnđ
+                </td>
+                <td>
+                  <%- p.amount %>
+                </td>
+                <td>
+                  <a  href="/cart/delete/<%- p.id %>">
+                    <button type="button" class="btn btn-warning" id="remove-product-btn">Xóa</button>
+                  </a>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <div class="group-op-container">
+          <div class="group-op nodisplay">
+            <button class="group-op-delete" >Mua ngay</button>
           </div>
-    </main>
+        </div>
+      <% } else { %>
+          <h1></h1>
+          <h1></h1>
+          <h1></h1>
+          <h1></h1>
+          <h2 class="text-center">Giỏ hàng của bạn còn trống</h2>
+          <% } %>
+            <!-- </div>
+          </div>
+        </div> -->
+    </form>
+  </main>
+ 
+  <footer>
+    <%- include('../partials/footer') -%>
+  </footer>
 
-    <footer>
-        <%- include('../partials/footer') -%>
-    </footer>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/product_list.js"></script>
+  <script>
+    //
+    var chks = document.getElementsByName("chk");
+    for (let i = 0; i < chks.length; i++)
+      chks[i].onchange = function () {
+        if (this.checked) {
+          this.parentNode.parentNode.classList.add("selectedr");
+          let c = document.getElementsByName("chk");
+          let j = 0;
+          for (; j < c.length; j++) if (!c[j].checked) break;
+          if (j == c.length) document.getElementById("chkall").checked = true;
+          else document.getElementById("chkall").checked = false;
+          document.querySelector("div.group-op").classList.remove("nodisplay");
+        } else {
+          this.parentNode.parentNode.classList.remove("selectedr");
+          document.getElementById("chkall").checked = false;
+          let c = document.getElementsByName("chk");
+          let j = 0;
+          for (; j < c.length; j++) if (c[j].checked) break;
+          if (j == c.length)
+            document.querySelector("div.group-op").classList.add("nodisplay");
+          else document.querySelector("div.group-op").classList.remove("nodisplay");
+        }
+      };
 
-    <!-- javascript -->
-    <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/main.js"></script>
+    //
+    document.getElementById("chkall").onchange = function () {
+      let c = document.getElementsByName("chk");
+      for (let i = 0; i < c.length; i++) {
+        c[i].checked = this.checked;
+        if (c[i].checked) c[i].parentNode.parentNode.classList.add("selectedr");
+        else c[i].parentNode.parentNode.classList.remove("selectedr");
+      }
+      if (this.checked)
+        document.querySelector("div.group-op").classList.remove("nodisplay");
+      else document.querySelector("div.group-op").classList.add("nodisplay");
+    };
+
+    //
+    document.querySelector(".group-op-delete").onclick = function () {
+      let ProductArray = new Array();
+      let c = document.getElementsByName("chk");
+      for (let i = c.length - 1; i >= 0; i--)
+        if (c[i].checked) {
+        console.log(c[i].parentNode.parentNode.firstChild.nodeValue)  ;
+        }
+    };
+  </script>
+
 </body>
+
 </html>

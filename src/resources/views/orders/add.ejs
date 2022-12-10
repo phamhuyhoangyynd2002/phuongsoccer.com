@@ -66,6 +66,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <% cartdata.forEach(function(cartdb, index) { %>
                     <tr>
                       <td id="name-product">
                         <div class="img-new img-cart"><img src="/img/<%- cartdb.product_Image %>" loading="lazy"
@@ -77,33 +78,34 @@
                         <input hidden type="number" value="<%- cartdb.id %>"
                           id=<%-"'cart_id" + cartdb.id + "'" %> name = <%-"'cart_id" + cartdb.stt + "'" %> >
                       </td>
-                      <td id="item-price">
+                      <td >
                         <div><%- cartdb.size %></div>
                       </td>
-                      <td id="item-price">
+                      <td id= <%-"'item-price" + cartdb.stt + "'" %>>
                         <div class="min-price_"><%- cartdb.price %>vnđ</div>
                         <input hidden type="number" value="<%-cartdb.price %>" id=<%-"'_price" + cartdb.stt + "'" %>>
                       </td>
-                      <td id="quanlity">
+                      <td id= <%-"'quanlity" + cartdb.stt + "'" %>>
                         <div class="input-qty me-5">
-                          <input style="width: 50px" type="number" min="1" onchange="functionAmount()"
+                          <input style="width: 50px" type="number" min="1" onchange= <%-"'functionAmount" + cartdb.stt + "()'" %>
                             value="<%- cartdb.amount %>" id=<%-"'amount" + cartdb.stt + "'" %> name = <%-"'amount" +
                             cartdb.stt + "'" %>>
                         </div>
 
                       </td>
-                      <td id="payment">
+                      <td id=<%-"'payment" + cartdb.stt + "'" %>>
                         <p id=<%-"'total-price" + cartdb.stt + "'" %> > <%- cartdb.price * cartdb.amount %> vnđ</p>
                         <input hidden type="number" value = "<%- cartdb.price * cartdb.amount %>" id = <%-"'t-price" + cartdb.stt + "'" %>>
                       </td>
                     </tr>
+                    <% }) %>
                   </tbody>
                 </table>
               </li>
-              <li class="list-group-item d-flex justify-content-between" id = "total-money">
+              <li class="list-group-item d-flex justify-content-between" id = "total-money" >
                 <span>Tổng thành tiền</span>
                 <h5 class="total-money"><%- Totalmoney %> vnđ</h5>
-                <input hidden type="number" value = "<%- Totalmoney %>">
+                <input hidden type="number" value = "<%- Totalmoney %>" >
               </li>
             </ul>
 
@@ -164,16 +166,202 @@
   <!-- Custom script - Các file js do mình tự viết -->
   <script src="../assets/js/app.js"></script>
   <script>
-    function functionAmount() {
-      let itemPrice = document.querySelector('#item-price input').value;
-      let quanlity = document.querySelector('#quanlity input').value;
+    function functionAmount0() {
+      let itemPrice = document.querySelector('#item-price0 input').value;
+      let quanlity = document.querySelector('#quanlity0 input').value;
 
-      let totalMoney = itemPrice * quanlity;
-      let total = document.querySelector('#payment input').value;
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment0 input').value;
+      document.querySelector('#t-price0').setAttribute("value", totalMoney);
+      document.querySelector('#total-price0').innerHTML = totalMoney + " vnđ";
+      let t = document.querySelector('#total-money input').value;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
+      document.querySelector('#total-money input').setAttribute("value", totalMoney);
+    }
+
+    function functionAmount1() {
+      let itemPrice = document.querySelector('#item-price1 input').value;
+      let quanlity = document.querySelector('#quanlity1 input').value;
+
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment1 input').value;
       document.querySelector('#t-price1').setAttribute("value", totalMoney);
       document.querySelector('#total-price1').innerHTML = totalMoney + " vnđ";
       let t = document.querySelector('#total-money input').value;
-      totalMoney = (totalMoney + t - total)/10000000;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
+      document.querySelector('#total-money input').setAttribute("value", totalMoney);
+    }
+
+    function functionAmount2() {
+      let itemPrice = document.querySelector('#item-price2 input').value;
+      let quanlity = document.querySelector('#quanlity2 input').value;
+
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment2 input').value;
+      document.querySelector('#t-price2').setAttribute("value", totalMoney);
+      document.querySelector('#total-price2').innerHTML = totalMoney + " vnđ";
+      let t = document.querySelector('#total-money input').value;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
+      document.querySelector('#total-money input').setAttribute("value", totalMoney);
+    }
+
+    function functionAmount3() {
+      let itemPrice = document.querySelector('#item-price3 input').value;
+      let quanlity = document.querySelector('#quanlity3 input').value;
+
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment3 input').value;
+      document.querySelector('#t-price3').setAttribute("value", totalMoney);
+      document.querySelector('#total-price3').innerHTML = totalMoney + " vnđ";
+      let t = document.querySelector('#total-money input').value;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
+      document.querySelector('#total-money input').setAttribute("value", totalMoney);
+    }
+    
+    function functionAmount4() {
+      let itemPrice = document.querySelector('#item-price4 input').value;
+      let quanlity = document.querySelector('#quanlity4 input').value;
+
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment4 input').value;
+      document.querySelector('#t-price4').setAttribute("value", totalMoney);
+      document.querySelector('#total-price4').innerHTML = totalMoney + " vnđ";
+      let t = document.querySelector('#total-money input').value;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
+      document.querySelector('#total-money input').setAttribute("value", totalMoney);
+    }
+
+    function functionAmount5() {
+      let itemPrice = document.querySelector('#item-price5 input').value;
+      let quanlity = document.querySelector('#quanlity5 input').value;
+
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment5 input').value;
+      document.querySelector('#t-price5').setAttribute("value", totalMoney);
+      document.querySelector('#total-price5').innerHTML = totalMoney + " vnđ";
+      let t = document.querySelector('#total-money input').value;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
+      document.querySelector('#total-money input').setAttribute("value", totalMoney);
+    }
+
+    function functionAmount6() {
+      let itemPrice = document.querySelector('#item-price6 input').value;
+      let quanlity = document.querySelector('#quanlity6 input').value;
+
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment6 input').value;
+      document.querySelector('#t-price6').setAttribute("value", totalMoney);
+      document.querySelector('#total-price6').innerHTML = totalMoney + " vnđ";
+      let t = document.querySelector('#total-money input').value;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
+      document.querySelector('#total-money input').setAttribute("value", totalMoney);
+    }
+
+    function functionAmount7() {
+      let itemPrice = document.querySelector('#item-price7 input').value;
+      let quanlity = document.querySelector('#quanlity7 input').value;
+
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment7 input').value;
+      document.querySelector('#t-price7').setAttribute("value", totalMoney);
+      document.querySelector('#total-price7').innerHTML = totalMoney + " vnđ";
+      let t = document.querySelector('#total-money input').value;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
+      document.querySelector('#total-money input').setAttribute("value", totalMoney);
+    }
+
+    function functionAmount8() {
+      let itemPrice = document.querySelector('#item-price8 input').value;
+      let quanlity = document.querySelector('#quanlity8 input').value;
+
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment8 input').value;
+      document.querySelector('#t-price8').setAttribute("value", totalMoney);
+      document.querySelector('#total-price8').innerHTML = totalMoney + " vnđ";
+      let t = document.querySelector('#total-money input').value;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
+      document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
+      document.querySelector('#total-money input').setAttribute("value", totalMoney);
+    }
+
+    function functionAmount9() {
+      let itemPrice = document.querySelector('#item-price9 input').value;
+      let quanlity = document.querySelector('#quanlity9 input').value;
+
+      let totalMoney = (Number)(itemPrice * quanlity);
+      let total = document.querySelector('#payment9 input').value;
+      document.querySelector('#t-price9').setAttribute("value", totalMoney);
+      document.querySelector('#total-price9').innerHTML = totalMoney + " vnđ";
+      let t = document.querySelector('#total-money input').value;
+      totalMoney = totalMoney/10;
+      t = t/10;
+      total = total/10;
+      console.log(totalMoney);
+      console.log(t);
+      console.log(total);
+      totalMoney = (Number)(totalMoney  + t - total) *10;
       document.querySelector('h5.total-money').innerHTML = totalMoney + " vnđ";
       document.querySelector('#total-money input').setAttribute("value", totalMoney);
     }
