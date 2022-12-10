@@ -17,15 +17,21 @@
     <header>
         <%- include('../partials/header') -%>
     </header>
+    
     <main>
-        <div class="card mb-3" style="margin : 12rem">
-            <img src="/img/<%- newdb.image %>" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title"><%- newdb.title %></h5>
-              <p class="card-text"><small class="text-muted">Tác giả: <%- newdb.author %></small></p>
-              <p class="card-text"><%- newdb.description %></p>
-            </div>
-          </div>
+        <h1>Đơn hàng</h1>
+        <p>
+            <%- order.buyer_name %>
+        </p>
+        <p>
+            <%- order.phone_Number %>
+        </p>
+        <p>
+            <%- order.address %>
+        </p>
+        <p>
+            <%- order.note %>
+        </p>
     </main>
        
     <footer>

@@ -42,7 +42,13 @@ module.exports = new newsController;
 
 async function show_detail(req, res, user) {
     try {
-    
+        let id_news = req.params.slug;
+        const newdb = await news.findByPk(id_news);
+        res.render('news/show_detail', { 
+            title: newdb.title, 
+            user,
+            newdb
+          });
     }
     catch(err) {
         res.redirect('/');

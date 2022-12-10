@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title%></title>
+    <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<style>
+main { 
+    color: #9b9ca1;
+    margin-bottom: 20px;
+}
+
+.rounded {
+    border-radius: 5px !important;
+}
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+.px-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+}
+.file-upload .square {
+    height: 250px;
+    width: 250px;
+    margin: auto;
+    vertical-align: middle;
+    border: 1px solid #e5dfe4;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.text-secondary {
+    --bs-text-opacity: 1;
+    color: rgba(208, 212, 217, 0.5) !important;
+}
+.btn-success-soft {
+    color: #28a745;
+    background-color: rgba(40, 167, 69, 0.1);
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #29292e;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e5dfe4;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 5px;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+</style>
+<body>
+    <header>
+        <%- include('../partials/header') -%>
+    </header>
+    <main>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<div class="container">
+<div class="row">
+		<div class="col-12">		
+			<!-- Form START -->
+			<form class="file-upload" action="/account/profile" method="POST">
+				<div class="row mb-5 gx-5">
+					<!-- Contact detail -->
+					<div class="col-xxl-8 mb-5 mb-xxl-0">
+						<div class="bg-secondary-soft px-4 py-5 rounded">
+							<div class="row g-3">
+                                <h4 class="my-4">Thông tin tài khoản</h4>
+								<!-- name -->
+								<div class="col-md-6">
+									<label class="form-label">Tên</label>
+									<input type="text" class="form-control" placeholder="" name="name" aria-label="name" value="<%= user.name %>">
+								</div>
+								<!-- Phone number -->
+								<div class="col-md-6" >
+									<label class="form-label">Số điện thoại</label>
+									<input type="text" class="form-control" placeholder="" name="phone_Number" aria-label="Phone number" value="<%= user.phone_Number %>">
+								</div>
+								<!-- Email -->
+								<div class="col-md-6">
+									<label for="inputEmail4" class="form-label">Email</label>
+									<input type="email" class="form-control" id="inputEmail4" name="email" value="<%= user.email %>">
+								</div>
+							</div> <!-- Row END -->
+						</div>
+					</div>
+
+					<!-- change password -->
+					<div class="col-xxl-6">
+						<div class="bg-secondary-soft px-4 py-5 rounded">
+							<div class="row g-3">
+								<h4 class="my-4">Thay đổi mật khẩu</h4>
+								<!-- New password -->
+								<div class="col-md-6">
+									<label for="exampleInputPassword2" class="form-label">Mật khẩu mới</label>
+									<input type="password" class="form-control" id="exampleInputPassword2" name="new_password">
+								</div>
+								<!-- Confirm password -->
+								<div class="col-md-6">
+									<label for="exampleInputPassword3" class="form-label">Nhập lại mật khẩu</label>
+									<input type="password" class="form-control" id="exampleInputPassword3" name="re_new_password">
+								</div>
+							</div>
+						</div>
+					</div>
+
+                    <div class="col-xxl-6">
+                        <div class="bg-secondary-soft px-4 py-5 rounded">
+                            <div class="row g-3">
+                                <h4 class="my-4">Xác nhận thay đổi</h4>
+                                <div class="col-md-6">
+                                    <label for="exampleInputPassword3" class="form-label">Mật khẩu hiện tại</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword3" name="current_password">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Row END -->
+				</div>
+                <% if (wrong_password == true) { %>
+                    <p style="color: red;">Sai mật khẩu</p>
+                <% } %>
+                <% if (passwordMatch == false) { %>
+                    <p style="color: red;">Mật khẩu mới không khớp</p>
+                <% } %>
+				<!-- button -->
+				<div class="gap-3 d-md-flex justify-content-md-end text-center">
+					<button type="submit" class="btn btn-primary btn-lg">Update profile</button>
+				</div>
+			</form> <!-- Form END -->
+		</div>
+	</div>
+	</div>
+    </main>
+    <footer>
+        <%- include('../partials/footer') -%>
+    </footer>
+
+    <!-- javascript -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel();
+        });
+    </script>
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:3,
+                    nav:true
+                },
+                1000:{
+                    items:4,
+                    nav:true,
+                    loop:true
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -35,6 +35,22 @@ class cartController {
             res.redirect('/');
         }
     }
+
+    async addcart(req, res, next) {
+        try {
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            addcart(req, res, user);  
+            }  
+            else {
+                res.redirect('/');
+            }   
+        } catch(err) {
+            console.log(err);
+            res.redirect('/');
+        }
+    }
 }
 
 module.exports = new cartController;
@@ -84,6 +100,22 @@ async function deletecart(req, res, user) {
         if(cartdb.id_users == user.id)  {
             await cartdb.destroy();
         }
+        res.redirect('/cart');
+    }
+    catch(err) {
+        console.log(err);
+        res.redirect('/cart');
+    }
+
+}
+
+async function addcart(req, res, user) {
+    try {
+        console.log(req.body);
+        let _id_Products_details = req.body.size;
+        let _amount = req.body.quantity;
+        let c = {id_users: user.id, id_Products_details: _id_Products_details, amount: _amount};
+        let new_cart = await cart.create(c);
         res.redirect('/cart');
     }
     catch(err) {
