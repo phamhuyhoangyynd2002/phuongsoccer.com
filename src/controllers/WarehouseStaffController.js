@@ -9,7 +9,7 @@ class warehouseStaffController {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if(user.id_role != 1) warehouse(req, res, user);  
+            if(user.id_role == 2 || user.id_role == 3 || user.id_role == 5) warehouse(req, res, user);  
             else res.redirect('/');
             }  
             else {
@@ -26,7 +26,7 @@ class warehouseStaffController {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if(user.id_role == 2 || user.id_role == 5) postWarehouse(req, res, user);  
+            if(user.id_role == 2 || user.id_role == 3) postWarehouse(req, res, user);  
             else res.redirect('/');
             }  
             else {
@@ -49,7 +49,7 @@ async function warehouse(req, res, user) {
     for (let i in allproducts)
     {
         let p = allproducts[i]; 
-        let product_detail = await products_details.findAll({ where: {id_products: p.id}}); 
+        let product_detail = await products_details.findAll({ where: {id_products: p.id, onSale: true}}); 
         for (let j in product_detail)
         {
             let p_d = {
@@ -80,7 +80,6 @@ async function warehouse(req, res, user) {
 
 async function postWarehouse(req, res, user) {
     try {
-        let n=1;
     console.log(req.body);
     res.redirect('/');
     }

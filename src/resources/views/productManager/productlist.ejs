@@ -60,7 +60,7 @@
             <div class="col col-md-12"> -->
       <div class="group-op-container">
         <div class="group-op nodisplay">
-          <button class="group-op-delete" type="submit" >Xóa</button>
+          <button class="group-op-delete" >Xóa</button>
         </div>
       </div>
       <% if(product !='' ) { %>
@@ -85,11 +85,11 @@
           <tbody>
             <% product.forEach(function(p, index) { %>
               <tr>
-                <td hidden>
+                <td hidden value="<%- p.id %>">
                   <input type="number" value="<%- p.id %>"  />
                 </td>
                 <td>
-                  <input type="checkbox" name="chk" />
+                  <input type="checkbox" name="chk" value="<%- p.id %>" />
                 </td>
                 <td>
                   <div class="img-new img-cart" style="width:100px ; height: 100px; display: flex;"><img src="/img/<%- p.product_Image %>" loading="lazy" class="img-new img-cart "></div>

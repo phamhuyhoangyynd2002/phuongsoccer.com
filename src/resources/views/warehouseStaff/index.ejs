@@ -9,9 +9,7 @@
   <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/responsive.css">
   <link rel="stylesheet" href="/css/productStyle.css">
-  <script src="/js/product_list.js"></script>
 
 <head>
   
@@ -55,22 +53,44 @@
 
   </header>
   <main>
-    <form method="POST" action="/productmanager/postproductlist" enctype="multipart/form-data">
-      <h1 class="text-center">Kho</h1>
+    <form method="POST" action="/warehousestaff/productlist" enctype="multipart/form-data">
+      <!-- <div class="container mt-4"> -->
+      <h1 class="text-center">Danh sách Sản phẩm</h1>
+      <!-- <div class="row">
+            <div class="col col-md-12"> -->
+      <div class="group-op-container">
+        <div class="group-op nodisplay">
+          <button class="group-op-delete" >Xóa</button>
+        </div>
+      </div>
       <% if(product !='' ) { %>
         <table id="ProductTable">
           <thead>
             <tr style="background-color: rgb(17, 76, 185); color: aliceblue; ">
+
+              <th hidden>
+                id
+              </th>
+              <th>
+                <input type="checkbox" id="chkall" />
+              </th>
               <th>Ảnh</th>
               <th>Code</th>
               <th>Sản Phẩm</th>
               <th>Size</th>
               <th>Số Lượng</th>
+              <th>Số Tiền</th>
             </tr>
           </thead>
           <tbody>
             <% product.forEach(function(p, index) { %>
               <tr>
+                <td hidden value="<%- p.id %>">
+                  <input type="number" value="<%- p.id %>"  />
+                </td>
+                <td>
+                  <input type="checkbox" name="chk" value="<%- p.id %>" />
+                </td>
                 <td>
                   <div class="img-new img-cart" style="width:100px ; height: 100px; display: flex;"><img src="/img/<%- p.product_Image %>" loading="lazy" class="img-new img-cart "></div>
                 </td>
@@ -90,7 +110,10 @@
                   <%- p.size %>
                 </td>
                 <td>
-                    <input type="number" name = "<%- p.id %>" value="<%- p.amount %>">
+                  <%- p.amount %>
+                </td>
+                <td>
+                  <%- p.price %>
                 </td>
               </tr>
               <% }) %>
@@ -101,13 +124,64 @@
             <!-- </div>
           </div>
         </div> -->
-        <button type="submit" class="btn btn-primary btn-lg mb-5 ms-5">Submit</button>
     </form>
   </main>
  
   <footer>
     <%- include('../partials/footer') -%>
   </footer>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/product_list.js"></script>
+  <script>
+    //
+    var chks = document.getElementsByName("chk");
+    for (let i = 0; i < chks.length; i++)
+      chks[i].onchange = function () {
+        if (this.checked) {
+          this.parentNode.parentNode.classList.add("selectedr");
+          let c = document.getElementsByName("chk");
+          let j = 0;
+          for (; j < c.length; j++) if (!c[j].checked) break;
+          if (j == c.length) document.getElementById("chkall").checked = true;
+          else document.getElementById("chkall").checked = false;
+          document.querySelector("div.group-op").classList.remove("nodisplay");
+        } else {
+          this.parentNode.parentNode.classList.remove("selectedr");
+          document.getElementById("chkall").checked = false;
+          let c = document.getElementsByName("chk");
+          let j = 0;
+          for (; j < c.length; j++) if (c[j].checked) break;
+          if (j == c.length)
+            document.querySelector("div.group-op").classList.add("nodisplay");
+          else document.querySelector("div.group-op").classList.remove("nodisplay");
+        }
+      };
+
+    //
+    document.getElementById("chkall").onchange = function () {
+      let c = document.getElementsByName("chk");
+      for (let i = 0; i < c.length; i++) {
+        c[i].checked = this.checked;
+        if (c[i].checked) c[i].parentNode.parentNode.classList.add("selectedr");
+        else c[i].parentNode.parentNode.classList.remove("selectedr");
+      }
+      if (this.checked)
+        document.querySelector("div.group-op").classList.remove("nodisplay");
+      else document.querySelector("div.group-op").classList.add("nodisplay");
+    };
+
+    //
+    document.querySelector(".group-op-delete").onclick = function () {
+      let ProductArray = new Array();
+      let c = document.getElementsByName("chk");
+      for (let i = c.length - 1; i >= 0; i--)
+        if (c[i].checked) {
+        console.log(c[i].parentNode.parentNode.firstChild.nodeValue)  ;
+        }
+    };
+  </script>
+
 </body>
 
 </html>

@@ -48,7 +48,7 @@ async function productList(req, res, user) {
     for (let i in allproducts)
     {
         let p = allproducts[i]; 
-        let product_detail = await products_details.findAll({ where: {id_products: p.id}}); 
+        let product_detail = await products_details.findAll({ where: {id_products: p.id, onSale: true}}); 
         for (let j in product_detail)
         {
             let p_d = {
@@ -66,7 +66,7 @@ async function productList(req, res, user) {
         
     }
     res.render('productManager/productlist', { 
-        title: 'products', 
+        title: 'Danh sách sản phẩm', 
         user,
         product
       });
@@ -78,7 +78,12 @@ async function productList(req, res, user) {
 
 async function postProductList(req, res, user) {
     try {
-    console.log(req);
+    let deleteChk = req.body.chk;
+    for(let i in deleteChk){
+        let product_detail = await products_details.findByPk( deleteChk[i]);
+        product_detail.onSale = false,
+        await product_detail.save();
+    }
     res.redirect('/');
     }
     catch(err) {

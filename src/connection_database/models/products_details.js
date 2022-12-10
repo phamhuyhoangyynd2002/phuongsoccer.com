@@ -33,6 +33,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },
+        onSale: {
+            allowNull: false,
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+        }
     }, {
         tableName: 'products_details',
     });
