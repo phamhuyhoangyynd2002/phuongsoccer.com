@@ -67,6 +67,10 @@
         <table id="ProductTable">
           <thead>
             <tr style="background-color: rgb(17, 76, 185); color: aliceblue; ">
+
+              <th hidden>
+                id
+              </th>
               <th>
                 <input type="checkbox" id="chkall" />
               </th>
@@ -81,6 +85,9 @@
           <tbody>
             <% product.forEach(function(p, index) { %>
               <tr>
+                <td hidden>
+                  <input type="number" value="<%- p.id %>"  />
+                </td>
                 <td>
                   <input type="checkbox" name="chk" />
                 </td>
@@ -166,12 +173,11 @@
 
     //
     document.querySelector(".group-op-delete").onclick = function () {
+      let ProductArray = new Array();
       let c = document.getElementsByName("chk");
       for (let i = c.length - 1; i >= 0; i--)
         if (c[i].checked) {
-          c[i].parentNode.parentNode.parentNode.removeChild(
-            c[i].parentNode.parentNode
-          );
+        console.log(c[i].parentNode.parentNode.firstChild.nodeValue)  ;
         }
     };
   </script>
