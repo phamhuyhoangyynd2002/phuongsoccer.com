@@ -78,7 +78,7 @@ async function productList(req, res, user) {
 
 async function postProductList(req, res, user) {
     try {
-    console.log(req.body);
+    console.log(req);
     res.redirect('/');
     }
     catch(err) {

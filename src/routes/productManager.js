@@ -6,7 +6,7 @@ const submitProductController = require('../controllers/SubmitProductController'
 const updateProductController = require('../controllers/UpdateProductController');
 const submitDiscount_CodeController = require('../controllers/SubmitDiscount_CodeController');
 router.get('/productlist', productManagerController.productList);
-router.post('/postproductlist', productManagerController.PostProductList);
+router.post('/productlist', productManagerController.PostProductList);
 
 router.get('/submitproduct', submitProductController.submitproduct);
 router.post('/submitproduct', submitProductController.PostSubmitproduct);
