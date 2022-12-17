@@ -33,8 +33,7 @@
     "otp-generator": "^4.0.0",
     "otplib": "^12.0.1",
     "sequelize": "^6.25.6",
-    "slug": "^8.2.2",
-    "ts-node": "^10.9.1"
+    "slug": "^8.2.2"
   },
   "devDependencies": {
     "ejs-lint": "^2.0.0",

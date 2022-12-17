@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { users, products} = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
@@ -12,7 +13,6 @@ class searchController {
             else {
                 let user = {id: 0, name: null, id_role: 1, picture: ""};
                 index(req, res, user); 
-                //res.redirect('/');
             }   
         } catch(err) {
             console.log(err);
@@ -25,17 +25,31 @@ module.exports = new searchController;
 
 async function index(req, res, user) {
     try {
-        console.log(req.body.search);
         let search = req.body.search;
         let product = await products.findAll({
-            where: Sequelize.literal('MATCH (SomeField) AGAINST (:name)'),
-            replacements: {
-              name: search
-            }
+            where: {
+                [Op.or]: 
+                {
+                    name: 
+                    {
+                        [Op.substring]: search,
+                    },
+                    description: 
+                    {
+                        [Op.substring]: search,
+                    },
+                    code: 
+                    {
+                        [Op.substring]: search,
+                    },
+                }
+            },
+        });
+        res.render('products/index', { 
+            title: 'products', 
+            user,
+            product
           });
-        console.log("product");
-        console.log(product);
-        res.redirect('/');
     }
     catch(err) {
         res.redirect('/');
