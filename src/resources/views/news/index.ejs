@@ -48,15 +48,14 @@
             <div class="list-news container d-flex flex-wrap">
               <% if(newdb != '') { %>
                 <% newdb.forEach(function(itemNews, index) { %>
-                  <a href="/newdb/<%- itemNews.code%>">
+                  <a href="/news/<%- itemNews.id%>">
                     <div class="card" style="width: 18rem; margin: 0.5rem" >
                       <img src="/img/<%- itemNews.image %>" style="width: 17rem; margin: 0.5rem" class="card-img-top" alt="<% itemNews.title %>">
                       <div class="card-body">
                         <h5 class="card-title">
-                          <a href="/newdb/<%- itemNews.code%>"><%- itemNews.title %></a>
+                          <a href="/news/<%- itemNews.id%>"><%- itemNews.title %></a>
                         </h5>
                         <h5 class="min-price"><%- itemNews.author %></h5>
-                        <h6 class="text-decoration-line-through"> <%- itemNews.description %></h6>
                       </div>
                     </div>
                   </a>

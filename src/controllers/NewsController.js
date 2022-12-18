@@ -58,8 +58,9 @@ async function show_detail(req, res, user) {
 async function index(req, res, user) {
     try {
     let newdb = await news.findAll(); 
+    console.log(newdb);
     res.render('news/index', { 
-        title: 'News', 
+        title: 'Tin tức', 
         user,
         newdb
       });

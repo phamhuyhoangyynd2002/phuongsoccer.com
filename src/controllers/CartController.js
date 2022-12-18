@@ -57,13 +57,11 @@ module.exports = new cartController;
 
 async function index(req, res, user) {
     try {
-        //console.log(user);
         let cartdb = await cart.findAll({
             where: {
                 id_users: user.id
             }
         });
-        //console.log(cartdb);
         for (let i in cartdb) {
             const product_details = await products_details.findByPk(cartdb[i].id_Products_details);
             const product = await products.findByPk(product_details.id_products);
@@ -79,7 +77,6 @@ async function index(req, res, user) {
             cartdb[i].discout_percent = product_details.discout_percent;
             cartdb[i].discount_minus = product_details.discount_minus;
           }
-        //console.log(cartdb);
         res.render('cart/index', { 
             title: 'Giỏ hàng', 
             user,
@@ -111,7 +108,6 @@ async function deletecart(req, res, user) {
 
 async function addcart(req, res, user) {
     try {
-        console.log(req.body);
         let _id_Products_details = req.body.size;
         let _amount = req.body.quantity;
         let c = {id_users: user.id, id_Products_details: _id_Products_details, amount: _amount};

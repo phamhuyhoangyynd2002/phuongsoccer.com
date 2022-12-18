@@ -43,8 +43,6 @@ module.exports = new warehouseStaffController;
 async function warehouse(req, res, user) {
     try {
     let allproducts = await products.findAll();
-    //console.log(product);
-    let numRow = 0;
     let product = [];
     for (let i in allproducts)
     {
@@ -53,7 +51,7 @@ async function warehouse(req, res, user) {
         for (let j in product_detail)
         {
             let p_d = {
-                id: numRow,
+                id: product_detail[j].id,
                 product_Image: p.product_Image,
                 name: p.name,
                 code: p.code,
@@ -61,14 +59,12 @@ async function warehouse(req, res, user) {
                 amount: product_detail[j].amount,
                 price: product_detail[j].price
               };
-            numRow++;
             product.push(p_d);
 
         }
-        
     }
     res.render('warehouseStaff/index', { 
-        title: 'products', 
+        title: 'Kho', 
         user,
         product
       });
@@ -80,7 +76,19 @@ async function warehouse(req, res, user) {
 
 async function postWarehouse(req, res, user) {
     try {
-    console.log(req.body);
+    let _id = req.body.id;
+    let _amount = req.body.amount;
+    if(Array.isArray(_id)){ 
+        if(_id.length == _amount.length){
+            for (let i = 0; i < _id.length; i++){
+                let product_detail = await products_details.findByPk(_id[i]);
+                if(product_detail.amount != _amount[i]){
+                    product_detail.amount = _amount[i];
+                    product_detail.save();
+                }
+            }  
+        }
+    }
     res.redirect('/');
     }
     catch(err) {

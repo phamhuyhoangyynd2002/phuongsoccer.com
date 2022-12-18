@@ -18,19 +18,27 @@
         <%- include('../partials/header') -%>
     </header>
     
-    <main>
+    <main style="margin: 5rem;">
         <h1>Đơn hàng</h1>
         <p>
+            Khách hàng: 
             <%- order.buyer_name %>
         </p>
         <p>
+            Số điện thoại 0
             <%- order.phone_Number %>
         </p>
         <p>
+            Địa chỉ: 
             <%- order.address %>
         </p>
         <p>
+            Ghi chú: 
             <%- order.note %>
+        </p>
+        <p>
+            Tổng số tiền: 
+            <%- order.cash_payment %>
         </p>
     </main>
        

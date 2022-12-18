@@ -12,12 +12,17 @@ module.exports = (sequelize, DataTypes) => {
         },
         phone_Number: {
             allowNull: false,
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.STRING(20),
         },
         note: {
             allowNull: false,
             type: DataTypes.STRING(1000),
         },
+        status: {
+            allowNull: false,
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+        }
     }, {
         tableName: 'contact',
     });

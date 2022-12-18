@@ -9,9 +9,7 @@ class homeController {
         try {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
-            //console.log(token);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            //console.log(user);
             home(req, res, user);  
             }  
             else {
@@ -21,6 +19,24 @@ class homeController {
         } catch(err) {
                 let user = {id: 0, name: null, id_role: 1, picture: ""};
                 home(req, res, user);
+        }
+    }
+
+    // [GET] /
+    async into(req, res, next) {
+        try {
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            into(req, res, user);  
+            }  
+            else {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                into(req, res, user);    
+            }   
+        } catch(err) {
+                let user = {id: 0, name: null, id_role: 1, picture: ""};
+                into(req, res, user);
         }
     }
 }
@@ -48,6 +64,19 @@ async function home(req, res, user) {
             productsSold, 
             user, 
             newdb
+          });
+    }
+    catch(err) {
+        console.log(err);
+        res.redirect('/');
+    }
+}
+
+async function into(req, res, user) {
+    try {
+        res.render('Home/intro', { 
+            title: 'Liên hệ', 
+            user
           });
     }
     catch(err) {

@@ -137,32 +137,11 @@
                 </div>
               </div>
             </div>
-
-            <!--
-                <div class="list-product container d-flex flex-wrap">
-              <% if(product != '') { %>
-                <% product.forEach(function(itemProduct, index) { %>
-                    <div class="flex-item mb-5">
-                        <div class="img-product">
-                            <a href="/product/<%- itemProduct.code%>"><img src="/img/<%- itemProduct.product_Image %>" alt="<% itemProduct.name %>" loading="lazy"></a>
-                        </div>
-                        <div class="btn btn-primary cart-plus"><i class="fa-solid fa-cart-plus"></i></div>
-                        <div class="info-item mt-3">
-                            <div class="" style="height: 48px;"><a href="/product/<%- itemProduct.code%>" class="text-dark product-name"><%- itemProduct.name %></a></div>
-                            <p><%- itemProduct.producer %></p>
-                            <div class="min-price">Khuyến mãi: <%- itemProduct.discount_min %>vnđ</div> 
-                            <div class="text-decoration-line-through">Giá gốc: <%- itemProduct.discount_max %>vnđ</div> 
-                        </div>
-                    </div>
-                <% }) %>
-              <% } %>
-            </div>
-            -->
             <div class="list-product container d-flex flex-wrap">
               <% if(product != '') { %>
                 <% product.forEach(function(itemProduct, index) { %>
                   <a href="/product/<%- itemProduct.code%>">
-                    <div class="card" style="width: 18rem; margin: 0.5rem" >
+                    <div class="card" style="width: 18rem; margin: 0.5rem; height: 510px;" >
                       <img src="/img/<%- itemProduct.product_Image %>" style="width: 17rem; margin: 0.5rem" class="card-img-top" alt="<% itemProduct.name %>">
                       <div class="card-body">
                         <h5 class="card-title">

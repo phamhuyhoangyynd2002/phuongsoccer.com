@@ -41,7 +41,7 @@ class contactController {
             }  
             else {
                 let user = {id: 0, name: null, id_role: 1, picture: ""};
-                res.redirect('/');
+                postcontact(req, res, user);
             }   
         } catch(err) {
             console.log(err);
@@ -61,7 +61,7 @@ async function postcontact(req, res, user) {
         let _note = req.body.note;
         let dc = { name: _name, email: _email, phone_Number: _phone_Number, note: _note};
         console.log(dc);
-        let _discount_code = await discount_code.create(dc);
+        let c = await contact.create(dc);
     }
     catch(err) {
         res.redirect('/');

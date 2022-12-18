@@ -41,8 +41,12 @@ class ordersProcess {
         } else {
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if (user.id_role == 2) {
+            if (user.id_role == 2 || user.id_role == 5 ) {
                 let tempOrders = await orders.findAll();
+                for (var i = 0; i < tempOrders.length; i++) {
+                    if(tempOrders[i].cash_payment == 0) await tempOrders[i].destroy();
+                }
+                tempOrders = await orders.findAll();
                 for (var i = 0; i < tempOrders.length; i++) {
                     const tempOrderDetail = await orders_details.findAll({
                         where: {id_order: tempOrders[i].id}
@@ -74,7 +78,7 @@ class ordersProcess {
         } else {
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if (user.id_role == 2) {
+            if (user.id_role == 2 || user.id_role == 3 || user.id_role == 5) {
                 let tempOrders = await orders.findAll();
                 for (var i = 0; i < tempOrders.length; i++) {
                     const tempOrderDetail = await orders_details.findAll({
@@ -107,7 +111,7 @@ class ordersProcess {
         } else {
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if (user.id_role == 2) {
+            if (user.id_role == 2 || user.id_role == 5) {
                 let tempOrders = await orders.findAll();
                 for (var i = 0; i < tempOrders.length; i++) {
                     const tempOrderDetail = await orders_details.findAll({

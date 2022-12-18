@@ -43,12 +43,11 @@ module.exports = new productManagerController;
 async function productList(req, res, user) {
     try {
     let allproducts = await products.findAll();
-    //console.log(product);
     let product = [];
     for (let i in allproducts)
     {
         let p = allproducts[i]; 
-        let product_detail = await products_details.findAll({ where: {id_products: p.id, onSale: true}}); 
+        let product_detail = await products_details.findAll({ where: {id_products: p.id, onSale : true}}); 
         for (let j in product_detail)
         {
             let p_d = {

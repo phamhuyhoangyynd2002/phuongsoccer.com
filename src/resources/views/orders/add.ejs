@@ -82,7 +82,7 @@
                         <div><%- cartdb.size %></div>
                       </td>
                       <td id= <%-"'item-price" + cartdb.stt + "'" %>>
-                        <div class="min-price_"><%- cartdb.price %>vnđ</div>
+                        <p><%- cartdb.price %>vnđ</p>
                         <input hidden type="number" value="<%-cartdb.price %>" id=<%-"'_price" + cartdb.stt + "'" %>>
                       </td>
                       <td id= <%-"'quanlity" + cartdb.stt + "'" %>>
@@ -143,7 +143,7 @@
               </div>
               <div class="col-md-12">
                 <label for="kh_dienthoai">Ghi chú</label>
-                <input type="text" style="height: 150px;" class="form-control" name="note" id="kh_dienthoai" required />
+                <input type="text" style="height: 150px;" class="form-control" name="note" id="kh_dienthoai" />
               </div>
 
             </div>

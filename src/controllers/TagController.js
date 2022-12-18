@@ -131,7 +131,7 @@ async function index(req, res, user) {
 async function show_producer(req, res, user) {
     try {
     let id_tag = req.params.slug; 
-    let product = await products.findAll({ where: { id_tag: id_tag } });
+    let product = await products.findAll({ where: { id_tag: id_tag} });
     res.render('products/index', { 
         title: 'products', 
         user,
