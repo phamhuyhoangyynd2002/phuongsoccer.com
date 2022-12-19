@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(10000),
         },
         image: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING(100),
         },
         user_Updater: {

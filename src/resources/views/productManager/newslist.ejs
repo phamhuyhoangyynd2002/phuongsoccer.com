@@ -7,7 +7,10 @@
     <title><%= locals.title%></title>
     <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/homeStyle.css">
 </head>
 <body>
     <header>
@@ -22,16 +25,16 @@
         <div class="list-news container d-flex flex-wrap">
             <% if(newdb != '') { %>
               <% newdb.forEach(function(itemNews, index) { %>
-                  <a href="/news/<%- itemNews.id%>">
+                  <a href="/productmanager/updatenews/<%- itemNews.id%>">
                     <div class="card" style="width: 18rem; margin: 0.5rem" >
                       <img src="/img/<%- itemNews.image %>" style="width: 17rem; margin: 0.5rem" class="card-img-top" alt="<% itemNews.title %>">
                       <div class="card-body">
                         <h5 class="card-title">
-                          <a href="/news/<%- itemNews.id%>"><%- itemNews.title %></a>
+                          <a href="/productmanager/updatenews/<%- itemNews.id%>"><%- itemNews.title %></a>
                         </h5>
                         <h5 style="float: right; margin-left: 1rem;"><%- itemNews.author %></h5>
                         <h1></h1>
-                        <a style="float: right; color: black;" href="/news/<%- itemNews.id%>">Đọc ngay</a>           
+                        <a style="float: right; color: black;" href="/productmanager/updatenews/<%- itemNews.id%>">Cập nhật</a>           
                       </div>
                     </div>
                   </a>
@@ -39,13 +42,43 @@
             <% } %>
         </div>
     </div>
+
     </main>
     <footer>
         <%- include('../partials/footer') -%>
     </footer>
 
-    <!-- javascript -->
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel();
+        });
+    </script>
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:3,
+                    nav:true
+                },
+                1000:{
+                    items:4,
+                    nav:true,
+                    loop:true
+                }
+            }
+        })
+    </script>
 </body>
 </html>
 

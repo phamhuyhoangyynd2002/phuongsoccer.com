@@ -25,7 +25,7 @@ class updateProductController {
             if(req.session.token != null){
             var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
             let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
-            if(user.id_role == 2 || user.id_role == 4) PostSubmitproduct(req, res, user)
+            if(user.id_role == 2 || user.id_role == 4) PostUpdateproduct(req, res, user)
             else res.redirect('/');
             }  
             else {
@@ -58,7 +58,7 @@ async function updateProduct(req, res, user) {
 
 }
 
-async function PostSubmitproduct(req, res, user) {
+async function PostUpdateproduct(req, res, user) {
     try {
         let _id = req.body.id;
         let _name = req.body.name;
@@ -192,7 +192,7 @@ async function PostSubmitproduct(req, res, user) {
                     }
             }
         await product.save();
-        res.redirect('/');
+        res.redirect('/productmanager/productlist');
     } catch(err) {
         console.log(err);
         res.redirect('/');

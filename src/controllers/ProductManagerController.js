@@ -1,4 +1,4 @@
-const { users, products, products_details} = require('../connection_database/index');
+const { users, products, products_details, news} = require('../connection_database/index');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
@@ -20,6 +20,22 @@ class productManagerController {
         }   
     }
 
+    // [GET]
+   newsList(req, res, next) {
+        try {
+            if(req.session.token != null){
+            var token = jwt.verify(req.session.token, process.env.KEY_TOKEN);
+            let user = {id: token.id, name: token.name, id_role: token.id_role, picture: token.picture};
+            if(user.id_role != 1) newsList(req, res, user);  
+            else res.redirect('/');
+            }  
+            else {
+                res.redirect('/');
+            }   
+        } catch(err) {
+            res.redirect('/');
+        }   
+    }
     // [POST]
     PostProductList(req, res, next) {
         try {
@@ -64,6 +80,20 @@ async function productList(req, res, user) {
         user,
         product
       });
+    }
+    catch(err) {
+        res.redirect('/');
+    }
+}
+
+async function newsList(req, res, user) {
+    try {
+        let newdb = await news.findAll(); 
+        res.render('productManager/newslist', { 
+            title: 'Tin tức', 
+            user,
+            newdb
+          });
     }
     catch(err) {
         res.redirect('/');

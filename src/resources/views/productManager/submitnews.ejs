@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= locals.title%></title>
     <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 </head>
 <body>
     <header>
         <%- include('../partials/header') -%>
     </header>
     <main>
-      <form method="POST" action="/productmanager/submitnews" enctype="multipart/form-data"></form>
+      <form method="POST" action="/productmanager/submitnews" enctype="multipart/form-data">
         <div class="container">
           <div class="title ms-3 mt-5 pb-sm-3 border-bottom">
             <h3 class="mb-2">Đăng Tin tức</h3>
@@ -25,24 +26,24 @@
             <div class="flex-fill info-product m-5">
                 <div class="mb-4">
                   <label class="form-label">Tiêu đề tin tức</label>
-                  <input type="text" class="form-control" name = "name">
+                  <input type="text" class="form-control" name = "title">
                 </div>
     
                 <div class="mb-4">
                   <label class="form-label">Tác giả</label>
-                  <input type="text" class="form-control" name = "code">
+                  <input type="text" class="form-control" name = "author">
                 </div>
     
                 <div class="mb-4">
                   <label class="form-label">Mô tả</label>
-                  <input type="text" style="height: 100px;" class="form-control" name = "product_description">
+                  <input type="text" style="height: 100px;" class="form-control" name = "description">
                 </div>
             </div>
     
             <div class="flex-fill product-details m-5">
               <div class="mb-3" >
                 <label class="form-label">Hình đại diện</label>
-                <input class="form-control" type="file" name = "product_image" accept=".jpg, .jpeg, .png">
+                <input class="form-control" type="file" name = "image" accept=".jpg, .jpeg, .png">
               </div>
 
               </div>
@@ -50,6 +51,7 @@
           </div>
           <button type="submit" class="btn btn-primary btn-lg mb-5 ms-5">Submit</button>
         </div>
+      </form>
       </main>
       <footer>
           <%- include('../partials/footer') -%>

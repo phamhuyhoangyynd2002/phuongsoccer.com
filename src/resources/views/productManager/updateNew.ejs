@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= locals.title%>
+  </title>
+  <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+
+<body>
+  <header>
+    <%- include('../partials/header') -%>
+  </header>
+  <main>
+    <form method="POST" action="/productmanager/updatenews" enctype="multipart/form-data">
+      <div class="container">
+        <div class="title ms-3 mt-5 pb-sm-3 border-bottom">
+          <h3 class="mb-2">Cập nhật Tin tức</h3>
+          <span class="text-secondary">Khi bạn cập nhật tin tức ở đây nó sẽ được tải lên website của bạn.</span>
+        </div>
+
+        <div class="d-flex submitproduct">
+          <div class="flex-fill info-product m-5">
+            <input hidden type="number" class="form-control" name="id" value="<%- newdb.id %>">
+            <div class="mb-4">
+              <label class="form-label">Tiêu đề tin tức</label>
+              <input type="text" class="form-control" name="title" value="<%- newdb.title %>">
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Tác giả</label>
+              <input type="text" class="form-control" name="author" value="<%- newdb.author %>">
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Mô tả</label>
+              <input type="text" style="height: 100px;" class="form-control" name="description"
+                value="<%- newdb.description %>">
+            </div>
+          </div>
+
+          <div class="flex-fill product-details m-5">
+            <div class="mb-3">
+              <label class="form-label">Hình đại diện</label>
+              <input class="form-control" type="file" name="image" accept=".jpg, .jpeg, .png">
+            </div>
+            <div>
+              <span class="input-group-text">Trạng thái</span>
+              <select  type="number" id="size-input" class="form-select"
+                aria-label="Default select example" name="deleteNew">
+                <option value="0">Sửa</option>
+                <option value="1">Xóa</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg mb-5 ms-5">Submit</button>
+      </div>
+    </form>
+  </main>
+  <footer>
+    <%- include('../partials/footer') -%>
+  </footer>
+
+  <!-- javascript -->
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

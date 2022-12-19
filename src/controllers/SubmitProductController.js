@@ -164,7 +164,7 @@ async function PostSubmitproduct(req, res, user) {
                     }
             }
         await product.save();
-        res.redirect('/');
+        res.redirect('/productmanager/productlist');
     } catch(err) {
         console.log(err);
         res.redirect('/');
