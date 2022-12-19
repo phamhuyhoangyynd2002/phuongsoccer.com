@@ -46,7 +46,7 @@ async function index(req, res, user) {
             },
         });
         res.render('products/index', { 
-            title: 'products', 
+            title: 'Sẳn phẩm', 
             user,
             product
           });

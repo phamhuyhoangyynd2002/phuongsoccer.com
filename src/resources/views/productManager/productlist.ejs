@@ -54,10 +54,7 @@
   </header>
   <main>
     <form method="POST" action="/productmanager/productlist" enctype="multipart/form-data">
-      <!-- <div class="container mt-4"> -->
       <h1 class="text-center">Danh sách Sản phẩm</h1>
-      <!-- <div class="row">
-            <div class="col col-md-12"> -->
       <div class="group-op-container">
         <div class="group-op nodisplay">
           <button class="group-op-delete" >Xóa</button>
@@ -77,9 +74,8 @@
               <th>Ảnh</th>
               <th>Code</th>
               <th>Sản Phẩm</th>
-              <th>Size</th>
-              <th>Số Lượng</th>
-              <th>Số Tiền</th>
+              <th>Đã bán</th>
+              <th>Thao tác</th>
             </tr>
           </thead>
           <tbody>
@@ -92,28 +88,27 @@
                   <input type="checkbox" name="chk" value="<%- p.id %>" />
                 </td>
                 <td>
-                  <div class="img-new img-cart" style="width:100px ; height: 100px; display: flex;"><img src="/img/<%- p.product_Image %>" loading="lazy" class="img-new img-cart "></div>
+                  <div class="img-new img-cart" style="height: 150px; display: flex;"><img src="/img/<%- p.product_Image %>" loading="lazy" class="img-new img-cart "></div>
                 </td>
                 <td>
                   <p>
-                    <a href="/productmanager/updateproduct/<%- p.code %>">
+                    <a href="/productmanager/updateproduct/<%- p.id %>" style = "color: black;">
                       <%- p.code %>
                     </a>
                   </p>
                 </td>
                 <td>
-                  <a href="/productmanager/updateproduct/<%- p.code %>">
+                  <a href="/productmanager/updateproduct/<%- p.id %>" style = "color: black;">
                     <%- p.name %>
                   </a>
                 </td>
                 <td>
-                  <%- p.size %>
+                  <%- p.sold %>
                 </td>
                 <td>
-                  <%- p.amount %>
-                </td>
-                <td>
-                  <%- p.price %>
+                    <button>
+                      <a href="/productmanager/updateproduct/<%- p.id %>" style = "color: black;">Sửa thông tin</a>
+                    </button>  
                 </td>
               </tr>
               <% }) %>

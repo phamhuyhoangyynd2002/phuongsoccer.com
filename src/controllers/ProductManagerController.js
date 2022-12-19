@@ -48,21 +48,16 @@ async function productList(req, res, user) {
     {
         let p = allproducts[i]; 
         let product_detail = await products_details.findAll({ where: {id_products: p.id, onSale : true}}); 
-        for (let j in product_detail)
-        {
+        if(product_detail.length > 0){
             let p_d = {
-                id: product_detail[j].id,
+                id: p.id,
                 product_Image: p.product_Image,
                 name: p.name,
                 code: p.code,
-                size: product_detail[j].size,
-                amount: product_detail[j].amount,
-                price: product_detail[j].price
+                sold: p.sold,
               };
             product.push(p_d);
-
-        }
-        
+        } 
     }
     res.render('productManager/productlist', { 
         title: 'Danh sách sản phẩm', 
@@ -78,12 +73,40 @@ async function productList(req, res, user) {
 async function postProductList(req, res, user) {
     try {
     let deleteChk = req.body.chk;
-    for(let i in deleteChk){
-        let product_detail = await products_details.findByPk( deleteChk[i]);
-        product_detail.onSale = false,
-        await product_detail.save();
+    if(Array.isArray(deleteChk)){
+        for(let i in deleteChk){
+            let product_details = await products_details.findAll( { where: { id_products: deleteChk[i]} });
+            if(product_details != undefined)
+                if(Array.isArray(product_details)){
+                    for(let i in product_details){
+                        let pd = product_details[i];
+                        pd.onSale = false;
+                        await pd.save();
+                    }
+                }
+                else{
+                    product_details.onSale = false;
+                    await product_details.save();
+                }
+        }
     }
-    res.redirect('/');
+    else{
+        let product_details = await products_details.findAll({ where: { id_products: deleteChk} });
+            if(product_details != undefined)
+                if(Array.isArray(product_details)){
+                    for(let i in product_details){
+                        let pd = product_details[i];
+                        pd.onSale = false;
+                        await pd.save();
+                    }
+                }
+                else{
+                    product_details.onSale = false;
+                    await product_details.save();
+                }
+    }
+    
+    res.redirect('/productmanager/productlist');
     }
     catch(err) {
         res.redirect('/');

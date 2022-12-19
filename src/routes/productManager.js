@@ -14,10 +14,7 @@ router.post('/submitproduct', submitProductController.PostSubmitproduct);
 router.get('/submitdiscountcode', submitDiscount_CodeController.submitDiscount_Code);
 router.post('/submitdiscountcode', submitDiscount_CodeController.PostSubmitDiscount_Code);
 
-router.get('/updateproduct', updateProductController.updateProduct);
+router.get('/updateproduct/:slug', updateProductController.updateProduct);
 router.post('/updateproduct', updateProductController.PostUpdateProduct);
-
-router.get('/updateproduct/:slug', updateProductController.updateProductDetails);
-router.post('/updateproduct/:slug', updateProductController.PostUpdateProductDetails);
 
 module.exports = router;

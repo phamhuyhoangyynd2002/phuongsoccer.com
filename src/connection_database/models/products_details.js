@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.INTEGER(11),
         },
-        discout_percent: {
+        discount_percent: {
             allowNull: false,
             type: DataTypes.INTEGER(11),
             defaultValue: 0,

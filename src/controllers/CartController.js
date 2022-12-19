@@ -44,7 +44,7 @@ class cartController {
             addcart(req, res, user);  
             }  
             else {
-                res.redirect('/');
+                res.redirect('/account/login');
             }   
         } catch(err) {
             console.log(err);

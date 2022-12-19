@@ -194,15 +194,20 @@
                 <% if(newdb != '') { %>
                     <% newdb.forEach(function(post, index) { %>
                         <div class="block-item mx-3">
-                            <div class="img-new" ><img src="/img/<%- post.image %>" alt="<% post.title %>" loading="lazy"></div>
+                            <a href="/news/<%- post.id%>">
+                                <div class="img-new" ><img src="/img/<%- post.image %>" alt="<% post.title %>" loading="lazy"></div>
+                            </a>
                             <div class="info">
-                                <h6><%- post.title %></h6>
+                                <h6> <a href="/news/<%- post.id%>"><%- post.title %></a></h6>
                                 <div class="author float-start">
                                     <i class="fa-regular fa-user"></i>
-                                    <span class="ms-1"><%- post.author %></span>
+                                    <a href="/news/<%- post.id%>">
+                                        <span class="ms-1"><%- post.author %></span>
+                                    </a>
+                                    
                                 </div>
                             </div>
-                            <div class="float-end"><a href="news_detail">Đọc bài</a></div>
+                            <div class="float-end"><a href="/news/<%- post.id%>">Đọc bài</a></div>
                         </div>
                     <% }) %>
                 <% } %>

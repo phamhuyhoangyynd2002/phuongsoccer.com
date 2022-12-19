@@ -118,7 +118,7 @@ async function index(req, res, user) {
     try {
     let product = await products.findAll();
     res.render('products/index', { 
-        title: 'products', 
+        title: 'Sẳn phẩm', 
         user,
         product
       });
@@ -133,7 +133,7 @@ async function show_producer(req, res, user) {
     let id_producer = req.params.slug; 
     let product = await products.findAll({ where: { id_producer: id_producer } });
     res.render('products/index', { 
-        title: 'products', 
+        title: 'Sẳn phẩm', 
         user,
         product
       });
@@ -160,7 +160,7 @@ async function nameaz(req, res, user) {
     }
     
     res.render('products/index', { 
-        title: 'products', 
+        title: 'Sẳn phẩm', 
         user,
         product
       });
@@ -186,7 +186,7 @@ async function nameza(req, res, user) {
         });
     }
     res.render('products/index', { 
-        title: 'products', 
+        title: 'Sẳn phẩm', 
         user,
         product
       });
@@ -212,7 +212,7 @@ async function price_min(req, res, user) {
         });
     }
     res.render('products/index', { 
-        title: 'products', 
+        title: 'Sẳn phẩm', 
         user,
         product
       });
@@ -238,7 +238,7 @@ async function price_max(req, res, user) {
         });
     }
     res.render('products/index', { 
-        title: 'products', 
+        title: 'Sẳn phẩm', 
         user,
         product
       });
