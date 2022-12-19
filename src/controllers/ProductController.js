@@ -83,7 +83,7 @@ async function index(req, res, user) {
     let product = await products.findAll(); 
 
     res.render('products/index', { 
-        title: 'Sẳn phẩm', 
+        title: 'Sản phẩm', 
         user,
         product
       });
@@ -105,7 +105,7 @@ async function show_detail(req, res, user) {
         limit: 8,
     });
     res.render('products/show_detail', { 
-        title: 'Sẳn phẩm', 
+        title: 'Sản phẩm', 
         user,
         product,
         imgdb,
@@ -123,7 +123,7 @@ async function show_accessory(req, res, user) {
     let product = await products.findAll({ where: {id_producer: 10}}); 
 
     res.render('products/index', { 
-        title: 'Sẳn phẩm', 
+        title: 'Sản phẩm', 
         user,
         product
       });
@@ -138,7 +138,7 @@ async function show_shoes(req, res, user) {
     let product = await products.findAll({ where: {id_producer: id_produce < 10}}); 
 
     res.render('products/index', { 
-        title: 'Sẳn phẩm', 
+        title: 'Sản phẩm', 
         user,
         product
       });
