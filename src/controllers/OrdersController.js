@@ -427,8 +427,7 @@ async function PostAdd(req, res, user) {
         if(numProduct >= 0){
             new_orders.cash_payment = cashpayment;
             await new_orders.save();
-            order = new_orders;
-            res.render('orders/show_detail', { title: 'Đơn hàng của bạn', user, order });
+            res.redirect('/orders');
         }
         else {  
             res.redirect('/orders');
@@ -456,10 +455,8 @@ async function show_detail(req, res, user) {
             order_details[i].name_product = product.name;
             order_details[i].size = product_detail.size;
         }
-        console.log(order);
         if( order.id_buyer == user.id || user.id_role != 1 ) 
         {
-            console.log(id_order);
             res.render('orders/show_detail', 
             { 
                 title: 'Đơn hàng của bạn', 
