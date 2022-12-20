@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const searchController = require('../controllers/searchController');
+const searchController = require('../controllers/SearchController');
 
 router.post('/',searchController.index);
 
