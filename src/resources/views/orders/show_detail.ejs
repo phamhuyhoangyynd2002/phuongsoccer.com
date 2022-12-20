@@ -23,27 +23,21 @@
 
   <main role="main">
     <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
-    <div class="container mt-4">
-      <form class="needs-validation" name="frmthanhtoan" method="post" action="/orders/add">
-        <input hidden type="number" name="numProduct" value=<%- numProduct %>>
-        <div class="py-5 text-center">
-          <i class="fa fa-credit-card fa-4x" aria-hidden="true"></i>
-          <h2>Đơn hàng</h2>
-          <p class="lead">
-            Vui lòng kiểm tra thông tin Khách hàng, thông tin Giỏ hàng trước
-            khi Đặt hàng.
-          </p>
+    <div class="container mt-3">
+        <div class="py-5 text-center mb-5">
+          <h2 class="mt-3">Đơn hàng</h2>
+          <p class="lead">Vui lòng kiểm tra thông tin đơn hàng trước khi đặt.</p>
         </div>
 
         <div class="row">
           <div class="col-md-6 order-md-2 mb-4">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-              <span class="text-muted">Giỏ hàng</span>
+            <h4 class="mb-3">
+              Giỏ hàng
               <span class="badge badge-secondary badge-pill">2</span>
             </h4>
-            <ul class="list-group mb-3">
+            <ul class="list-group mb-3 list-unstyled">
               <li>
-                <table class="table">
+                <table class="table table-bordered">
                   <thead>
                     <tr>
                       <th scope="col">Sản Phẩm</th>
@@ -54,36 +48,24 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% cartdata.forEach(function(cartdb, index) { %>
+                    <% order_details.forEach(function(order_detail, index) { %>
                     <tr>
                       <td id="name-product">
-                        <div class="img-new img-cart"><img src="/img/<%- cartdb.product_Image %>" loading="lazy"
+                        <div class="img-new img-cart"><img src="/img/<%- order_detail.product_Image %>" loading="lazy"
                             class="img-new img-cart" style="width: 100px"></div>
-                        <p><%- cartdb.nane_product %></p>
-                        <input hidden type="number" value="<%- cartdb.id_Products_details %>"
-                          id=<%-"'id_Products_details" + cartdb.stt + "'" %> name = <%-"'id_Products_details" +
-                          cartdb.stt + "'" %> >
-                        <input hidden type="number" value="<%- cartdb.id %>"
-                          id=<%-"'cart_id" + cartdb.id + "'" %> name = <%-"'cart_id" + cartdb.stt + "'" %> >
+                        <p><%- order_detail.nane_product %></p>
                       </td>
                       <td >
-                        <div><%- cartdb.size %></div>
+                        <div><%- order_detail.size %></div>
                       </td>
-                      <td id= <%-"'item-price" + cartdb.stt + "'" %>>
-                        <p><%- cartdb.price %>vnđ</p>
-                        <input hidden type="number" value="<%-cartdb.price %>" id=<%-"'_price" + cartdb.stt + "'" %>>
+                      <td>
+                        <p><%- order_detail.out_price %>vnđ</p>
                       </td>
-                      <td id= <%-"'quanlity" + cartdb.stt + "'" %>>
-                        <div class="input-qty me-5">
-                          <input style="width: 50px" type="number" min="1" onchange= <%-"'functionAmount" + cartdb.stt + "()'" %>
-                            value="<%- cartdb.amount %>" id=<%-"'amount" + cartdb.stt + "'" %> name = <%-"'amount" +
-                            cartdb.stt + "'" %>>
-                        </div>
-
+                      <td>
+                        <p><%- order_detail.amount %></p>
                       </td>
-                      <td id=<%-"'payment" + cartdb.stt + "'" %>>
-                        <p id=<%-"'total-price" + cartdb.stt + "'" %> > <%- cartdb.price * cartdb.amount %> vnđ</p>
-                        <input hidden type="number" value = "<%- cartdb.price * cartdb.amount %>" id = <%-"'t-price" + cartdb.stt + "'" %>>
+                      <td>
+                        <p><%- order_detail.amount * order_detail.out_price %>vnđ</p>
                       </td>
                     </tr>
                     <% }) %>
@@ -92,26 +74,9 @@
               </li>
               <li class="list-group-item d-flex justify-content-between" id = "total-money" >
                 <span>Tổng thành tiền</span>
-                <h5 class="total-money"><%- Totalmoney %> vnđ</h5>
-                <input hidden type="number" value = "<%- Totalmoney %>" >
+                <h5 class="total-money"> <%- order.cash_payment %>vnđ</h5>
               </li>
             </ul>
-
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Mã khuyến mãi" />
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-secondary">
-                  Xác nhận
-                </button>
-              </div>
-            </div>
-            <h1></h1>
-            <h1></h1>
-            <h1></h1>
-            <h1></h1>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
-              Đặt hàng
-            </button>
           </div>
           <div class="col-md-6 order-md-1">
             <h4 class="mb-3">Thông tin khách hàng</h4>
@@ -119,24 +84,32 @@
             <div class="row">
               <div class="col-md-12">
                 <label for="kh_ten">Họ tên</label>
-                <input type="text" class="form-control" name="buyer_name" id="kh_ten" required />
+                <p><%- order.buyer_name %></p>
               </div>
               <div class="col-md-12">
                 <label for="kh_dienthoai">Điện thoại</label>
-                <input type="number" class="form-control" name="phone_Number" id="kh_dienthoai" required />
+                <p><%- order.phone_Number %></p>
               </div>
               <div class="col-md-12">
                 <label for="kh_diachi">Địa chỉ</label>
-                <input type="text" style="height: 70px;" class="form-control" name="address" id="kh_diachi" required />
+                <p><%- order.address %></p>
               </div>
               <div class="col-md-12">
                 <label for="kh_dienthoai">Ghi chú</label>
-                <input type="text" style="height: 150px;" class="form-control" name="note" id="kh_dienthoai" />
+                <p><%- order.note %></p>
               </div>
-
+              <div class="col-md-12">
+                <label for="kh_dienthoai">Trạng thái/label>
+                <p><% if(order.id_status == 1) { %>
+                    Chưa xác nhận
+                <% } else if (order.id_status == 2) {%>
+                    Đang xử lý    
+                <% } else { %>
+                    Đã xuất kho    
+                <% } %></p>
+              </div>
             </div>
           </div>
-      </form>
     </div>
   </main>
 

@@ -446,8 +446,27 @@ async function PostAdd(req, res, user) {
 async function show_detail(req, res, user) {
     try {
         let id_order = req.params.slug;
+        
         let order = await orders.findByPk(id_order);
-        if( order.id_order == user.id || user.id_role != 1 ) res.render('orders/show_detail', { title: 'Đơn hàng của bạn', user, order });
+        let order_details = await orders_details.findAll({ where: { id_order: order.id } });
+        for(let i in order_details){
+            let product_detail = await products_details.findByPk(order_details[i].id_products_details);
+            let product = await products.findByPk(product_detail.id_products);
+            order_details[i].product_Image = product.product_Image;
+            order_details[i].name_product = product.name;
+            order_details[i].size = product_detail.size;
+        }
+        console.log(order);
+        if( order.id_buyer == user.id || user.id_role != 1 ) 
+        {
+            console.log(id_order);
+            res.render('orders/show_detail', 
+            { 
+                title: 'Đơn hàng của bạn', 
+                user, 
+                order,
+                order_details });
+        }
         else res.redirect('/');
     }
     catch (err) {
