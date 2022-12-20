@@ -149,8 +149,13 @@ module.exports = new ordersController;
 async function index(req, res, user) {
     try {
         let order = await orders.findAll(
-            { where: { _id_buyer: user.id } }
+            { where: { id_buyer: user.id } }
         );
+        res.render('orders/index', { 
+            title: 'Đơn hàng', 
+            user, 
+            order
+        });
     }
     catch (err) {
         res.redirect('/');
@@ -426,10 +431,7 @@ async function PostAdd(req, res, user) {
             res.render('orders/show_detail', { title: 'Đơn hàng của bạn', user, order });
         }
         else {  
-            res.render('orders/failure', { 
-                title: 'Đơn đặt hàng không thành công', 
-                user, 
-            });
+            res.redirect('/orders');
         }
     }
     catch (err) {

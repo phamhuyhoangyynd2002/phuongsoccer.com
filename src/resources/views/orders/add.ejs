@@ -9,6 +9,7 @@
   <title>
     <%= locals.title%>
   </title>
+  <link rel="stylesheet" href="/font/fontawesome-free-6.2.0-web/css/all.min.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/productStyle.css">
@@ -144,8 +145,14 @@
     <%- include('../partials/footer') -%>
   </footer>
 
-  <script src="/js/bootstrap.bundle.min.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/popperjs/popper.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
+  <!-- Custom script - Các file js do mình tự viết -->
+  <script src="../assets/js/app.js"></script>
   <script>
     function functionAmount0() {
       let itemPrice = document.querySelector('#item-price0 input').value;
