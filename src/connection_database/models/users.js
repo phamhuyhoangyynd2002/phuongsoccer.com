@@ -1,9 +1,10 @@
+const { trusted } = require("mongoose");
 const { Sequelize } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('users', {
         email: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.STRING,
         },
         password: {

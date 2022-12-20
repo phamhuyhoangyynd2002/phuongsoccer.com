@@ -54,6 +54,7 @@ class accountController {
                 }
             });
             const { name, phone_Number, email, new_password, re_new_password, current_password } = req.body;
+            console.log(req.body);
             if (user.password != current_password) {
                 res.render('account/profile', { user: user, wrong_password: true, passwordMatch: true });
             } else {

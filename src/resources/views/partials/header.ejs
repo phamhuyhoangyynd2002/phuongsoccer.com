@@ -6,6 +6,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!-- chưa đăng nhập -->
     <% if (user.id == 0 && user.id_role == 1) { %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -94,6 +95,7 @@
         </div>
       </div>
     <% } %>
+    <!-- Khách đăng nhập -->
     <% if (user.id !== 0 && user.id_role == 1) { %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -168,6 +170,7 @@
             <div class="dropdown-menu dropdown-user">
               <ul>
                 <li><a class="dropdown-item" href="/account/profile">Hồ sơ cá nhân</a></li>
+                <li><a class="dropdown-item" href="/orders">Đơn hàng</a></li>
                 <li><a class="dropdown-item" href="/account/logout">Đăng Xuất</a></li>
               </ul>
             </div>
@@ -188,6 +191,7 @@
           </div>
         </div>
     <% } %>
+    <!-- Quản lý đăng nhập -->
     <% if (user.id !== 0 && user.id_role !== 1) { %> 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
