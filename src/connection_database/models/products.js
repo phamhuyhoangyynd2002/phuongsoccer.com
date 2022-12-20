@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
           },
         description: {
             allowNull: true,
-            type: DataTypes.STRING(100000),
+            type: DataTypes.STRING(10000),
           },
         id_producer: {
           allowNull: false,
